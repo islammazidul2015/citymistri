@@ -30,7 +30,7 @@ header .container {
 }
 
 .logo-img {
-    height: 60px; /* Adjust logo size */
+    height: 60px;
     width: auto;
 }
 
@@ -51,21 +51,37 @@ nav a {
 }
 
 nav a:hover {
-    color: #e67e22;
+    color: #007bff; /* Blue hover color */
 }
 
-/* New Hero Section Style */
-.hero {
+/* New Slider Section Style */
+.slider-container {
+    width: 100%;
+    height: 90vh; /* Adjust height as needed */
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-wrapper {
+    display: flex;
+    width: 300%; /* 100% * 3 slides */
+    height: 100%;
+    transition: transform 0.7s ease-in-out;
+}
+
+.slide {
+    width: 33.333%; /* 100% / 3 slides */
+    height: 100%;
     background-size: cover;
     background-position: center;
-    color: #fff;
     position: relative;
-    height: 80vh; /* Adjust height */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    color: #fff;
 }
+
 .hero-overlay {
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
     position: absolute;
@@ -80,7 +96,7 @@ nav a:hover {
 
 .hero-content h1 {
     font-size: 3.5rem;
-    color: #fff; /* White text */
+    color: #fff;
     margin-bottom: 1rem;
     line-height: 1.2;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
@@ -88,12 +104,65 @@ nav a:hover {
 
 .hero-content p {
     font-size: 1.3rem;
-    color: #f1f1f1; /* Lighter white text */
+    color: #f1f1f1;
     margin-bottom: 2.5rem;
 }
 
+/* Slider Navigation Buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.slider-btn:hover {
+    background-color: rgba(0, 123, 255, 0.7);
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+/* Slider Dots */
+.slider-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #ffffff;
+}
+
+
+/* Call to Action Button with Blue Theme */
 .cta-button {
-    background-color: #e67e22;
+    background-color: #007bff; /* Main blue color */
     color: #fff;
     padding: 15px 35px;
     border-radius: 8px;
@@ -104,11 +173,11 @@ nav a:hover {
 }
 
 .cta-button:hover {
-    background-color: #d35400;
+    background-color: #0056b3; /* Darker blue on hover */
     transform: scale(1.05);
 }
 
-/* Services and Portfolio Section Titles */
+/* Section Titles */
 h2 {
     font-size: 2.8rem;
     margin-bottom: 60px;
@@ -126,7 +195,7 @@ h2::after {
     bottom: 0;
     width: 80px;
     height: 4px;
-    background-color: #e67e22;
+    background-color: #007bff; /* Blue underline for titles */
     border-radius: 2px;
 }
 
@@ -149,7 +218,7 @@ h2::after {
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
-    overflow: hidden; /* To contain the image */
+    overflow: hidden;
 }
 
 .service-card:hover {
@@ -174,10 +243,11 @@ h2::after {
     color: #555;
     padding: 0 15px 25px 15px;
 }
+
 /* Why Choose Us Section */
 .why-choose-us {
     padding: 80px 0;
-    background-color: #ffffff; /* White background to separate sections */
+    background-color: #ffffff;
     text-align: center;
 }
 
@@ -198,8 +268,8 @@ h2::after {
 }
 
 .feature-icon i {
-    font-size: 3rem; /* Icon size */
-    color: #007bff; /* Main blue color */
+    font-size: 3rem;
+    color: #007bff;
 }
 
 .feature-item h3 {
@@ -213,9 +283,10 @@ h2::after {
     color: #555;
     line-height: 1.7;
 }
+
 /* Achievements Section */
 .achievements {
-    background-color: #007bff; /* Main blue color */
+    background-color: #007bff;
     padding: 60px 0;
     color: #ffffff;
 }
@@ -244,6 +315,7 @@ h2::after {
     margin: 0;
     font-weight: 500;
 }
+
 /* Working Process Section */
 .working-process {
     padding: 80px 0;
@@ -287,6 +359,7 @@ h2::after {
     color: #2c3e50;
     margin-bottom: 10px;
 }
+
 /* FAQ Section */
 .faq-section {
     padding: 80px 0;
@@ -345,6 +418,7 @@ h2::after {
 .faq-item.active .faq-answer {
     max-height: 200px; /* Adjust as needed */
 }
+
 /* Portfolio Section */
 .portfolio {
     padding: 80px 0;
@@ -378,10 +452,11 @@ h2::after {
     margin-top: 60px;
     display: inline-block;
 }
+
 /* Latest Blog Section */
 .latest-blog {
     padding: 80px 0;
-    background-color: #f8f9fa; /* Light grey background */
+    background-color: #ffffff; /* Changed to white */
 }
 
 .latest-blog h2 {
@@ -462,6 +537,7 @@ h2::after {
 .read-more-blog:hover i {
     transform: translateX(5px);
 }
+
 /* Testimonials Section */
 .testimonials {
     padding: 80px 0;
@@ -534,6 +610,45 @@ h2::after {
     font-size: 0.9rem;
     color: #777;
 }
+
+/* Call to Action Section */
+.cta-section {
+    background-color: #007bff; /* Main blue color */
+    color: #ffffff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.cta-section h2 {
+    color: #ffffff; /* Override default dark h2 color */
+    margin-bottom: 20px;
+}
+
+.cta-section h2::after {
+    background-color: #ffffff; /* White underline */
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    max-width: 700px; /* To keep text from being too wide */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Special button style for CTA section */
+.cta-section .cta-button {
+    background-color: #ffffff; /* White button */
+    color: #007bff; /* Blue text */
+    transform: scale(1.1); /* Make it slightly larger */
+}
+
+.cta-section .cta-button:hover {
+    background-color: #f0f0f0; /* A slightly off-white on hover */
+    color: #0056b3;
+}
+
 /* New Footer Section Styling */
 footer {
     background-image: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('images/footer-bg.jpg'); /* Add a background image named footer-bg.jpg in your images folder */
