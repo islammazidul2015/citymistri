@@ -318,11 +318,100 @@ h2::after {
     font-size: 0.9rem;
     color: #777;
 }
-/* Footer */
+/* New Footer Section Styling */
 footer {
-    background: #2c3e50;
-    color: #fff;
+    background-image: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('images/footer-bg.jpg'); /* Add a background image named footer-bg.jpg in your images folder */
+    background-size: cover;
+    background-position: center;
+    color: #a0aec0; /* Light grey text */
+    padding: 80px 0 0 0;
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    padding-bottom: 40px;
+}
+
+.footer-col h3 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.footer-col p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.footer-col p i {
+    color: #007bff; /* Main blue color */
+    margin-top: 5px;
+}
+
+.social-links {
+    margin-top: 25px;
+}
+
+.social-links a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #4a5568;
+    border-radius: 5px;
+    color: #a0aec0;
+    margin-right: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.social-links a:hover {
+    background-color: #007bff;
+    color: #ffffff;
+    border-color: #007bff;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    color: #a0aec0;
+    text-decoration: none;
+    transition: color 0.3s, padding-left 0.3s;
+}
+
+.footer-col ul li a::before {
+    content: '›';
+    margin-right: 8px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff;
+    padding-left: 5px;
+}
+
+.footer-bottom {
     text-align: center;
-    padding: 2rem 0;
-    font-size: 1rem;
+    padding: 25px 0;
+    border-top: 1px solid #4a5568;
+    margin-top: 40px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.9rem;
 }
