@@ -1,3 +1,4 @@
+// --- THIS IS A FORCED UPDATE ---
 document.addEventListener("DOMContentLoaded", function() {
     
     // --- FAQ Accordion Logic ---
