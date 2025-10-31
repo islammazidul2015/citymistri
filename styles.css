@@ -746,3 +746,154 @@ footer {
     margin: 0;
     font-size: 0.9rem;
 }
+
+/* -------------------------- */
+/* --- মোবাইল রেসপন্সিভ --- */
+/* -------------------------- */
+
+/* হ্যামবার্গার মেন্যু বাটন (ডিফল্টভাবে লুকানো) */
+.mobile-nav-toggle {
+    display: none;
+    background: transparent;
+    border: 0;
+    color: #2c3e50; /* গাঢ় নীল */
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.mobile-nav-toggle .fa-times {
+    display: none; /* ক্লোজ আইকন ডিফল্টভাবে লুকানো */
+}
+
+/* স্ক্রিনের সাইজ ৮০০ পিক্সেল বা তার কম হলে এই কোড কাজ করবে */
+@media (max-width: 800px) {
+    
+    /* --- হেডার ও নেভিগেশন --- */
+    .primary-navigation {
+        position: fixed;
+        /* inset: top right bottom left */
+        inset: 0 0 0 30%; 
+        flex-direction: column;
+        padding: min(20vh, 10rem) 2rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        transform: translateX(100%);
+        transition: transform 0.3s ease-out;
+        z-index: 999;
+    }
+
+    .primary-navigation ul {
+        flex-direction: column;
+        gap: 2.5rem; /* মোবাইল মেন্যুতে লিঙ্কগুলোর মধ্যে ফাঁকা */
+    }
+
+    .primary-navigation ul a {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .mobile-nav-toggle {
+        display: block; /* হ্যামবার্গার বাটনটি এখন দেখা যাবে */
+    }
+
+    /* যখন মেন্যু খোলা থাকবে তখন যা হবে */
+    body.nav-open .primary-navigation {
+        transform: translateX(0%); /* মেন্যু স্লাইড হয়ে খুলবে */
+    }
+
+    body.nav-open .mobile-nav-toggle .fa-bars {
+        display: none; /* মেন্যু আইকন লুকাবে */
+    }
+
+    body.nav-open .mobile-nav-toggle .fa-times {
+        display: block; /* ক্লোজ আইকন দেখাবে */
+    }
+
+    /* --- স্লাইডার সেকশন --- */
+    .slider-container {
+        height: 70vh; /* মোবাইলে স্লাইডারের উচ্চতা কমানো হলো */
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem; /* মোবাইলে শিরোনাম ছোট করা হলো */
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    /* --- সাধারণ সেকশন --- */
+    h2 {
+        font-size: 2.2rem; /* সেকশন টাইটেল ছোট করা হলো */
+    }
+
+    .services, .why-choose-us, .working-process, .faq-section, .portfolio, .latest-blog, .testimonials, .cta-section {
+        padding: 60px 0; /* মোবাইলে সেকশনের প্যাডিং কমানো হলো */
+    }
+
+    /* --- গ্রিড (সবকিছু ১ কলামে) --- */
+    .service-grid,
+    .process-grid, 
+    .portfolio-grid, 
+    .blog-grid, 
+    .testimonial-grid, 
+    .footer-main {
+        grid-template-columns: 1fr; /* সব গ্রিডকে ১ কলামে আনা হলো */
+        gap: 20px;
+    }
+
+    .stats-grid {
+        /* শুধু অ্যাচিভমেন্ট সেকশন ২ কলামে থাকবে */
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .features-grid {
+        /* "Why Choose Us" সেকশন ২ কলামে থাকবে */
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* --- ফুটার --- */
+    .footer-main {
+        text-align: center; /* মোবাইলে ফুটারের লেখা মাঝে আনা হলো */
+    }
+
+    .footer-col p {
+        justify-content: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+        display: flex;
+    }
+}
+
+/* খুব ছোট স্ক্রিনের জন্য (যেমন ৪৮০ পিক্সেল) */
+@media (max-width: 480px) {
+    .stats-grid,
+    .features-grid {
+        /* খুব ছোট মোবাইলে এগুলোকেও ১ কলামে আনা হলো */
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
+
+/* অ্যাক্সেসিবিলিটির জন্য (স্ক্রিন রিডার) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

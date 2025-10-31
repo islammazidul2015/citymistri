@@ -137,3 +137,24 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 });
+// --- Mobile Navigation Toggle ---
+const mobileNavToggle = document.querySelector(".mobile-nav-toggle");
+const body = document.querySelector("body");
+const primaryNav = document.querySelector(".primary-navigation");
+
+if (mobileNavToggle) {
+    mobileNavToggle.addEventListener("click", () => {
+        // মেন্যু খোলা বা বন্ধ করা
+        body.classList.toggle("nav-open");
+        const isExpanded = body.classList.contains("nav-open");
+        mobileNavToggle.setAttribute("aria-expanded", isExpanded);
+    });
+
+    // মেন্যুর বাইরে ক্লিক করলে মেন্যু বন্ধ করা
+    document.addEventListener('click', function(e) {
+        if (body.classList.contains('nav-open') && !primaryNav.contains(e.target) && !mobileNavToggle.contains(e.target)) {
+            body.classList.remove("nav-open");
+            mobileNavToggle.setAttribute("aria-expanded", "false");
+        }
+    });
+}
