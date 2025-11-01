@@ -1,4 +1,4 @@
-// --- THIS IS A FORCED UPDATE ---
+// --- THIS IS A FORCED UPDATE (v2) ---
 document.addEventListener("DOMContentLoaded", function() {
     
     // --- FAQ Accordion Logic ---
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // --- Counter Animation Logic ---
+    // --- Counter Animation Logic (FIXED) ---
     const counters = document.querySelectorAll('.counter');
     if (counters.length > 0) {
         const speed = 200; // The lower the speed, the faster the count
@@ -39,23 +39,24 @@ document.addEventListener("DOMContentLoaded", function() {
                     counter.innerText = target + "+";
                 }
             };
-            
-            // Intersection Observer to start counter when visible
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounter(entry.target);
-                        observer.unobserve(entry.target); // Stop observing after it has animated
-                    }
-                });
-            }, {
-                threshold: 0.5 // Start when 50% of the element is visible
-            });
-
-            counters.forEach(counter => {
-                observer.observe(counter);
-            });
+            updateCount(); // Start the animation
         };
+
+        // Intersection Observer to start counter when visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target); // Stop observing after it has animated
+                }
+            });
+        }, {
+            threshold: 0.5 // Start when 50% of the element is visible
+        });
+
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
     }
 
     // --- Homepage Slider Logic ---
