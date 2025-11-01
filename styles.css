@@ -1344,3 +1344,89 @@ footer {
         margin-top: 40px;
     }
 }
+/* -------------------------- */
+/* --- About Page Styles --- */
+/* -------------------------- */
+
+.about-page-content {
+    padding-top: 80px;
+    background-color: #ffffff;
+}
+
+.about-intro-section {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Image column and text column */
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.about-text h2::after {
+    display: none; /* Hide default underline */
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.mission-vision-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.mission-vision-card {
+    background-color: #f8f9fa; /* Light grey background */
+    padding: 35px;
+    border-radius: 10px;
+    text-align: center;
+    border-top: 4px solid #007bff;
+}
+
+.mission-vision-card i {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.mission-vision-card h3 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.mission-vision-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+/* Mobile Responsive for About Page */
+@media (max-width: 900px) {
+    .about-intro-section {
+        grid-template-columns: 1fr; /* Stack image and text */
+    }
+}
+
+@media (max-width: 600px) {
+    .mission-vision-section {
+        grid-template-columns: 1fr; /* Stack mission and vision */
+    }
+}
