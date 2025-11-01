@@ -186,3 +186,32 @@ document.addEventListener("DOMContentLoaded", function() {
         window.addEventListener("scroll", onScroll);
     }
 });
+// --- Portfolio Page Filter Logic (Upgraded) ---
+document.addEventListener("DOMContentLoaded", function() {
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const galleryItems = document.querySelectorAll(".gallery-item-card"); // Changed from .gallery-item
+
+    if (filterButtons.length > 0 && galleryItems.length > 0) {
+        
+        filterButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                // Set active class on button
+                filterButtons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+
+                const filterValue = button.getAttribute("data-filter");
+
+                galleryItems.forEach(item => {
+                    // Show/hide items based on filter
+                    if (filterValue === "all" || item.classList.contains(filterValue)) {
+                        item.classList.remove("hide");
+                        item.style.animation = "fadeIn 0.5s ease"; // Re-apply animation
+                    } else {
+                        item.classList.add("hide");
+                        item.style.animation = "none";
+                    }
+                });
+            });
+        });
+    }
+});
