@@ -897,3 +897,87 @@ footer {
   white-space: nowrap;
   border: 0;
 }
+/* -------------------------- */
+/* --- Service Page Styles --- */
+/* -------------------------- */
+
+.page-header {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-top: 10px;
+}
+
+.service-page-content {
+    padding: 80px 0;
+}
+
+.service-detail-box {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+.service-detail-box h2 {
+    font-size: 2.2rem;
+    padding: 30px 40px 0 40px;
+    margin: 0;
+    text-align: left;
+}
+
+.service-detail-box h2::after {
+    display: none; /* Hide the underline for service boxes */
+}
+
+.service-detail-box p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    padding: 15px 40px 30px 40px;
+    margin: 0;
+}
+
+.service-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.service-gallery img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.service-gallery img:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Mobile adjustments for service page */
+@media (max-width: 800px) {
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+    .service-detail-box h2 {
+        font-size: 1.8rem;
+        padding: 20px 25px 0 25px;
+    }
+    .service-detail-box p {
+        padding: 15px 25px 25px 25px;
+    }
+}
