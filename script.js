@@ -158,3 +158,31 @@ if (mobileNavToggle) {
         }
     });
 }
+// --- Service Page Scrollspy Logic ---
+document.addEventListener("DOMContentLoaded", function() {
+    const sections = document.querySelectorAll(".service-detail-box");
+    const navLinks = document.querySelectorAll(".service-nav a");
+
+    if (sections.length > 0 && navLinks.length > 0) {
+        
+        const onScroll = () => {
+            let currentSection = "";
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 150) { // 150px offset for header
+                    currentSection = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === "#" + currentSection) {
+                    link.classList.add("active");
+                }
+            });
+        };
+        
+        window.addEventListener("scroll", onScroll);
+    }
+});

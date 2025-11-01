@@ -981,3 +981,97 @@ footer {
         padding: 15px 25px 25px 25px;
     }
 }
+/* ------------------------------- */
+/* --- Service Page Pro Upgrade --- */
+/* ------------------------------- */
+
+/* Set scroll behavior for smooth anchor link clicking */
+html {
+    scroll-behavior: smooth;
+}
+
+.service-page-container {
+    display: grid;
+    grid-template-columns: 280px 1fr; /* Sidebar width 280px, rest is content */
+    gap: 40px;
+}
+
+.service-sidebar {
+    position: sticky;
+    top: 120px; /* Adjust this value based on your header height */
+    height: calc(100vh - 140px); /* Full height minus some padding */
+    overflow-y: auto;
+}
+
+.service-sidebar h3 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.service-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-nav li {
+    margin-bottom: 5px;
+}
+
+.service-nav a {
+    display: block;
+    text-decoration: none;
+    padding: 12px 15px;
+    color: #333;
+    font-weight: 500;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.service-nav a:hover {
+    background-color: #f0f0f0;
+}
+
+/* This 'active' class will be added by JavaScript */
+.service-nav a.active {
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.service-content {
+    /* Content area styling */
+}
+
+/* Individual CTA button for each service */
+.service-cta {
+    margin: 30px 40px 30px 40px;
+    display: inline-block;
+    background-color: #28a745; /* Green color for new CTA */
+}
+.service-cta:hover {
+    background-color: #218838;
+}
+
+/* Mobile Responsive for Service Page */
+@media (max-width: 900px) {
+    .service-page-container {
+        grid-template-columns: 1fr; /* Stack sidebar and content */
+    }
+
+    .service-sidebar {
+        position: relative;
+        top: 0;
+        height: auto;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 800px) {
+    .service-cta {
+        margin: 20px 25px 20px 25px;
+    }
+}
