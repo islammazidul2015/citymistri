@@ -6,6 +6,10 @@ body {
     color: #333;
     background-color: #f8f9fa;
 }
+/* Set scroll behavior for smooth anchor link clicking */
+html {
+    scroll-behavior: smooth;
+}
 
 .container {
     width: 90%;
@@ -34,7 +38,7 @@ header .container {
     width: auto;
 }
 
-nav ul {
+.primary-navigation ul {
     list-style: none;
     display: flex;
     gap: 2rem;
@@ -42,7 +46,7 @@ nav ul {
     padding: 0;
 }
 
-nav a {
+.primary-navigation a {
     text-decoration: none;
     color: #333;
     font-weight: 600;
@@ -50,7 +54,7 @@ nav a {
     transition: color 0.3s ease;
 }
 
-nav a:hover {
+.primary-navigation a:hover {
     color: #007bff; /* Blue hover color */
 }
 
@@ -651,7 +655,7 @@ h2::after {
 
 /* New Footer Section Styling */
 footer {
-    background-image: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('images/footer-bg.jpg'); /* Add a background image named footer-bg.jpg in your images folder */
+    background-image: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('images/footer-bg.jpg');
     background-size: cover;
     background-position: center;
     color: #a0aec0; /* Light grey text */
@@ -746,6 +750,7 @@ footer {
     margin: 0;
     font-size: 0.9rem;
 }
+
 
 /* -------------------------- */
 /* --- মোবাইল রেসপন্সিভ --- */
@@ -897,6 +902,8 @@ footer {
   white-space: nowrap;
   border: 0;
 }
+
+
 /* -------------------------- */
 /* --- Service Page Styles --- */
 /* -------------------------- */
@@ -968,27 +975,9 @@ footer {
     opacity: 0.9;
 }
 
-/* Mobile adjustments for service page */
-@media (max-width: 800px) {
-    .page-header h1 {
-        font-size: 2.5rem;
-    }
-    .service-detail-box h2 {
-        font-size: 1.8rem;
-        padding: 20px 25px 0 25px;
-    }
-    .service-detail-box p {
-        padding: 15px 25px 25px 25px;
-    }
-}
 /* ------------------------------- */
 /* --- Service Page Pro Upgrade --- */
 /* ------------------------------- */
-
-/* Set scroll behavior for smooth anchor link clicking */
-html {
-    scroll-behavior: smooth;
-}
 
 .service-page-container {
     display: grid;

@@ -39,23 +39,23 @@ document.addEventListener("DOMContentLoaded", function() {
                     counter.innerText = target + "+";
                 }
             };
-            updateCount();
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounter(entry.target);
-                    observer.unobserve(entry.target);
-                }
+            
+            // Intersection Observer to start counter when visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target); // Stop observing after it has animated
+                    }
+                });
+            }, {
+                threshold: 0.5 // Start when 50% of the element is visible
             });
-        }, {
-            threshold: 0.5
-        });
 
-        counters.forEach(counter => {
-            observer.observe(counter);
-        });
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+        };
     }
 
     // --- Homepage Slider Logic ---
@@ -136,30 +136,29 @@ document.addEventListener("DOMContentLoaded", function() {
         startInterval();
     }
 
-});
-// --- Mobile Navigation Toggle ---
-const mobileNavToggle = document.querySelector(".mobile-nav-toggle");
-const body = document.querySelector("body");
-const primaryNav = document.querySelector(".primary-navigation");
+    // --- Mobile Navigation Toggle ---
+    const mobileNavToggle = document.querySelector(".mobile-nav-toggle");
+    const body = document.querySelector("body");
+    const primaryNav = document.querySelector(".primary-navigation");
 
-if (mobileNavToggle) {
-    mobileNavToggle.addEventListener("click", () => {
-        // মেন্যু খোলা বা বন্ধ করা
-        body.classList.toggle("nav-open");
-        const isExpanded = body.classList.contains("nav-open");
-        mobileNavToggle.setAttribute("aria-expanded", isExpanded);
-    });
+    if (mobileNavToggle) {
+        mobileNavToggle.addEventListener("click", () => {
+            // মেন্যু খোলা বা বন্ধ করা
+            body.classList.toggle("nav-open");
+            const isExpanded = body.classList.contains("nav-open");
+            mobileNavToggle.setAttribute("aria-expanded", isExpanded);
+        });
 
-    // মেন্যুর বাইরে ক্লিক করলে মেন্যু বন্ধ করা
-    document.addEventListener('click', function(e) {
-        if (body.classList.contains('nav-open') && !primaryNav.contains(e.target) && !mobileNavToggle.contains(e.target)) {
-            body.classList.remove("nav-open");
-            mobileNavToggle.setAttribute("aria-expanded", "false");
-        }
-    });
-}
-// --- Service Page Scrollspy Logic ---
-document.addEventListener("DOMContentLoaded", function() {
+        // মেন্যুর বাইরে ক্লিক করলে মেন্যু বন্ধ করা
+        document.addEventListener('click', function(e) {
+            if (body.classList.contains('nav-open') && !primaryNav.contains(e.target) && !mobileNavToggle.contains(e.target)) {
+                body.classList.remove("nav-open");
+                mobileNavToggle.setAttribute("aria-expanded", "false");
+            }
+        });
+    }
+
+    // --- Service Page Scrollspy Logic ---
     const sections = document.querySelectorAll(".service-detail-box");
     const navLinks = document.querySelectorAll(".service-nav a");
 
