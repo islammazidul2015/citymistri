@@ -1555,3 +1555,52 @@ footer {
         margin-top: 50px;
     }
 }
+/* ------------------------------- */
+/* --- Single Blog Post Styles --- */
+/* ------------------------------- */
+
+.blog-post-full {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.blog-post-full h1 {
+    font-size: 2.8rem;
+    color: #2c3e50;
+    margin: 0 0 10px 0;
+}
+
+.blog-post-full .blog-post-date {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 25px;
+    display: block;
+}
+
+.blog-post-img-full {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.post-content-body {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #333;
+}
+
+.post-content-body h3 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+.post-content-body p {
+    margin-bottom: 20px;
+}
