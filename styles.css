@@ -80,16 +80,16 @@ header .container {
 }
 
 .slide-premium {
-    width: 100%; /* Each slide takes 100% of the slider-wrapper's width */
+    width: 33.333%; /* 100% / 3 slides */
     height: 100%;
     background-size: cover;
     background-position: center;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
     text-align: center;
-    position: relative; /* For overlay and content positioning */
+    color: #fff;
 }
 
 .slide-premium .overlay {
