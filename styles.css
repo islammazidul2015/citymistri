@@ -460,7 +460,7 @@ h2::after {
 /* Latest Blog Section */
 .latest-blog {
     padding: 80px 0;
-    background-color: #ffffff; /* Changed to white */
+    background-color: #ffffff;
 }
 
 .latest-blog h2 {
@@ -1064,6 +1064,8 @@ footer {
         margin: 20px 25px 20px 25px;
     }
 }
+
+
 /* ----------------------------- */
 /* --- Portfolio Page Styles (Upgraded) --- */
 /* ----------------------------- */
@@ -1184,6 +1186,8 @@ footer {
         transform: scale(1);
     }
 }
+
+
 /* -------------------------- */
 /* --- Blog Page Styles --- */
 /* -------------------------- */
@@ -1344,6 +1348,59 @@ footer {
         margin-top: 40px;
     }
 }
+
+
+/* ------------------------------- */
+/* --- Single Blog Post Styles --- */
+/* ------------------------------- */
+
+.blog-post-full {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.blog-post-full h1 {
+    font-size: 2.8rem;
+    color: #2c3e50;
+    margin: 0 0 10px 0;
+}
+
+.blog-post-full .blog-post-date {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 25px;
+    display: block;
+}
+
+.blog-post-img-full {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.post-content-body {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #333;
+}
+
+.post-content-body h3 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+.post-content-body p {
+    margin-bottom: 20px;
+}
+
+
 /* -------------------------- */
 /* --- About Page Styles --- */
 /* -------------------------- */
@@ -1430,6 +1487,8 @@ footer {
         grid-template-columns: 1fr; /* Stack mission and vision */
     }
 }
+
+
 /* -------------------------- */
 /* --- Contact Page Styles --- */
 /* -------------------------- */
@@ -1555,85 +1614,7 @@ footer {
         margin-top: 50px;
     }
 }
-/* ------------------------------- */
-/* --- Single Blog Post Styles --- */
-/* ------------------------------- */
 
-.blog-post-full {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
-
-.blog-post-full h1 {
-    font-size: 2.8rem;
-    color: #2c3e50;
-    margin: 0 0 10px 0;
-}
-
-.blog-post-full .blog-post-date {
-    font-size: 1rem;
-    color: #777;
-    margin-bottom: 25px;
-    display: block;
-}
-
-.blog-post-img-full {
-    width: 100%;
-    height: auto;
-    max-height: 450px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 30px;
-}
-
-.post-content-body {
-    font-size: 1.1rem;
-    line-height: 1.9;
-    color: #333;
-}
-
-.post-content-body h3 {
-    font-size: 1.8rem;
-    color: #2c3e50;
-    margin-top: 40px;
-    margin-bottom: 15px;
-}
-
-.post-content-body p {
-    margin-bottom: 20px;
-}
-/* -------------------------- */
-/* --- Blog Page Styles (FIX) --- */
-/* -------------------------- */
-
-.blog-page-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr; /* 2/3 for posts, 1/3 for sidebar */
-    gap: 40px;
-}
-
-/* Blog Sidebar */
-.blog-sidebar {
-    position: sticky;
-    top: 120px; /* Adjust this value based on your header height */
-    height: calc(100vh - 140px);
-}
-
-/* Mobile Responsive for Blog Page */
-@media (max-width: 900px) {
-    .blog-page-container {
-        grid-template-columns: 1fr; /* Stack sidebar and content */
-    }
-
-    .blog-sidebar {
-        position: relative;
-        top: 0;
-        height: auto;
-        margin-top: 40px;
-    }
-}
 /* -------------------------- */
 /* --- Scroll Animation Styles --- */
 /* -------------------------- */

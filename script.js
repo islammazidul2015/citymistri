@@ -1,3 +1,4 @@
+// --- THIS IS A FORCED UPDATE (v2) ---
 document.addEventListener("DOMContentLoaded", function() {
     
     // --- FAQ Accordion Logic ---
@@ -18,10 +19,10 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // --- Counter Animation Logic ---
+    // --- Counter Animation Logic (FIXED) ---
     const counters = document.querySelectorAll('.counter');
     if (counters.length > 0) {
-        const speed = 200; 
+        const speed = 200; // The lower the speed, the faster the count
 
         const animateCounter = (counter) => {
             const target = +counter.getAttribute('data-target');
@@ -38,28 +39,28 @@ document.addEventListener("DOMContentLoaded", function() {
                     counter.innerText = target + "+";
                 }
             };
-            updateCount();
-        };
-
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounter(entry.target);
-                    counterObserver.unobserve(entry.target);
-                }
+            
+            // Intersection Observer to start counter when visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target); // Stop observing after it has animated
+                    }
+                });
+            }, {
+                threshold: 0.5 // Start when 50% of the element is visible
             });
-        }, {
-            threshold: 0.5
-        });
 
-        counters.forEach(counter => {
-            counterObserver.observe(counter);
-        });
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+        };
     }
 
     // --- Homepage Slider Logic ---
     const sliderWrapper = document.querySelector(".slider-wrapper");
-    if (sliderWrapper) { 
+    if (sliderWrapper) { // Only run if the slider exists
         const slides = document.querySelectorAll(".slide");
         const prevBtn = document.querySelector(".prev-btn");
         const nextBtn = document.querySelector(".next-btn");
@@ -69,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const totalSlides = slides.length;
         let slideInterval;
 
+        // Create dots dynamically
         for (let i = 0; i < totalSlides; i++) {
             const dot = document.createElement("div");
             dot.classList.add("dot");
@@ -105,24 +107,32 @@ document.addEventListener("DOMContentLoaded", function() {
         function nextSlide() {
             goToSlide(currentIndex + 1);
         }
+
         function prevSlide() {
             goToSlide(currentIndex - 1);
         }
+
         function startInterval() {
-            slideInterval = setInterval(nextSlide, 5000); 
+            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
         }
+
         function resetInterval() {
             clearInterval(slideInterval);
             startInterval();
         }
+
+        // Event Listeners
         nextBtn.addEventListener("click", () => {
             nextSlide();
             resetInterval();
         });
+
         prevBtn.addEventListener("click", () => {
             prevSlide();
             resetInterval();
         });
+
+        // Start auto-slide
         startInterval();
     }
 
@@ -133,10 +143,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (mobileNavToggle) {
         mobileNavToggle.addEventListener("click", () => {
+            // মেন্যু খোলা বা বন্ধ করা
             body.classList.toggle("nav-open");
             const isExpanded = body.classList.contains("nav-open");
             mobileNavToggle.setAttribute("aria-expanded", isExpanded);
         });
+
+        // মেন্যুর বাইরে ক্লিক করলে মেন্যু বন্ধ করা
         document.addEventListener('click', function(e) {
             if (body.classList.contains('nav-open') && !primaryNav.contains(e.target) && !mobileNavToggle.contains(e.target)) {
                 body.classList.remove("nav-open");
@@ -150,14 +163,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const navLinks = document.querySelectorAll(".service-nav a");
 
     if (sections.length > 0 && navLinks.length > 0) {
+        
         const onScroll = () => {
             let currentSection = "";
+
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (window.scrollY >= sectionTop - 150) {
+                if (window.scrollY >= sectionTop - 150) { // 150px offset for header
                     currentSection = section.getAttribute("id");
                 }
             });
+
             navLinks.forEach(link => {
                 link.classList.remove("active");
                 if (link.getAttribute("href") === "#" + currentSection) {
@@ -165,10 +181,39 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
         };
+        
         window.addEventListener("scroll", onScroll);
     }
+    
+    // --- Portfolio Page Filter Logic ---
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const galleryItems = document.querySelectorAll(".gallery-item-card"); // Changed from .gallery-item
 
-    // --- NEW: Scroll Animation Logic ---
+    if (filterButtons.length > 0 && galleryItems.length > 0) {
+        
+        filterButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                // Set active class on button
+                filterButtons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+
+                const filterValue = button.getAttribute("data-filter");
+
+                galleryItems.forEach(item => {
+                    // Show/hide items based on filter
+                    if (filterValue === "all" || item.classList.contains(filterValue)) {
+                        item.classList.remove("hide");
+                        item.style.animation = "fadeIn 0.5s ease"; // Re-apply animation
+                    } else {
+                        item.classList.add("hide");
+                        item.style.animation = "none";
+                    }
+                });
+            });
+        });
+    }
+
+    // --- Scroll Animation Logic ---
     const hiddenSections = document.querySelectorAll(".hidden-section");
     if (hiddenSections.length > 0) {
         const sectionObserver = new IntersectionObserver((entries) => {
