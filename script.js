@@ -1,5 +1,4 @@
-// --- THIS IS A FINAL FIX v3 ---
-// --- THIS IS A FORCED UPDATE (v2) ---
+// --- THIS IS A FINAL FIX v4 ---
 document.addEventListener("DOMContentLoaded", function() {
     
     // --- FAQ Accordion Logic ---
@@ -20,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // --- Counter Animation Logic (FIXED) ---
+    // --- Counter Animation Logic (FIXED & CORRECTED) ---
     const counters = document.querySelectorAll('.counter');
     if (counters.length > 0) {
         const speed = 200; // The lower the speed, the faster the count
@@ -40,24 +39,27 @@ document.addEventListener("DOMContentLoaded", function() {
                     counter.innerText = target + "+";
                 }
             };
-            
-            // Intersection Observer to start counter when visible
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounter(entry.target);
-                        observer.unobserve(entry.target); // Stop observing after it has animated
-                    }
-                });
-            }, {
-                threshold: 0.5 // Start when 50% of the element is visible
-            });
-
-            counters.forEach(counter => {
-                observer.observe(counter);
-            });
+            updateCount(); // Start the animation
         };
+
+        // Intersection Observer to start counter when visible
+        // This observer is now correctly defined at this scope
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target); // Stop observing after it has animated
+                }
+            });
+        }, {
+            threshold: 0.5 // Start when 50% of the element is visible
+        });
+
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
     }
+    // (The animateCounter function was previously trapped inside another observer's scope. It is now fixed.)
 
     // --- Homepage Slider Logic ---
     const sliderWrapper = document.querySelector(".slider-wrapper");
