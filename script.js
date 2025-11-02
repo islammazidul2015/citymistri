@@ -61,82 +61,91 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     // (The animateCounter function was previously trapped inside another observer's scope. It is now fixed.)
 
-    // --- Homepage Slider Logic ---
-    const sliderWrapper = document.querySelector(".slider-wrapper");
-    if (sliderWrapper) { // Only run if the slider exists
-        const slides = document.querySelectorAll(".slide");
-        const prevBtn = document.querySelector(".prev-btn");
-        const nextBtn = document.querySelector(".next-btn");
-        const dotsContainer = document.querySelector(".slider-dots");
+    // --- Premium Hero Slider Logic (UPDATED) ---
+    const sliderWrapperPremium = document.querySelector(".slider-wrapper-premium");
+    if (sliderWrapperPremium) {
+        const slidesPremium = document.querySelectorAll(".slide-premium");
+        const prevBtnPremium = document.querySelector(".prev-btn-premium");
+        const nextBtnPremium = document.querySelector(".next-btn-premium");
+        const dotsContainerPremium = document.querySelector(".slider-dots-premium");
         
-        let currentIndex = 0;
-        const totalSlides = slides.length;
-        let slideInterval;
+        let currentIndexPremium = 0;
+        const totalSlidesPremium = slidesPremium.length;
+        let slideIntervalPremium;
 
         // Create dots dynamically
-        for (let i = 0; i < totalSlides; i++) {
+        for (let i = 0; i < totalSlidesPremium; i++) {
             const dot = document.createElement("div");
             dot.classList.add("dot");
             dot.addEventListener("click", () => {
-                goToSlide(i);
-                resetInterval();
+                goToSlidePremium(i);
+                resetIntervalPremium();
             });
-            dotsContainer.appendChild(dot);
+            dotsContainerPremium.appendChild(dot);
         }
 
-        const dots = document.querySelectorAll(".dot");
-        if (dots.length > 0) {
-            dots[0].classList.add("active");
+        const dotsPremium = document.querySelectorAll(".slider-dots-premium .dot");
+        if (dotsPremium.length > 0) {
+            dotsPremium[0].classList.add("active");
         }
 
-        function updateDots() {
-            dots.forEach((dot, index) => {
-                dot.classList.toggle("active", index === currentIndex);
+        function updateDotsPremium() {
+            dotsPremium.forEach((dot, index) => {
+                dot.classList.toggle("active", index === currentIndexPremium);
             });
         }
 
-        function goToSlide(index) {
+        function goToSlidePremium(index) {
             if (index < 0) {
-                currentIndex = totalSlides - 1;
-            } else if (index >= totalSlides) {
-                currentIndex = 0;
+                currentIndexPremium = totalSlidesPremium - 1;
+            } else if (index >= totalSlidesPremium) {
+                currentIndexPremium = 0;
             } else {
-                currentIndex = index;
+                currentIndexPremium = index;
             }
-            sliderWrapper.style.transform = `translateX(-${currentIndex * (100 / totalSlides)}%)`;
-            updateDots();
+            sliderWrapperPremium.style.transform = `translateX(-${currentIndexPremium * 100 / totalSlidesPremium}%)`;
+            updateDotsPremium();
+            // Reapply animation for content
+            slidesPremium.forEach(slide => {
+                const content = slide.querySelector('.slide-content');
+                if (content) {
+                    content.style.animation = 'none'; // Reset animation
+                    void content.offsetWidth; // Trigger reflow
+                    content.style.animation = ''; // Reapply animation
+                }
+            });
         }
 
-        function nextSlide() {
-            goToSlide(currentIndex + 1);
+        function nextSlidePremium() {
+            goToSlidePremium(currentIndexPremium + 1);
         }
 
-        function prevSlide() {
-            goToSlide(currentIndex - 1);
+        function prevSlidePremium() {
+            goToSlidePremium(currentIndexPremium - 1);
         }
 
-        function startInterval() {
-            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        function startIntervalPremium() {
+            slideIntervalPremium = setInterval(nextSlidePremium, 6000); // Change slide every 6 seconds
         }
 
-        function resetInterval() {
-            clearInterval(slideInterval);
-            startInterval();
+        function resetIntervalPremium() {
+            clearInterval(slideIntervalPremium);
+            startIntervalPremium();
         }
 
         // Event Listeners
-        nextBtn.addEventListener("click", () => {
-            nextSlide();
-            resetInterval();
+        nextBtnPremium.addEventListener("click", () => {
+            nextSlidePremium();
+            resetIntervalPremium();
         });
 
-        prevBtn.addEventListener("click", () => {
-            prevSlide();
-            resetInterval();
+        prevBtnPremium.addEventListener("click", () => {
+            prevSlidePremium();
+            resetIntervalPremium();
         });
 
         // Start auto-slide
-        startInterval();
+        startIntervalPremium();
     }
 
     // --- Mobile Navigation Toggle ---

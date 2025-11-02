@@ -58,110 +58,203 @@ header .container {
     color: #007bff; /* Blue hover color */
 }
 
-/* New Slider Section Style */
-.slider-container {
-    width: 100%;
-    height: 90vh; /* Adjust height as needed */
+/* --------------------------------- */
+/* --- Premium Hero Slider Section --- */
+/* --------------------------------- */
+
+.hero-slider-premium {
     position: relative;
+    width: 100%;
+    height: 90vh; /* Full viewport height for a grand look */
     overflow: hidden;
-}
-
-.slider-wrapper {
     display: flex;
-    width: 300%; /* 100% * 3 slides */
-    height: 100%;
-    transition: transform 0.7s ease-in-out;
+    align-items: center;
+    justify-content: center;
 }
 
-.slide {
-    width: 33.333%; /* 100% / 3 slides */
+.slider-wrapper-premium {
+    display: flex;
+    height: 100%;
+    width: 300%; /* For 3 slides, each taking 100% width of the container */
+    transition: transform 0.6s ease-in-out;
+}
+
+.slide-premium {
+    width: 100%; /* Each slide takes 100% of the slider-wrapper's width */
     height: 100%;
     background-size: cover;
     background-position: center;
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     color: #fff;
+    text-align: center;
+    position: relative; /* For overlay and content positioning */
 }
 
-.hero-overlay {
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+.slide-premium .overlay {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+    z-index: 1;
 }
 
-.hero-content h1 {
-    font-size: 3.5rem;
-    color: #fff;
-    margin-bottom: 1rem;
+.slide-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+    animation: fadeInSlide 1s ease-out forwards; /* Text animation */
+}
+
+.slide-content h1 {
+    font-size: 3.5rem; /* Larger, more premium heading */
+    margin-bottom: 20px;
     line-height: 1.2;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.hero-content p {
-    font-size: 1.3rem;
-    color: #f1f1f1;
-    margin-bottom: 2.5rem;
+.slide-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    font-weight: 300;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-/* Slider Navigation Buttons */
-.slider-btn {
+/* Button Styling (if not already defined in your general btn-primary) */
+.slide-content .btn-primary {
+    display: inline-block;
+    background-color: var(--primary-color); /* Uses your primary blue */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: 2px solid var(--primary-color);
+}
+
+.slide-content .btn-primary:hover {
+    background-color: var(--dark-blue); /* A darker shade on hover */
+    transform: translateY(-3px);
+    border-color: var(--dark-blue);
+}
+
+.prev-btn-premium,
+.next-btn-premium {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.4);
-    color: #fff;
+    color: white;
     border: none;
-    padding: 15px;
-    font-size: 1.5rem;
+    padding: 15px 20px;
     cursor: pointer;
+    font-size: 2rem;
     z-index: 10;
     transition: background-color 0.3s ease;
+    border-radius: 5px; /* Slightly rounded corners */
 }
 
-.slider-btn:hover {
-    background-color: rgba(0, 123, 255, 0.7);
+.prev-btn-premium:hover,
+.next-btn-premium:hover {
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
-.prev-btn {
+.prev-btn-premium {
     left: 20px;
 }
 
-.next-btn {
+.next-btn-premium {
     right: 20px;
 }
 
-/* Slider Dots */
-.slider-dots {
+.slider-dots-premium {
     position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 20px;
     display: flex;
     gap: 10px;
     z-index: 10;
 }
 
-.dot {
+.slider-dots-premium .dot {
     width: 12px;
     height: 12px;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.8);
 }
 
-.dot.active {
-    background-color: #ffffff;
+.slider-dots-premium .dot.active {
+    background-color: white;
+    transform: scale(1.2);
 }
+
+/* Animations */
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments for premium slider */
+@media (max-width: 768px) {
+    .hero-slider-premium {
+        height: 70vh; /* Adjust height for mobile */
+    }
+
+    .slide-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .slide-content p {
+        font-size: 1.1rem;
+    }
+
+    .slide-content .btn-primary {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    .prev-btn-premium,
+    .next-btn-premium {
+        padding: 10px 15px;
+        font-size: 1.5rem;
+    }
+
+    .prev-btn-premium {
+        left: 10px;
+    }
+
+    .next-btn-premium {
+        right: 10px;
+    }
+
+    .slider-dots-premium {
+        bottom: 10px;
+        gap: 8px;
+    }
+    .slider-dots-premium .dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Additional Font Import (if you want a specific premium font, otherwise it uses default) */
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap'); */
+/* If you uncomment the line above, add `font-family: 'Montserrat', sans-serif;` to h1, p etc. */
 
 
 /* Call to Action Button with Blue Theme */
