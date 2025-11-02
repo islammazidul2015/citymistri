@@ -1634,3 +1634,19 @@ footer {
         margin-top: 40px;
     }
 }
+/* -------------------------- */
+/* --- Scroll Animation Styles --- */
+/* -------------------------- */
+
+/* এটি হলো সেকশনের প্রাথমিক অবস্থা (লুকানো) */
+.hidden-section {
+    opacity: 0;
+    transform: translateY(30px); /* নিচ থেকে হালকা উপরে উঠবে */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* এই ক্লাসটি জাভাস্ক্রিপ্ট দিয়ে যোগ করা হবে (দৃশ্যমান) */
+.show-section {
+    opacity: 1;
+    transform: translateY(0);
+}
