@@ -61,8 +61,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     // (The animateCounter function was previously trapped inside another observer's scope. It is now fixed.)
 
-    // --- Premium Hero Slider Logic (UPDATED) ---
-    const sliderWrapperPremium = document.querySelector(".slider-wrapper-premium");
+    // --- Premium Hero Slider Logic (FIXED) ---
+    const sliderWrapperPremium = document.querySelector(".hero-slider-premium"); // Changed to parent container
     if (sliderWrapperPremium) {
         const slidesPremium = document.querySelectorAll(".slide-premium");
         const prevBtnPremium = document.querySelector(".prev-btn-premium");
@@ -85,8 +85,25 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         const dotsPremium = document.querySelectorAll(".slider-dots-premium .dot");
-        if (dotsPremium.length > 0) {
-            dotsPremium[0].classList.add("active");
+        
+        function updateSliderPremium() {
+            slidesPremium.forEach((slide, index) => {
+                slide.classList.toggle("active", index === currentIndexPremium);
+                const content = slide.querySelector('.slide-content');
+                if (content) {
+                    // Reset animation for content in all slides
+                    content.style.animation = 'none';
+                }
+            });
+            // Reapply animation only for the active slide's content
+            if (slidesPremium[currentIndexPremium]) {
+                const activeContent = slidesPremium[currentIndexPremium].querySelector('.slide-content');
+                if (activeContent) {
+                    void activeContent.offsetWidth; // Trigger reflow
+                    activeContent.style.animation = 'fadeInSlide 1s ease-out forwards';
+                }
+            }
+            updateDotsPremium();
         }
 
         function updateDotsPremium() {
@@ -103,17 +120,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 currentIndexPremium = index;
             }
-            sliderWrapperPremium.style.transform = `translateX(-${currentIndexPremium * 100 / totalSlidesPremium}%)`;
-            updateDotsPremium();
-            // Reapply animation for content
-            slidesPremium.forEach(slide => {
-                const content = slide.querySelector('.slide-content');
-                if (content) {
-                    content.style.animation = 'none'; // Reset animation
-                    void content.offsetWidth; // Trigger reflow
-                    content.style.animation = ''; // Reapply animation
-                }
-            });
+            updateSliderPremium();
         }
 
         function nextSlidePremium() {
@@ -144,7 +151,8 @@ document.addEventListener("DOMContentLoaded", function() {
             resetIntervalPremium();
         });
 
-        // Start auto-slide
+        // Initial setup
+        goToSlidePremium(0); // Show the first slide
         startIntervalPremium();
     }
 
