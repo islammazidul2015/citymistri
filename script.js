@@ -1,3 +1,4 @@
+// --- THIS IS A FINAL FIX v3 ---
 // --- THIS IS A FORCED UPDATE (v2) ---
 document.addEventListener("DOMContentLoaded", function() {
     
