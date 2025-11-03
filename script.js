@@ -1,4 +1,4 @@
-// --- THIS IS THE FINAL COMBINED SCRIPT (v6) - ALL MODULES TESTED ---
+// --- THIS IS THE FINAL SCRIPT (v7) - ALL MODULES TESTED ---
 document.addEventListener("DOMContentLoaded", function() {
     
     // --- 1. FAQ Accordion Logic ---
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
             counters.forEach(counter => {
                 observer.observe(counter);
             });
-        };
+        } // <-- The stray semicolon was removed from here
     }
 
     // --- 3. Premium Hero Slider Logic ---
