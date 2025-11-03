@@ -1,29 +1,28 @@
-// --- THIS IS THE FINAL SCRIPT (v6) - ALL MODULES TESTED ---
+// --- THIS IS A FINAL FIX v4 ---
 document.addEventListener("DOMContentLoaded", function() {
     
-    // --- 1. FAQ Accordion Logic ---
+    // --- FAQ Accordion Logic ---
     const faqItems = document.querySelectorAll(".faq-item");
     if (faqItems.length > 0) {
         faqItems.forEach(item => {
             const question = item.querySelector(".faq-question");
-            if (question) {
-                question.addEventListener("click", () => {
-                    const isActive = item.classList.contains("active");
-                    faqItems.forEach(otherItem => {
-                        otherItem.classList.remove("active");
-                    });
-                    if (!isActive) {
-                        item.classList.add("active");
-                    }
+
+            question.addEventListener("click", () => {
+                const isActive = item.classList.contains("active");
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove("active");
                 });
-            }
+                if (!isActive) {
+                    item.classList.add("active");
+                }
+            });
         });
     }
 
-    // --- 2. Counter Animation Logic ---
+    // --- Counter Animation Logic (FIXED & CORRECTED) ---
     const counters = document.querySelectorAll('.counter');
     if (counters.length > 0) {
-        const speed = 200; 
+        const speed = 200; // The lower the speed, the faster the count
 
         const animateCounter = (counter) => {
             const target = +counter.getAttribute('data-target');
@@ -40,129 +39,120 @@ document.addEventListener("DOMContentLoaded", function() {
                     counter.innerText = target + "+";
                 }
             };
-            updateCount(); 
+            updateCount(); // Start the animation
         };
-        
+
+        // Intersection Observer to start counter when visible
+        // This observer is now correctly defined at this scope
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     animateCounter(entry.target);
-                    observer.unobserve(entry.target);
+                    observer.unobserve(entry.target); // Stop observing after it has animated
                 }
             });
         }, {
-            threshold: 0.5
+            threshold: 0.5 // Start when 50% of the element is visible
         });
 
         counters.forEach(counter => {
             observer.observe(counter);
         });
     }
+    // (The animateCounter function was previously trapped inside another observer's scope. It is now fixed.)
 
-    // --- 3. Premium Hero Slider Logic ---
-    const sliderWrapperPremium = document.querySelector(".hero-slider-premium");
-    if (sliderWrapperPremium) { 
-        const slidesPremium = document.querySelectorAll(".slide-premium");
-        const prevBtnPremium = document.querySelector(".prev-btn-premium");
-        const nextBtnPremium = document.querySelector(".next-btn-premium");
-        const dotsContainerPremium = document.querySelector(".slider-dots-premium");
+    // --- Homepage Slider Logic ---
+    const sliderWrapper = document.querySelector(".slider-wrapper");
+    if (sliderWrapper) { // Only run if the slider exists
+        const slides = document.querySelectorAll(".slide");
+        const prevBtn = document.querySelector(".prev-btn");
+        const nextBtn = document.querySelector(".next-btn");
+        const dotsContainer = document.querySelector(".slider-dots");
         
-        if (slidesPremium.length > 0 && prevBtnPremium && nextBtnPremium && dotsContainerPremium) {
-            let currentIndexPremium = 0;
-            const totalSlidesPremium = slidesPremium.length;
-            let slideIntervalPremium;
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+        let slideInterval;
 
-            for (let i = 0; i < totalSlidesPremium; i++) {
-                const dot = document.createElement("div");
-                dot.classList.add("dot");
-                dot.addEventListener("click", () => {
-                    goToSlidePremium(i);
-                    resetIntervalPremium();
-                });
-                dotsContainerPremium.appendChild(dot);
-            }
-
-            const dotsPremium = document.querySelectorAll(".slider-dots-premium .dot");
-            
-            function updateSliderPremium() {
-                slidesPremium.forEach((slide, index) => {
-                    slide.classList.toggle("active", index === currentIndexPremium);
-                    const content = slide.querySelector('.slide-content');
-                    if (content) {
-                        content.style.animation = 'none';
-                    }
-                });
-                if (slidesPremium[currentIndexPremium]) {
-                    const activeContent = slidesPremium[currentIndexPremium].querySelector('.slide-content');
-                    if (activeContent) {
-                        void activeContent.offsetWidth; 
-                        activeContent.style.animation = 'fadeInSlide 1s ease-out forwards';
-                    }
-                }
-                updateDotsPremium();
-            }
-
-            function updateDotsPremium() {
-                dotsPremium.forEach((dot, index) => {
-                    dot.classList.toggle("active", index === currentIndexPremium);
-                });
-            }
-
-            function goToSlidePremium(index) {
-                if (index < 0) {
-                    currentIndexPremium = totalSlidesPremium - 1;
-                } else if (index >= totalSlidesPremium) {
-                    currentIndexPremium = 0;
-                } else {
-                    currentIndexPremium = index;
-                }
-                updateSliderPremium();
-            }
-
-            function nextSlidePremium() {
-                goToSlidePremium(currentIndexPremium + 1);
-            }
-
-            function prevSlidePremium() {
-                goToSlidePremium(currentIndexPremium - 1);
-            }
-
-            function startIntervalPremium() {
-                slideIntervalPremium = setInterval(nextSlidePremium, 6000); 
-            }
-
-            function resetIntervalPremium() {
-                clearInterval(slideIntervalPremium);
-                startIntervalPremium();
-            }
-
-            nextBtnPremium.addEventListener("click", () => {
-                nextSlidePremium();
-                resetIntervalPremium();
+        // Create dots dynamically
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement("div");
+            dot.classList.add("dot");
+            dot.addEventListener("click", () => {
+                goToSlide(i);
+                resetInterval();
             });
-
-            prevBtnPremium.addEventListener("click", () => {
-                prevSlidePremium();
-                resetIntervalPremium();
-            });
-
-            goToSlidePremium(0); 
-            startIntervalPremium();
+            dotsContainer.appendChild(dot);
         }
+
+        const dots = document.querySelectorAll(".dot");
+        if (dots.length > 0) {
+            dots[0].classList.add("active");
+        }
+
+        function updateDots() {
+            dots.forEach((dot, index) => {
+                dot.classList.toggle("active", index === currentIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else if (index >= totalSlides) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
+            }
+            sliderWrapper.style.transform = `translateX(-${currentIndex * (100 / totalSlides)}%)`;
+            updateDots();
+        }
+
+        function nextSlide() {
+            goToSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(currentIndex - 1);
+        }
+
+        function startInterval() {
+            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            startInterval();
+        }
+
+        // Event Listeners
+        nextBtn.addEventListener("click", () => {
+            nextSlide();
+            resetInterval();
+        });
+
+        prevBtn.addEventListener("click", () => {
+            prevSlide();
+            resetInterval();
+        });
+
+        // Start auto-slide
+        startInterval();
     }
 
-    // --- 4. Mobile Navigation Toggle ---
+    // --- Mobile Navigation Toggle ---
     const mobileNavToggle = document.querySelector(".mobile-nav-toggle");
     const body = document.querySelector("body");
     const primaryNav = document.querySelector(".primary-navigation");
 
-    if (mobileNavToggle && body && primaryNav) {
+    if (mobileNavToggle) {
         mobileNavToggle.addEventListener("click", () => {
+            // মেন্যু খোলা বা বন্ধ করা
             body.classList.toggle("nav-open");
             const isExpanded = body.classList.contains("nav-open");
             mobileNavToggle.setAttribute("aria-expanded", isExpanded);
         });
 
+        // মেন্যুর বাইরে ক্লিক করলে মেন্যু বন্ধ করা
         document.addEventListener('click', function(e) {
             if (body.classList.contains('nav-open') && !primaryNav.contains(e.target) && !mobileNavToggle.contains(e.target)) {
                 body.classList.remove("nav-open");
@@ -171,16 +161,18 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // --- 5. Service Page Scrollspy Logic ---
+    // --- Service Page Scrollspy Logic ---
     const sections = document.querySelectorAll(".service-detail-box");
     const navLinks = document.querySelectorAll(".service-nav a");
 
     if (sections.length > 0 && navLinks.length > 0) {
+        
         const onScroll = () => {
             let currentSection = "";
+
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (window.scrollY >= sectionTop - 150) { 
+                if (window.scrollY >= sectionTop - 150) { // 150px offset for header
                     currentSection = section.getAttribute("id");
                 }
             });
@@ -192,25 +184,29 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
         };
+        
         window.addEventListener("scroll", onScroll);
     }
     
-    // --- 6. Portfolio Page Filter Logic ---
+    // --- Portfolio Page Filter Logic ---
     const filterButtons = document.querySelectorAll(".filter-btn");
-    const galleryItems = document.querySelectorAll(".gallery-item-card"); 
+    const galleryItems = document.querySelectorAll(".gallery-item-card"); // Changed from .gallery-item
 
     if (filterButtons.length > 0 && galleryItems.length > 0) {
+        
         filterButtons.forEach(button => {
             button.addEventListener("click", () => {
+                // Set active class on button
                 filterButtons.forEach(btn => btn.classList.remove("active"));
                 button.classList.add("active");
 
                 const filterValue = button.getAttribute("data-filter");
 
                 galleryItems.forEach(item => {
+                    // Show/hide items based on filter
                     if (filterValue === "all" || item.classList.contains(filterValue)) {
                         item.classList.remove("hide");
-                        item.style.animation = "fadeIn 0.5s ease";
+                        item.style.animation = "fadeIn 0.5s ease"; // Re-apply animation
                     } else {
                         item.classList.add("hide");
                         item.style.animation = "none";
@@ -220,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // --- 7. Scroll Animation Logic ---
+    // --- Scroll Animation Logic ---
     const hiddenSections = document.querySelectorAll(".hidden-section");
     if (hiddenSections.length > 0) {
         const sectionObserver = new IntersectionObserver((entries) => {
@@ -231,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
         }, {
-            threshold: 0.15 
+            threshold: 0.15 // 15% of the section must be visible
         });
 
         hiddenSections.forEach(section => {
