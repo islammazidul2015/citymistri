@@ -1,4 +1,4 @@
-// --- THIS IS THE FINAL COMBINED SCRIPT (v6) - ALL MODULES TESTED ---
+// --- THIS IS THE FINAL SCRIPT (v-Final) - ALL MODULES TESTED ---
 document.addEventListener("DOMContentLoaded", function() {
     
     // --- 1. FAQ Accordion Logic ---
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
             counters.forEach(counter => {
                 observer.observe(counter);
             });
-    } // This was the fix, removed the stray semicolon
+    } // End of Counter Logic
 
     // --- 3. Premium Hero Slider Logic ---
     const sliderWrapperPremium = document.querySelector(".hero-slider-premium");
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function() {
             goToSlidePremium(0); 
             startIntervalPremium();
         }
-    }
+    } // End of Slider Logic
 
     // --- 4. Mobile Navigation Toggle ---
     const mobileNavToggle = document.querySelector(".mobile-nav-toggle");
@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 mobileNavToggle.setAttribute("aria-expanded", "false");
             }
         });
-    }
+    } // End of Mobile Nav Logic
 
     // --- 5. Service Page Scrollspy Logic ---
     const sections = document.querySelectorAll(".service-detail-box");
@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         };
         window.addEventListener("scroll", onScroll);
-    }
+    } // End of Scrollspy Logic
     
     // --- 6. Portfolio Page Filter Logic ---
     const filterButtons = document.querySelectorAll(".filter-btn");
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             });
         });
-    }
+    } // End of Portfolio Filter Logic
 
     // --- 7. Scroll Animation Logic ---
     const hiddenSections = document.querySelectorAll(".hidden-section");
@@ -235,6 +235,6 @@ document.addEventListener("DOMContentLoaded", function() {
         hiddenSections.forEach(section => {
             sectionObserver.observe(section);
         });
-    }
+    } // End of Scroll Animation Logic
 
-});
+}); // --- END OF DOMCONTENTLOADED ---
