@@ -123,7 +123,7 @@ header .container {
     line-height: 1.2;
     font-weight: 700;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    color: #fff; /* Ensure text is white */
+    color: #fff;
 }
 
 .slide-content p {
@@ -131,7 +131,7 @@ header .container {
     margin-bottom: 30px;
     font-weight: 300;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-    color: #f1f1f1; /* Ensure text is light */
+    color: #f1f1f1;
 }
 
 .slide-content .btn-primary {
@@ -210,7 +210,7 @@ header .container {
 
 /* Call to Action Button with Blue Theme */
 .cta-button {
-    background-color: #007bff;
+    background-color: #007bff; /* Main blue color */
     color: #fff;
     padding: 15px 35px;
     border-radius: 8px;
@@ -221,7 +221,7 @@ header .container {
 }
 
 .cta-button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Darker blue on hover */
     transform: scale(1.05);
 }
 
@@ -243,7 +243,7 @@ h2::after {
     bottom: 0;
     width: 80px;
     height: 4px;
-    background-color: #007bff;
+    background-color: #007bff; /* Blue underline for titles */
     border-radius: 2px;
 }
 
@@ -420,7 +420,7 @@ h2::after {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .blog-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 .blog-card img { width: 100%; height: 220px; object-fit: cover; }
