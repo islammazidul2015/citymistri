@@ -1722,33 +1722,34 @@ footer {
 }
 
 .slider-wrapper-premium {
-    display: flex;
+    display: flex; /* Keep flex for initial layout, but slides will be absolute */
     height: 100%;
-    width: 300%; /* For 3 slides, each taking 100% width of the container */
-    transition: transform 0.6s ease-in-out;
+    width: 100%; /* Changed to 100% */
+    /* transition: transform 0.6s ease-in-out; */ /* Removed/Commented out */
+    position: relative; /* Added for absolute positioning of slides */
 }
 
 .slide-premium {
-    width: 100%; /* Each slide takes 100% of the slider-wrapper's width */
+    width: 100%; /* Changed back to 100% */
     height: 100%;
     background-size: cover;
     background-position: center;
+    position: absolute; /* Changed to absolute */
+    top: 0;
+    left: 0;
+    opacity: 0; /* New: Hidden by default */
+    transition: opacity 0.8s ease-in-out; /* New: Fade transition */
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
     text-align: center;
-    position: relative; /* For overlay and content positioning */
+    z-index: 1; /* Ensure slides stack correctly */
 }
 
-.slide-premium .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
-    z-index: 1;
+.slide-premium.active { /* New: Active slide is visible */
+    opacity: 1;
+    z-index: 2; /* Active slide on top */
 }
 
 .slide-content {
