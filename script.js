@@ -205,33 +205,40 @@ document.addEventListener("DOMContentLoaded", function() {
         window.addEventListener("scroll", onScroll);
     }
     
-    // --- Portfolio Page Filter Logic ---
-    const filterButtons = document.querySelectorAll(".filter-btn");
-    const galleryItems = document.querySelectorAll(".gallery-item-card"); // Changed from .gallery-item
+    // --- 6. Portfolio Page Filter Logic (Upgraded for multiple galleries) ---
+    
+    // Find all filterable components on the page (one on index.html, one on portfolio.html)
+    const portfolioComponents = document.querySelectorAll(".portfolio-page-content, .homepage-portfolio-component"); 
 
-    if (filterButtons.length > 0 && galleryItems.length > 0) {
-        
-        filterButtons.forEach(button => {
-            button.addEventListener("click", () => {
-                // Set active class on button
-                filterButtons.forEach(btn => btn.classList.remove("active"));
-                button.classList.add("active");
+    if (portfolioComponents.length > 0) {
+        portfolioComponents.forEach(component => {
+            const filterButtons = component.querySelectorAll(".filter-btn");
+            const galleryItems = component.querySelectorAll(".gallery-item-card");
 
-                const filterValue = button.getAttribute("data-filter");
+            if (filterButtons.length > 0 && galleryItems.length > 0) {
+                filterButtons.forEach(button => {
+                    button.addEventListener("click", () => {
+                        // Set active class on button *within this component*
+                        filterButtons.forEach(btn => btn.classList.remove("active"));
+                        button.classList.add("active");
 
-                galleryItems.forEach(item => {
-                    // Show/hide items based on filter
-                    if (filterValue === "all" || item.classList.contains(filterValue)) {
-                        item.classList.remove("hide");
-                        item.style.animation = "fadeIn 0.5s ease"; // Re-apply animation
-                    } else {
-                        item.classList.add("hide");
-                        item.style.animation = "none";
-                    }
+                        const filterValue = button.getAttribute("data-filter");
+
+                        // Filter items *within this component*
+                        galleryItems.forEach(item => {
+                            if (filterValue === "all" || item.classList.contains(filterValue)) {
+                                item.classList.remove("hide");
+                                item.style.animation = "fadeIn 0.5s ease";
+                            } else {
+                                item.classList.add("hide");
+                                item.style.animation = "none";
+                            }
+                        });
+                    });
                 });
-            });
+            }
         });
-    }
+    } // End of Portfolio Filter Logic
 
     // --- Scroll Animation Logic ---
     const hiddenSections = document.querySelectorAll(".hidden-section");
