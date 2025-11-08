@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://citymistri.xyz/sitemap.xml
+
+Sitemap: https://www.citymistri.xyz/sitemap.xml
