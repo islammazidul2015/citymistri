@@ -1901,7 +1901,45 @@ footer {
         height: 10px;
     }
 }
+/* ------------------------------- */
+/* --- Blog Post Navigation --- */
+/* ------------------------------- */
 
+.post-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+}
+
+.post-navigation a {
+    text-decoration: none;
+    color: #555;
+    font-size: 1rem;
+    max-width: 48%;
+}
+
+.post-navigation a:hover strong {
+    color: #007bff;
+}
+
+.post-navigation a span {
+    display: block;
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.post-navigation a strong {
+    font-weight: 600;
+    color: #2c3e50;
+    transition: color 0.3s ease;
+}
+
+.post-navigation a.next-post {
+    text-align: right;
+}
 /* Additional Font Import (if you want a specific premium font, otherwise it uses default) */
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap'); */
 /* If you uncomment the line above, add `font-family: 'Montserrat', sans-serif;` to h1, p etc. */
