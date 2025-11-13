@@ -1943,3 +1943,66 @@ footer {
 /* Additional Font Import (if you want a specific premium font, otherwise it uses default) */
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap'); */
 /* If you uncomment the line above, add `font-family: 'Montserrat', sans-serif;` to h1, p etc. */
+/* ------------------------------- */
+/* --- Single Service Page Styles --- */
+/* ------------------------------- */
+
+.service-detail-content {
+    padding: 60px 0;
+    background-color: #fff;
+}
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+}
+.content-wrapper h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #007bff;
+    display: inline-block;
+    padding-bottom: 10px;
+    text-align: left; /* Ensure h2 is left-aligned */
+}
+/* Override homepage h2 centering */
+.content-wrapper h2::after {
+    display: none;
+}
+
+.content-wrapper h3 {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+.content-wrapper p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+.content-wrapper ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+.content-wrapper li {
+    margin-bottom: 10px;
+}
+.service-hero-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.cta-box {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 50px;
+    border: 1px solid #e9ecef;
+}
