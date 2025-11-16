@@ -2006,3 +2006,170 @@ footer {
     margin-top: 50px;
     border: 1px solid #e9ecef;
 }
+/* ------------------------------------------- */
+/* --- Project Detail Modal (Lightbox) Styles --- */
+/* ------------------------------------------- */
+
+/* The Modal (background) */
+.modal-lightbox {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    padding: 20px;
+    animation: fadeInModal 0.3s ease-out;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 5% from the top and centered */
+    border-radius: 12px;
+    width: 90%; 
+    max-width: 1200px; /* Max width for a large screen */
+    box-shadow: 0 5px 30px rgba(0,0,0,0.4);
+    position: relative;
+    padding: 30px;
+    animation: slideInTop 0.4s ease-out;
+}
+
+/* Close Button */
+.close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Inner Layout for Details */
+.modal-inner {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.modal-image-col {
+    flex: 2; /* Takes 60% of the space on desktop */
+}
+
+.modal-image-col img {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.modal-details-col {
+    flex: 1; /* Takes 40% of the space on desktop */
+    padding-top: 20px;
+}
+
+.modal-details-col h2 {
+    font-size: 2rem;
+    color: #007bff;
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.modal-details-col p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.modal-contact h4 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Custom CTA Button inside Modal */
+.modal-details-col .cta-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 15px 20px;
+    background-color: #25d366; /* WhatsApp Green */
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.modal-details-col .cta-button:hover {
+    background-color: #128c7e;
+}
+
+.modal-details-col .cta-button i {
+    margin-right: 10px;
+}
+
+/* Responsive Styles for Modal */
+@media (max-width: 992px) {
+    .modal-content {
+        width: 95%;
+        margin: 2% auto;
+        padding: 20px;
+    }
+    .modal-inner {
+        flex-direction: column; /* Stacks columns vertically on tablet/mobile */
+    }
+    .modal-image-col,
+    .modal-details-col {
+        flex: none; 
+        width: 100%;
+    }
+    .modal-image-col img {
+        max-height: 400px;
+    }
+    .modal-details-col h2 {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .modal-content {
+        margin: 10px auto;
+        padding: 15px;
+    }
+    .modal-details-col p {
+        font-size: 1rem;
+    }
+}
+
+/* Modal Animations */
+@keyframes fadeInModal {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes slideInTop {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

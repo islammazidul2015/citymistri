@@ -260,3 +260,62 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 });
+// --- 7. Portfolio Detail Modal (Lightbox) Logic ---
+
+// Get the modal and its elements
+const modal = document.getElementById("projectModal");
+const closeBtn = document.querySelector(".close-btn");
+const modalImage = document.getElementById("modalImage");
+const modalTitle = document.getElementById("modalTitle");
+const modalDescription = document.getElementById("modalDescription");
+const modalWhatsappLink = document.getElementById("modalWhatsappLink");
+
+// Get all gallery cards
+const galleryCards = document.querySelectorAll(".portfolio-gallery-grid .gallery-item-card");
+
+if (galleryCards.length > 0) {
+    galleryCards.forEach(card => {
+        card.addEventListener("click", (e) => {
+            // Check if the click was directly on the card or its children (excluding other interactive elements if any)
+            if (e.target.closest('.gallery-item-card')) {
+                // Prevent default action if it was an anchor tag, but our current design has no anchors, so this is fine.
+
+                // 1. Extract data from the clicked card
+                const imgSource = card.getAttribute("data-img");
+                const titleText = card.getAttribute("data-title");
+                const descriptionText = card.getAttribute("data-description");
+                
+                // 2. Populate the modal elements
+                modalImage.src = imgSource;
+                modalImage.alt = titleText;
+                modalTitle.textContent = titleText;
+                modalDescription.textContent = descriptionText;
+
+                // 3. Update the WhatsApp link with the project title
+                const whatsappBaseUrl = "https://wa.me/8801997426656?text=";
+                const encodedMessage = encodeURIComponent(`Hello, I am interested in the '${titleText}' design I saw on your portfolio. Can you share a quote?`);
+                modalWhatsappLink.href = whatsappBaseUrl + encodedMessage;
+
+                // 4. Display the modal
+                modal.style.display = "block";
+                document.body.style.overflow = "hidden"; // Prevent scrolling on main page
+            }
+        });
+    });
+}
+
+// Function to close the modal
+function closeModal() {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto"; // Restore scrolling
+}
+
+// 1. Close the modal when the close button (x) is clicked
+closeBtn.onclick = closeModal;
+
+// 2. Close the modal when the user clicks anywhere outside of the modal content
+window.onclick = function(event) {
+    if (event.target == modal) {
+        closeModal();
+    }
+}
