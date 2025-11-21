@@ -102,7 +102,36 @@
 </script>
 </head>
 <body>
+<style>
+    body { margin-top: 0; } /* বডি মার্জিন রিসেট */
+    
+    .top-notice-bar {
+        background-color: #004085; /* গাঢ় নীল প্রফেশনাল কালার */
+        color: #ffffff; /* সাদা লেখা */
+        text-align: center;
+        padding: 10px 15px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+        position: relative;
+        z-index: 9999; /* সবার উপরে থাকার জন্য */
+    }
+    .top-notice-bar strong {
+        color: #ffc107; /* হলুদ হাইলাইট */
+        margin-right: 5px;
+    }
+    /* মোবাইলের জন্য ফন্ট ছোট হবে */
+    @media (max-width: 600px) {
+        .top-notice-bar {
+            font-size: 12px;
+            text-align: left;
+        }
+    }
+</style>
 
+<div class="top-notice-bar">
+    <strong>📢 আপডেট:</strong> আমরা এখন ৬৪ জেলাতেই সার্ভিস দিচ্ছি। (ঢাকার বাইরের প্রজেক্টে যাতায়াত খরচ আলোচনা সাপেক্ষে)
+</div>
     <header>
         <div class="container">
             <a href="index.html" class="logo-link">
