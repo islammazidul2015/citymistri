@@ -525,71 +525,175 @@
         </div>
     </section>
 <style>
-    .service-area-section {
-        background-color: #f4faff; /* হালকা নীল ভাব */
-        padding: 50px 20px;
-        font-family: Arial, sans-serif;
+    .pro-service-area {
+        background: #f8fbff; /* খুব হালকা নীল ব্যাকগ্রাউন্ড */
+        padding: 60px 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         text-align: center;
-        border-top: 3px solid #007BFF;
     }
-    .service-area-section h2 {
-        color: #0056b3;
-        margin-bottom: 10px;
+
+    /* হেডিং ডিজাইন */
+    .pro-service-area h2 {
+        color: #0d2c5b; /* গাঢ় নেভি ব্লু */
         font-size: 32px;
-        font-weight: bold;
+        margin-bottom: 10px;
+        font-weight: 700;
+        position: relative;
+        display: inline-block;
     }
-    .service-area-section p {
+    
+    /* হেডিং এর নিচে ছোট নীল দাগ */
+    .pro-service-area h2::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 4px;
+        background: #007BFF;
+        margin: 8px auto 0;
+        border-radius: 2px;
+    }
+
+    .pro-service-area p {
         color: #666;
-        margin-bottom: 30px;
         font-size: 16px;
+        margin-bottom: 40px;
     }
-    .area-grid {
+
+    /* গ্রিড লেআউট */
+    .city-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 15px;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); /* অটো রেসপনসিভ */
+        gap: 20px;
         max-width: 1100px;
         margin: 0 auto;
     }
-    .area-box {
+
+    /* কার্ড ডিজাইন */
+    .city-card {
         background: white;
-        padding: 15px;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* হালকা শ্যাডো */
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
         text-decoration: none;
-        color: #333;
-        font-weight: bold;
-        border: 1px solid #ddd;
-        transition: 0.3s;
+        transition: all 0.3s ease;
+        border: 1px solid #eef2f6;
+        border-left: 4px solid #007BFF; /* বামে নীল বর্ডার */
     }
-    .area-box:hover {
-        background: #007BFF;
-        color: white;
+
+    /* আইকন ডিজাইন (SVG) */
+    .city-icon svg {
+        width: 22px;
+        height: 22px;
+        fill: #007BFF; /* আইকনের কালার */
+    }
+
+    /* টেক্সট ডিজাইন */
+    .city-name {
+        color: #333;
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+    /* হোভার ইফেক্ট */
+    .city-card:hover {
+        transform: translateY(-5px); /* মাউস নিলে উপরে উঠবে */
+        box-shadow: 0 10px 25px rgba(0,123,255,0.15); /* নীল গ্লো শ্যাডো */
         border-color: #007BFF;
     }
 </style>
 
-<section class="service-area-section">
+<section class="pro-service-area">
     <h2>We Serve All Over Bangladesh</h2>
     <p>আমাদের দক্ষ মিস্ত্রি টিম এখন ৬৪ জেলায় কাজ করে</p>
-    
-    <div class="area-grid">
-        <a href="#" class="area-box">Dhaka City</a>
-        <a href="#" class="area-box">Chittagong</a>
-        <a href="#" class="area-box">Sylhet</a>
-        <a href="#" class="area-box">Rajshahi</a>
-        <a href="#" class="area-box">Khulna</a>
-        <a href="#" class="area-box">Barishal</a>
-        <a href="#" class="area-box">Rangpur</a>
-        <a href="#" class="area-box">Mymensingh</a>
+
+    <div class="city-grid">
+        <a href="#" class="city-card">
+            <div class="city-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <span class="city-name">Dhaka City</span>
+        </a>
+
+        <a href="#" class="city-card">
+            <div class="city-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <span class="city-name">Chittagong</span>
+        </a>
+
+        <a href="#" class="city-card">
+            <div class="city-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <span class="city-name">Sylhet</span>
+        </a>
+
+        <a href="#" class="city-card">
+            <div class="city-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <span class="city-name">Rajshahi</span>
+        </a>
+
+        <a href="#" class="city-card">
+            <div class="city-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <span class="city-name">Khulna</span>
+        </a>
+
+        <a href="#" class="city-card">
+            <div class="city-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <span class="city-name">Barishal</span>
+        </a>
+
+        <a href="#" class="city-card">
+            <div class="city-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <span class="city-name">Rangpur</span>
+        </a>
         
-        <a href="#" class="area-box">Comilla</a>
-        <a href="#" class="area-box">Narayanganj</a>
-        <a href="#" class="area-box">Gazipur</a>
-        <a href="#" class="area-box">Bogra</a>
-        <a href="#" class="area-box">Cox's Bazar</a>
-        <a href="#" class="area-box">Jessore</a>
-        <a href="#" class="area-box">Feni</a>
-        <a href="#" class="area-box">Noakhali</a>
+        <a href="#" class="city-card">
+            <div class="city-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <span class="city-name">Gazipur</span>
+        </a>
+        
+        <a href="#" class="city-card">
+            <div class="city-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <span class="city-name">Narayanganj</span>
+        </a>
+        
+        <a href="#" class="city-card">
+            <div class="city-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <span class="city-name">Comilla</span>
+        </a>
+        
+        <a href="#" class="city-card">
+            <div class="city-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <span class="city-name">Bogra</span>
+        </a>
+        
+        <a href="#" class="city-card">
+            <div class="city-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <span class="city-name">Cox's Bazar</span>
+        </a>
     </div>
 </section>
     <footer>
