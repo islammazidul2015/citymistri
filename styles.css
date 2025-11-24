@@ -207,7 +207,7 @@ h2::after {
 .services {
     padding: 80px 0;
     text-align: center;
-    background-color: #fff;
+    background-color: #f8f9fa; /* Light background for contrast */
 }
 
 .service-grid {
@@ -217,23 +217,27 @@ h2::after {
 }
 
 .service-card {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    background: #ffffff; /* Pure white card background */
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1); /* Deeper, softer shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
     overflow: hidden;
+    border: 1px solid #eee; /* Subtle border for clean lines */
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transform: translateY(-8px); /* Lift slightly less */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2); /* Stronger shadow on hover */
+    border-color: #007bff; /* Blue border accent on hover */
 }
 
 .service-card img {
     width: 100%;
     height: 220px;
     object-fit: cover;
+    display: block;
+    border-bottom: 3px solid #007bff; /* New blue separator line */
 }
 
 .service-card h3 {
