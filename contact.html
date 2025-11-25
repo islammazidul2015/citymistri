@@ -10,15 +10,14 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-042TGM4N1G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-042TGM4N1G');
-</script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-042TGM4N1G"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-042TGM4N1G');
+    </script>
 </head>
 <body>
 
@@ -48,7 +47,7 @@
     <section class="page-header">
         <div class="container">
             <h1>যোগাযোগ করুন</h1>
-            <p>আপনার যেকোনো প্রয়োজনে আমরা আছি আপনার পাশে।</p>
+            <p>আপনার যেকোনো প্রয়োজনে আমরা আছি আপনার পাশে।</p>
         </div>
     </section>
 
@@ -59,19 +58,19 @@
                 <div class="contact-info-card">
                     <i class="fas fa-map-marker-alt"></i>
                     <h3>আমাদের ঠিকানা</h3>
-                    <p>Al Helal Hospital Begum Rokeya Sarani, Kazipara, Mirpur, Dhaka-1216</p>
+                    <p>আল হেলাল হসপিটাল সংলগ্ন, বেগম রোকেয়া সরণি, কাজীপাড়া, মিরপুর, ঢাকা-১২১৬</p>
                 </div>
                 <div class="contact-info-card">
                     <i class="fas fa-phone-alt"></i>
                     <h3>ফোন করুন</h3>
-                    <p>আপনার যেকোনো জিজ্ঞাসার জন্য কল করুন।</p>
-                    <p class="contact-highlight">01997426656</p>
+                    <p>যেকোনো জিজ্ঞাসার জন্য কল করুন</p>
+                    <p class="contact-highlight"><a href="tel:+8801997426656" style="color: inherit; text-decoration: none;">01997426656</a></p>
                 </div>
                 <div class="contact-info-card">
                     <i class="fas fa-envelope"></i>
-                    <h3>আমাদের ইমেইল</h3>
-                    <p>আপনার প্রজেক্টের বিস্তারিত ইমেইল করুন।</p>
-                    <p class="contact-highlight">info@citymistri.com</p>
+                    <h3>ইমেইল</h3>
+                    <p>প্রজেক্টের বিস্তারিত ইমেইল করুন</p>
+                    <p class="contact-highlight"><a href="mailto:info@citymistri.com" style="color: inherit; text-decoration: none;">info@citymistri.com</a></p>
                 </div>
             </section>
 
@@ -79,45 +78,49 @@
                 
                 <div class="contact-form-container">
                     <h2>আমাদের মেসেজ পাঠান</h2>
-                    <p>আপনার নাম, ফোন নম্বর এবং মেসেজ লিখে ফর্মটি পূরণ করুন। আমাদের প্রতিনিধি খুব শীঘ্রই আপনার সাথে যোগাযোগ করবে।</p>
+                    <p>ফর্মটি পূরণ করুন, আমাদের প্রতিনিধি খুব শীঘ্রই আপনার সাথে যোগাযোগ করবে।</p>
+                    
                     <form action="https://formspree.io/f/mkgppyyz" method="POST" class="contact-form">
                         <div class="form-group">
                             <label for="name">আপনার নাম:</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" placeholder="পুরো নাম লিখুন" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">ফোন নম্বর:</label>
-                            <input type="tel" id="phone" name="phone" required>
+                            <input type="tel" id="phone" name="phone" placeholder="017XXXXXXXX" required>
                         </div>
                         <div class="form-group">
-                            <label for="service">সেবা (ঐচ্ছিক):</label>
+                            <label for="service">কোন সার্ভিসটি প্রয়োজন? (ঐচ্ছিক):</label>
                             <select id="service" name="service">
-                                <option value="">একটি সেবা সিলেক্ট করুন</option>
+                                <option value="">সার্ভিস সিলেক্ট করুন</option>
                                 <option value="Folding Door">ফোল্ডিং ডোর</option>
                                 <option value="Shower Enclosure">শাওয়ার এনক্লোজার</option>
                                 <option value="Office Partition">অফিস পার্টিশন</option>
+                                <option value="Mirror Wall">মিরর ওয়াল</option>
                                 <option value="Other">অন্যান্য</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="message">আপনার বার্তা:</label>
-                            <textarea id="message" name="message" rows="6" required></textarea>
+                            <textarea id="message" name="message" rows="5" placeholder="আপনার প্রজেক্ট সম্পর্কে বিস্তারিত লিখুন..." required></textarea>
                         </div>
-                        <button type="submit" class="cta-button">মেসেজ পাঠান</button>
+                        <button type="submit" class="cta-button" style="width: 100%; border: none; cursor: pointer;">মেসেজ পাঠান <i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
 
                 <div class="google-map-container">
-                    <h2>আমাদের খুঁজে নিন</h2>
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.693173007629!2d90.36916567509174!3d23.79329418659556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c0b050c95f1b%3A0xe6ac951a8f9b9511!2sAl%20Helal%20Hospital!5e0!3m2!1sbn!2sbd!4v1730441029415!5m2!1sbn!2sbd" 
-                        width="100%" 
-                        height="450" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+                    <h2>আমাদের লোকেশন</h2>
+                    <div style="width: 100%; overflow: hidden; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.582336029227!2d90.3704499759989!3d23.79787648695126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c0cd37b92059%3A0x96df39653349392!2sAl%20Helal%20Specialized%20Hospital!5e0!3m2!1sen!2sbd!4v1708965000000!5m2!1sen!2sbd" 
+                            width="100%" 
+                            height="550" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
                 </div>
 
             </section>
@@ -163,21 +166,17 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© City Mistri 2025 . All Rights Reserved.</p>
+            <p>&copy; City Mistri 2025. All Rights Reserved.</p>
         </div>
     </footer>
-<a href="https://m.me/citymistribd" class="messenger-float" target="_blank" aria-label="Chat on Messenger">
+
+    <a href="https://m.me/citymistribd" class="messenger-float" target="_blank" aria-label="Chat on Messenger">
         <i class="fab fa-facebook-messenger"></i>
     </a>
-
     <a href="https://wa.me/8801997426656" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
-
+    
     <script src="script.js"></script>
-</body>
-</html>
-    <script src="script.js"></script>
-
 </body>
 </html>
