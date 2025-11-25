@@ -2177,3 +2177,124 @@ footer {
         opacity: 1;
     }
 }
+/* --- New Professional Portfolio Styles --- */
+
+/* Filter Buttons */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 2px solid #e0e0e0;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: #007bff; /* Blue Theme */
+    border-color: #007bff;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Gallery Card Styling */
+.portfolio-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.gallery-item-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid #f0f0f0;
+    position: relative;
+    animation: fadeIn 0.5s ease; /* Smooth entry animation */
+}
+
+.gallery-item-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* Image Box */
+.gallery-image-box {
+    position: relative;
+    height: 260px;
+    overflow: hidden;
+}
+
+.gallery-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.gallery-item-card:hover .gallery-image-box img {
+    transform: scale(1.1); /* Zoom Effect */
+}
+
+/* Overlay Tag (Folding, Shower etc.) */
+.overlay-tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Info Box (Text area) */
+.gallery-info {
+    padding: 20px 25px;
+    background: #fff;
+    border-top: 1px solid #f9f9f9;
+    text-align: left;
+}
+
+.gallery-info h3 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.gallery-info p {
+    font-size: 0.95rem;
+    color: #777;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Hide items when filtering */
+.gallery-item-card.hide {
+    display: none;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
