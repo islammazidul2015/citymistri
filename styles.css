@@ -2349,3 +2349,91 @@ footer {
         font-size: 0.85rem;
     }
 }
+/* --------------------------------------- */
+/* --- ATTRACTIVE ADD-ONS (PRELOADER & ANIMATION) --- */
+/* --------------------------------------- */
+
+/* 1. Preloader Styles */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 99999; /* সবার উপরে থাকবে */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader-content {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.loader-logo {
+    width: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: logoBreath 1.5s ease-in-out infinite;
+}
+
+.loader-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-top-color: #007bff; /* Blue Theme */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loader-ring::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 3px solid transparent;
+    border-top-color: #2c3e50; /* Dark Blue */
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+}
+
+/* 2. Pulse Animation for Floating Buttons */
+.whatsapp-float {
+    animation: whatsappPulse 2s infinite;
+}
+
+.messenger-float {
+    animation: messengerPulse 2s infinite;
+}
+
+/* 3. Keyframe Animations */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes logoBreath {
+    0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.7; transform: translate(-50%, -50%) scale(0.9); }
+}
+
+@keyframes whatsappPulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+@keyframes messengerPulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 132, 255, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(0, 132, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 132, 255, 0); }
+}
