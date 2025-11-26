@@ -319,14 +319,19 @@ window.onclick = function(event) {
         closeModal();
     }
 }
-// --- Preloader Logic ---
-window.addEventListener("load", function() {
+// --- Preloader Logic (Fixed & Safe) ---
+function hidePreloader() {
     const preloader = document.getElementById("preloader");
     if (preloader) {
-        // পেজ লোড হলে ০.৫ সেকেন্ড পর প্রি-লোডার অদৃশ্য হয়ে যাবে
-        setTimeout(() => {
-            preloader.style.opacity = "0";
-            preloader.style.visibility = "hidden";
-        }, 500);
+        preloader.style.opacity = "0";
+        preloader.style.visibility = "hidden";
     }
+}
+
+// ১. পেজ পুরোপুরি লোড হলে বন্ধ হবে
+window.addEventListener("load", function() {
+    setTimeout(hidePreloader, 500);
 });
+
+// ২. সেফটি টাইমার: যদি কোনো কারণে লোড হতে দেরি হয়, ৩ সেকেন্ড পর জোর করে বন্ধ করবে
+setTimeout(hidePreloader, 3000);
