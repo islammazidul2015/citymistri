@@ -2572,3 +2572,73 @@ footer {
         height: 70px;
     }
 }
+/* --- PROFESSIONAL SLIM CTA SECTION --- */
+
+.cta-section-pro {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); /* প্রফেশনাল গ্রেডিয়েন্ট */
+    padding: 35px 0; /* প্যাডিং কমিয়ে স্লিম করা হয়েছে */
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+}
+
+.cta-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* মোবাইলে যাতে ভেঙে নিচে আসে */
+    gap: 20px;
+}
+
+.cta-content h2 {
+    font-size: 1.8rem;
+    margin: 0 0 5px 0; /* মার্জিন কমানো হয়েছে */
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.cta-content h2::after {
+    display: none; /* আগের আন্ডারলাইন বাদ দেওয়া হয়েছে */
+}
+
+.cta-content p {
+    font-size: 1rem;
+    margin: 0;
+    opacity: 0.9;
+    max-width: 600px;
+}
+
+/* Button Styling */
+.cta-btn-pro {
+    background-color: #ffffff;
+    color: #007bff;
+    padding: 12px 30px;
+    border-radius: 50px; /* ক্যাপসুল শেপ */
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.cta-btn-pro:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px); /* হোভার করলে একটু উপরে উঠবে */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .cta-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .cta-content h2 {
+        font-size: 1.5rem;
+    }
+    .cta-btn-pro {
+        width: 100%; /* মোবাইলে বাটন পুরোটা জুড়ে থাকবে */
+        justify-content: center;
+    }
+}
