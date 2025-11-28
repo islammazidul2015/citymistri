@@ -2754,3 +2754,106 @@ footer {
 .offer-cta:hover {
     background-color: #0056b3;
 }
+/* --- HOME OFFER SECTION CSS --- */
+
+.home-offers-section {
+    padding: 60px 0;
+    background-color: #ffffff;
+}
+
+/* Header Styling */
+.section-header-center {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-header-center h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.underline-green-center {
+    width: 80px;
+    height: 4px;
+    background-color: #28a745; /* সবুজ দাগ */
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* Grid Layout */
+.home-offer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* ৪টি কলাম */
+    gap: 20px;
+}
+
+/* Card Design */
+.home-offer-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0f0f0;
+    display: block;
+}
+
+.home-offer-card:hover {
+    transform: translateY(-8px); /* হোভার করলে উপরে উঠবে */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    border-color: #28a745;
+}
+
+/* Image Styling */
+.offer-img-box {
+    width: 100%;
+    height: 350px; /* ছবির হাইট ফিক্সড রাখা হয়েছে যাতে সব সমান দেখায় */
+    overflow: hidden;
+    background: #eee;
+}
+
+.offer-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ছবি পুরো বক্স জুড়ে থাকবে */
+    transition: transform 0.5s ease;
+}
+
+.home-offer-card:hover .offer-img-box img {
+    transform: scale(1.05); /* জুম ইফেক্ট */
+}
+
+/* Caption Styling */
+.home-offer-caption {
+    padding: 15px;
+    text-align: center;
+    color: #333;
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: #fff;
+    border-top: 1px solid #f0f0f0;
+}
+
+.home-offer-card:hover .home-offer-caption {
+    color: #28a745;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .home-offer-grid {
+        grid-template-columns: repeat(2, 1fr); /* ট্যাবলেটে ২টা করে */
+    }
+}
+
+@media (max-width: 600px) {
+    .home-offer-grid {
+        grid-template-columns: 1fr; /* মোবাইলে ১টা করে */
+    }
+    .offer-img-box {
+        height: auto; /* মোবাইলে অটো হাইট */
+        aspect-ratio: 4/5; /* সুন্দর অনুপাত */
+    }
+}
