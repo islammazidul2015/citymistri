@@ -2491,3 +2491,84 @@ footer {
         padding: 25px;
     }
 }
+/* -------------------------------------- */
+/* --- CLIENTS & PARTNERS SECTION CSS --- */
+/* -------------------------------------- */
+
+.clients-partners-section {
+    padding: 50px 0;
+    background-color: #f8fbff; /* খুব হালকা নীল ব্যাকগ্রাউন্ড */
+    text-align: center;
+}
+
+.section-header-small h2 {
+    font-size: 1.5rem; /* ফন্ট ছোট রাখা হয়েছে */
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.underline-green {
+    width: 50px;
+    height: 3px;
+    background-color: #28a745; /* সবুজ দাগ */
+    margin: 0 auto 25px auto;
+    border-radius: 2px;
+}
+
+/* Logo Grid Layout */
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* অটো রেসপন্সিভ */
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px; /* বেশি ছড়াবে না */
+    margin: 0 auto;
+}
+
+/* Individual Logo Card */
+.logo-item {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    height: 80px; /* ফিক্সড হাইট */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.logo-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-color: #28a745; /* হোভার করলে সবুজ বর্ডার */
+}
+
+.logo-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* লোগো চ্যাপ্টা হবে না */
+    filter: grayscale(100%); /* শুরুতে সাদাকালো দেখাবে (প্রফেশনাল লুক) */
+    transition: filter 0.3s ease;
+    opacity: 0.8;
+}
+
+.logo-item:hover img {
+    filter: grayscale(0%); /* হোভার করলে কালার আসবে */
+    opacity: 1;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .logo-grid {
+        grid-template-columns: repeat(2, 1fr); /* মোবাইলে ২টা করে দেখাবে */
+    }
+    .logo-item {
+        height: 70px;
+    }
+}
