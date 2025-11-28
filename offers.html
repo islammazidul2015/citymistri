@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ongoing Offers & Discounts | City Mistri</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="sticky-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo-link">
+                <img src="images/logo.png" alt="City Mistri" class="logo-img">
+            </a>
+            <nav class="primary-navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="offers.html" class="active">Offers</a></li> <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <a href="tel:+8801997426656" class="header-cta-btn"><i class="fas fa-phone-alt"></i> 01997426656</a>
+                <button class="mobile-nav-toggle"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>চলমান অফারসমূহ</h1>
+            <p>আপনার জন্য বিশেষ ছাড় এবং প্যাকেজ। লুফে নিন এখনই!</p>
+        </div>
+    </section>
+
+    <main class="service-page-content">
+        <div class="container">
+            <div class="offers-grid">
+                
+                <div class="offer-card">
+                    <div class="offer-badge">New User</div>
+                    <div class="offer-icon"><i class="fas fa-gift"></i></div>
+                    <h3>১০% ছাড় (প্রথম অর্ডারে)</h3>
+                    <p>City Mistri-তে আপনার প্রথম অর্ডারে পাচ্ছেন ফ্ল্যাট ১০% ডিসকাউন্ট। যেকোনো সার্ভিসে প্রযোজ্য।</p>
+                    
+                    <div class="coupon-area">
+                        <span class="coupon-code" id="code1">CITY10</span>
+                        <button class="copy-btn" onclick="copyCoupon('code1')"><i class="far fa-copy"></i> Copy</button>
+                    </div>
+                    <a href="contact.html" class="offer-cta">Book Now</a>
+                </div>
+
+                <div class="offer-card featured-offer">
+                    <div class="offer-badge">Hot Deal</div>
+                    <div class="offer-icon"><i class="fas fa-home"></i></div>
+                    <h3>ফুল ফ্ল্যাট প্যাকেজ অফার</h3>
+                    <p>পুরো ফ্ল্যাটের থাই গ্লাস এবং বাথরুম ফিটিংস একসাথে করলে পাচ্ছেন স্পেশাল প্যাকেজ রেট + ফ্রি ইন্সটলেশন।</p>
+                    
+                    <div class="coupon-area">
+                        <span class="coupon-code" id="code2">FULLHOME</span>
+                        <button class="copy-btn" onclick="copyCoupon('code2')"><i class="far fa-copy"></i> Copy</button>
+                    </div>
+                    <a href="contact.html" class="offer-cta">Get Quote</a>
+                </div>
+
+                <div class="offer-card">
+                    <div class="offer-badge">Seasonal</div>
+                    <div class="offer-icon"><i class="fas fa-shield-virus"></i></div>
+                    <h3>মশার নেটে ৫% ছাড়</h3>
+                    <p>ডেঙ্গু প্রতিরোধে আপনার বাসায় মশার নেট লাগান। ৩টির বেশি জানালায় নেট লাগালে ৫% ছাড়।</p>
+                    
+                    <div class="coupon-area">
+                        <span class="coupon-code" id="code3">SAFEHOME</span>
+                        <button class="copy-btn" onclick="copyCoupon('code3')"><i class="far fa-copy"></i> Copy</button>
+                    </div>
+                    <a href="mosquito-net.html" class="offer-cta">View Details</a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-main container">
+            <div class="footer-col">
+                <h3>City Mistri</h3>
+                <p>সেরা মানের ও সাশ্রয়ী সেবা।</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="offers.html">Offers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p>01997426656</p>
+                <p>Mirpur, Dhaka</p>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; City Mistri 2025. All Rights Reserved.</p></div>
+    </footer>
+
+    <a href="https://m.me/citymistribd" class="messenger-float" target="_blank"><i class="fab fa-facebook-messenger"></i></a>
+    <a href="https://wa.me/8801997426656" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script src="script.js"></script>
+    
+    <script>
+        function copyCoupon(elementId) {
+            var copyText = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(copyText).then(function() {
+                alert("Coupon Code Copied: " + copyText);
+            });
+        }
+    </script>
+</body>
+</html>
