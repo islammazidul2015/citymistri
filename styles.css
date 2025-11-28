@@ -17,109 +17,84 @@ html {
     margin: 0 auto;
 }
 
-/* ----------------------------------- */
-/* --- PROFESSIONAL HEADER STYLES --- */
-/* ----------------------------------- */
+/* Header and Navigation */
 
-/* Sticky & Shadow Header */
-.sticky-header {
-    background: #ffffff;
-    padding: 15px 0;
+header {
+
+    background: #fff;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+    padding: 0.5rem 0;
+
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08); /* Soft Shadow for Depth */
-    transition: all 0.3s ease;
+
 }
 
-.header-container {
+
+
+header .container {
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
 }
 
-/* Logo Styling */
+
+
 .logo-img {
-    height: 50px; /* Perfect height */
+
+    height: 60px;
+
     width: auto;
-    display: block;
+
 }
 
-/* Navigation Links */
+
+
 .primary-navigation ul {
-    display: flex;
-    gap: 30px;
+
     list-style: none;
+
+    display: flex;
+
+    gap: 2rem;
+
     margin: 0;
+
     padding: 0;
+
 }
+
+
 
 .primary-navigation a {
+
     text-decoration: none;
+
     color: #333;
-    font-weight: 600; /* Bold Font */
-    font-size: 16px;
-    text-transform: uppercase; /* All Caps looks Pro */
-    letter-spacing: 0.5px;
+
+    font-weight: 600;
+
+    font-size: 1rem;
+
     transition: color 0.3s ease;
-    position: relative;
+
 }
 
-/* Hover Effect (Underline Animation) */
-.primary-navigation a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: #007bff;
-    transition: width 0.3s;
-}
+
 
 .primary-navigation a:hover {
-    color: #007bff;
-}
 
-.primary-navigation a:hover::after {
-    width: 100%;
-}
+    color: #007bff; /* Blue hover color */
 
-/* CTA Button (Call Button) */
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.header-cta-btn {
-    background-color: #007bff; /* Brand Blue */
-    color: white !important;
-    padding: 10px 20px;
-    border-radius: 50px; /* Rounded Pill Shape */
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* Button Glow */
-    transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.header-cta-btn:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-}
-
-/* Mobile Responsive Fix */
-@media (max-width: 900px) {
-    .primary-navigation {
-        display: none; /* Mobile Menu Logic handled by JS */
-    }
-    .header-cta-btn {
-        display: none; /* মোবাইলে শুধু হ্যামবার্গার থাকবে, বাটনটি চাইলে রাখতে পারেন */
-    }
 }
 
 /* New Slider Section Style */
