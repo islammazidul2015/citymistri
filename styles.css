@@ -2947,3 +2947,23 @@ footer {
 .home-offer-img-card:hover img {
     transform: scale(1.05); /* হালকা জুম হবে */
 }
+/* Coupon Badge Styling (Red Label) */
+.coupon-card {
+    position: relative; /* এটি থাকতে হবে */
+    overflow: hidden;   /* এটিও থাকতে হবে */
+}
+
+.coupon-badge {
+    position: absolute !important; /* জোর করে পজিশন ঠিক করার জন্য */
+    top: 15px;
+    right: -30px; /* কোণায় বাঁকা করে দেখানোর জন্য */
+    background: #ff4d4d;
+    color: white;
+    padding: 5px 30px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transform: rotate(45deg); /* ব্যাজটি ৪৫ ডিগ্রি বাঁকা হবে */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 10;
+}
