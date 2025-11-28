@@ -319,28 +319,3 @@ window.onclick = function(event) {
         closeModal();
     }
 }
-// --- Mobile Menu Toggle Logic ---
-const navToggle = document.querySelector(".mobile-nav-toggle");
-const primaryNav = document.querySelector(".primary-navigation");
-const openIcon = document.querySelector(".open-icon");
-const closeIcon = document.querySelector(".close-icon");
-
-if (navToggle) {
-    navToggle.addEventListener("click", () => {
-        const isVisible = primaryNav.getAttribute("data-visible");
-
-        if (isVisible === "false" || !isVisible) {
-            // মেন্যু খুলবে
-            primaryNav.setAttribute("data-visible", "true");
-            navToggle.setAttribute("aria-expanded", "true");
-            openIcon.style.display = "none";
-            closeIcon.style.display = "block";
-        } else {
-            // মেন্যু বন্ধ হবে
-            primaryNav.setAttribute("data-visible", "false");
-            navToggle.setAttribute("aria-expanded", "false");
-            openIcon.style.display = "block";
-            closeIcon.style.display = "none";
-        }
-    });
-}
