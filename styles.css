@@ -50,11 +50,15 @@ header .container {
 
 
 .logo-img {
-
-    height: 60px;
-
+    height: 80px; /* Increased for a bolder, premium look */
     width: auto;
-
+    transition: height 0.3s ease; /* Transition added for smoothness */
+}
+/* Mobile view adjustment: We will keep it slightly smaller on mobile */
+@media (max-width: 800px) {
+    .logo-img {
+        height: 65px; /* Reduced height on mobile to ensure menu doesn't break */
+    }
 }
 
 
