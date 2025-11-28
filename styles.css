@@ -2857,3 +2857,49 @@ footer {
         aspect-ratio: 4/5; /* সুন্দর অনুপাত */
     }
 }
+/* --- IMAGE BASED OFFER SECTION CSS --- */
+
+.home-offers-section {
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+.section-header-center { text-align: center; margin-bottom: 40px; }
+.section-header-center h2 { font-size: 2rem; color: #2c3e50; margin-bottom: 10px; font-weight: 700; }
+.underline-green-center { width: 80px; height: 4px; background-color: #28a745; margin: 0 auto; border-radius: 2px; }
+
+/* Grid Layout */
+.home-offer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* অটো রেসপন্সিভ */
+    gap: 20px;
+}
+
+/* Image Card Design */
+.home-offer-img-card {
+    display: block;
+    border-radius: 12px;
+    overflow: hidden; /* ছবির কোণাগুলো গোল করার জন্য */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 250px; /* সব ছবির উচ্চতা সমান রাখা হলো */
+    border: 1px solid #eee;
+    background: #f9f9f9;
+}
+
+.home-offer-img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ছবি পুরো বক্স জুড়ে থাকবে, চ্যাপ্টা হবে না */
+    transition: transform 0.5s ease;
+}
+
+/* Hover Effects */
+.home-offer-img-card:hover {
+    transform: translateY(-5px); /* মাউস নিলে একটু উপরে উঠবে */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.home-offer-img-card:hover img {
+    transform: scale(1.05); /* হালকা জুম হবে */
+}
