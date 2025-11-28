@@ -16,91 +16,116 @@ html {
     max-width: 1200px;
     margin: 0 auto;
 }
-
 /* Header and Navigation */
-
 header {
-
-    background: #fff;
-
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-
-    padding: 0.5rem 0;
-
+    /* Base header style is removed because we now have top-header and main-header */
     position: sticky;
-
     top: 0;
-
     z-index: 1000;
-
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+/* Top Bar with Contact Info (Trust Factor) */
+.top-header {
+    background-color: #007bff; /* Primary Blue Background */
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 8px 0;
+}
 
-
-header .container {
-
+.top-header .container {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
 }
 
+.top-header a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
 
+.top-header i {
+    margin-right: 5px;
+}
 
+/* Main Header */
+.main-header {
+    background: #fff;
+    padding: 0.5rem 0;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo (User's Request: Boro Koro) */
 .logo-img {
-    height: 80px; /* Increased for a bolder, premium look */
+    height: 80px; /* Final requested size */
     width: auto;
-    transition: height 0.3s ease; /* Transition added for smoothness */
+    transition: height 0.3s ease;
 }
-/* Mobile view adjustment: We will keep it slightly smaller on mobile */
-@media (max-width: 800px) {
-    .logo-img {
-        height: 65px; /* Reduced height on mobile to ensure menu doesn't break */
+
+.primary-navigation ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.primary-navigation a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.primary-navigation a:hover {
+    color: #007bff;
+}
+
+/* New Header CTA Button Style */
+.header-cta-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    margin-left: 20px;
+}
+
+.header-cta-button:hover {
+    background-color: #0056b3;
+}
+
+/* Mobile Responsive Fixes */
+@media (min-width: 801px) {
+    /* Show Top Bar on Desktop */
+    .top-header {
+        display: flex;
     }
 }
 
-
-
-.primary-navigation ul {
-
-    list-style: none;
-
-    display: flex;
-
-    gap: 2rem;
-
-    margin: 0;
-
-    padding: 0;
-
+@media (max-width: 800px) {
+    /* Hide top bar and desktop CTA button on mobile */
+    .top-header {
+        display: none !important;
+    }
+    .header-cta-button {
+        display: none;
+    }
+    /* Logo height adjustment for mobile view */
+    .logo-img {
+        height: 65px;
+    }
 }
-
-
-
-.primary-navigation a {
-
-    text-decoration: none;
-
-    color: #333;
-
-    font-weight: 600;
-
-    font-size: 1rem;
-
-    transition: color 0.3s ease;
-
-}
-
-
-
-.primary-navigation a:hover {
-
-    color: #007bff; /* Blue hover color */
-
-}
-
 /* New Slider Section Style */
 .slider-container {
     width: 100%;
