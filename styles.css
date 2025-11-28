@@ -2557,3 +2557,80 @@ footer {
         padding: 25px;
     }
 }
+/* --- MOBILE MENU STYLES (Fixed) --- */
+
+/* Default State (Desktop) */
+.mobile-nav-toggle {
+    display: none;
+}
+.mobile-cta-item {
+    display: none;
+}
+.close-icon {
+    display: none;
+}
+
+/* Mobile State (Max-width 900px) */
+@media (max-width: 900px) {
+    /* 1. Toggle Button Style */
+    .mobile-nav-toggle {
+        display: block;
+        background: transparent;
+        border: none;
+        font-size: 24px;
+        color: #333;
+        cursor: pointer;
+        z-index: 9999;
+    }
+
+    /* 2. Hide Desktop CTA Button */
+    .header-cta-btn {
+        display: none;
+    }
+
+    /* 3. Navigation Drawer Style */
+    .primary-navigation {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%; /* মেন্যু স্ক্রিনের ৭০% জায়গা নেবে */
+        height: 100vh;
+        background: #ffffff;
+        padding: 80px 30px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        transform: translateX(100%); /* শুরুতে স্ক্রিনের বাইরে থাকবে */
+        transition: transform 0.4s ease-in-out;
+        z-index: 999;
+    }
+
+    /* 4. Menu Open State */
+    .primary-navigation[data-visible="true"] {
+        transform: translateX(0%); /* স্লাইড করে ভেতরে আসবে */
+    }
+
+    .primary-navigation ul {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .primary-navigation a {
+        font-size: 18px;
+        color: #333;
+        display: block;
+        padding: 10px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* 5. Mobile CTA Button inside Menu */
+    .mobile-cta-item {
+        display: block;
+        margin-top: 20px;
+    }
+    .mobile-cta-btn {
+        background: #007bff;
+        color: white !important;
+        text-align: center;
+        border-radius: 5px;
+        padding: 12px !important;
+    }
+}
