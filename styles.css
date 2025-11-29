@@ -2967,3 +2967,30 @@ footer {
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     z-index: 10;
 }
+/* --- PRICE TABLE STYLES --- */
+.service-price-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.service-price-table th, .service-price-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.service-price-table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+}
+
+.service-price-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.service-price-table tr:hover {
+    background-color: #f1f1f1;
+}
