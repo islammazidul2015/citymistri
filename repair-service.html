@@ -277,14 +277,26 @@
     <a href="https://wa.me/8801997426656" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <script src="script.js"></script>
-    
+
     <script>
-        document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', event => {
-                const parent = item.parentNode;
-                parent.classList.toggle('active');
+        document.addEventListener('DOMContentLoaded', function() {
+            // সব প্রশ্নগুলো খুঁজে বের করা
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    // যে প্রশ্নে ক্লিক করা হয়েছে তার মেইন বক্স (Parent) ধরা
+                    const parent = this.parentElement;
+                    
+                    // ক্লাস toggle করা (ওপেন থাকলে বন্ধ করবে, বন্ধ থাকলে ওপেন করবে)
+                    if (parent.classList.contains('active')) {
+                        parent.classList.remove('active');
+                    } else {
+                        parent.classList.add('active');
+                    }
+                });
             });
         });
     </script>
-</body>
+    </body>
 </html>
