@@ -1,6 +1,5 @@
-# Allow all web crawlers
 User-agent: *
 Allow: /
 
-# Specify the sitemap location
+# Sitemap Location
 Sitemap: https://www.citymistri.xyz/sitemap.xml
