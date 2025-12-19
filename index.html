@@ -39,64 +39,49 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "City Mistri - Smart Renovation for Smart Living",
-  "image": "https://www.citymistri.xyz/images/favicon.png",
-  "url": "https://www.citymistri.xyz/",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "City Mistri",
+  "image": "https://www.citymistri.xyz/images/logo.png",
+  "@id": "https://www.citymistri.xyz/#organization",
+  "url": "https://www.citymistri.xyz",
   "telephone": "+8801997426656",
-  "priceRange": "$$",
+  "email": "info@citymistri.com",
+  "priceRange": "BDT 500 - BDT 500000",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Al Helal Hospital Begum Rokeya Sarani, Kazipara",
-    "addressLocality": "Mirpur",
-    "addressRegion": "Dhaka",
+    "streetAddress": "Al Helal Hospital, Begum Rokeya Sarani, Kazipara, Mirpur",
+    "addressLocality": "Dhaka",
     "postalCode": "1216",
     "addressCountry": "BD"
   },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-      "opens": "09:00",
-      "closes": "20:00"
-    }
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 23.8016, 
+    "longitude": 90.3713
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Saturday",
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday"
+    ],
+    "opens": "10:00",
+    "closes": "20:00"
+  },
+  "sameAs": [
+    "https://www.facebook.com/citymistri",
+    "https://www.instagram.com/citymistri",
+    "https://www.youtube.com/@citymistri",
+    "https://www.linkedin.com/company/citymistri"
   ],
-  "areaServed": {
-    "@type": "Country",  "name": "Bangladesh"  },
-  "knowsAbout": [
-    "Glass",
-    "Aluminum Fabrication",
-    "Shower Enclosure",
-    "Folding Doors",
-    "Glass Partition",
-    "Interior Renovation"
-  ],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Glass and Aluminum Services in Dhaka",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Folding & Sliding Doors"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Shower Enclosure"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Glass Partition"
-        }
-      }
-    ]
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "150"
   }
 }
 </script>
