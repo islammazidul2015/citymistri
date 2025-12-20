@@ -26,6 +26,7 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preload" as="image" href="images/hero-slider-1.webp">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-042TGM4N1G"></script>
 <script>
@@ -143,37 +144,56 @@
     </header>
 
     <section class="hero-slider-premium">
-        <div class="slider-wrapper-premium">
-            <div class="slide-premium" style="background-image: url('images/hero-slider-1.png');">
-                <div class="overlay"></div>
-                <div class="slide-content">
-                    <h1>Modern Office Partitions</h1>
-                    <p>Create dynamic and efficient workspaces with our sleek glass and aluminum partition solutions.</p>
-                    <a href="office-partition.html" class="btn btn-primary">Explore Solutions</a>
-                </div>
-            </div>
-            <div class="slide-premium" style="background-image: url('images/hero-slider-2.png');">
-                <div class="overlay"></div>
-                <div class="slide-content">
-                    <h1>Premium Shower Enclosures</h1>
-                    <p>Experience luxury with our custom-designed, frameless glass shower enclosures.</p>
-                    <a href="shower-enclosure.html" class="btn btn-primary">Discover Elegance</a>
-                </div>
-            </div>
-            <div class="slide-premium" style="background-image: url('images/hero-slider-3.png');">
-                <div class="overlay"></div>
-                <div class="slide-content">
-                    <h1>Sleek Folding Doors</h1>
-                    <p>Seamlessly connect your indoor and outdoor spaces with our high-quality folding door systems.</p>
-                    <a href="folding-door.html" class="btn btn-primary">View Designs</a>
-                </div>
+    <div class="slider-wrapper-premium">
+        
+        <div class="slide-premium active">
+            <img src="images/hero-slider-1.webp" alt="Modern Office Partitions" 
+                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;" 
+                 fetchpriority="high">
+            
+            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2;"></div>
+            
+            <div class="slide-content" style="position: relative; z-index: 3;">
+                <h1>Modern Office Partitions</h1>
+                <p>Create dynamic and efficient workspaces with our sleek glass and aluminum partition solutions.</p>
+                <a href="office-partition.html" class="btn btn-primary" style="background-color: #007bff; color: white; padding: 15px 30px; border-radius: 5px; text-decoration: none; font-weight: 600; display: inline-block; border: 2px solid #007bff;">Explore Solutions</a>
             </div>
         </div>
-        
-        <button class="prev-btn-premium"><i class="fas fa-chevron-left"></i></button>
-        <button class="next-btn-premium"><i class="fas fa-chevron-right"></i></button>
-        <div class="slider-dots-premium"></div>
-    </section>
+
+        <div class="slide-premium">
+            <img src="images/hero-slider-2.webp" alt="Premium Shower Enclosures" 
+                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;" 
+                 loading="lazy">
+            
+            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2;"></div>
+            
+            <div class="slide-content" style="position: relative; z-index: 3;">
+                <h1>Premium Shower Enclosures</h1>
+                <p>Experience luxury with our custom-designed, frameless glass shower enclosures.</p>
+                <a href="shower-enclosure.html" class="btn btn-primary" style="background-color: #007bff; color: white; padding: 15px 30px; border-radius: 5px; text-decoration: none; font-weight: 600; display: inline-block; border: 2px solid #007bff;">Discover Elegance</a>
+            </div>
+        </div>
+
+        <div class="slide-premium">
+            <img src="images/hero-slider-3.webp" alt="Sleek Folding Doors" 
+                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;" 
+                 loading="lazy">
+            
+            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2;"></div>
+            
+            <div class="slide-content" style="position: relative; z-index: 3;">
+                <h1>Sleek Folding Doors</h1>
+                <p>Seamlessly connect your indoor and outdoor spaces with our high-quality folding door systems.</p>
+                <a href="folding-door.html" class="btn btn-primary" style="background-color: #007bff; color: white; padding: 15px 30px; border-radius: 5px; text-decoration: none; font-weight: 600; display: inline-block; border: 2px solid #007bff;">View Designs</a>
+            </div>
+        </div>
+
+    </div>
+    
+    <button class="prev-btn-premium"><i class="fas fa-chevron-left"></i></button>
+    <button class="next-btn-premium"><i class="fas fa-chevron-right"></i></button>
+    <div class="slider-dots-premium"></div>
+</section>
     <section id="services" class="services hidden-section">
         <div class="container">
             <h2>Our Core Services</h2>
