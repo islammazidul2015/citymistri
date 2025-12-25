@@ -3064,3 +3064,16 @@ footer {
         font-size: 0.9rem;
     }
 }
+/* মোবাইলে নীল বার চিকন করার কোড */
+@media screen and (max-width: 768px) {
+    .page-header {
+        padding-top: 30px !important;    /* উপরের ফাঁকা কমাবে */
+        padding-bottom: 30px !important; /* নিচের ফাঁকা কমাবে */
+    }
+
+    /* মোবাইলে লেখার সাইজও একটু ছোট হবে যাতে সুন্দর দেখায় */
+    .page-header h1 {
+        font-size: 22px !important;
+        margin-bottom: 10px;
+    }
+}
