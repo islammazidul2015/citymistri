@@ -3064,3 +3064,108 @@ footer {
         font-size: 0.9rem;
     }
 }
+/* Before & After Slider Styles */
+.ba-section-wrapper {
+    margin: 40px auto;
+    padding: 0 15px;
+    text-align: center;
+}
+
+.ba-container {
+    position: relative;
+    width: 100%;
+    max-width: 700px; /* সাইজ কন্ট্রোল: এর চেয়ে বড় হবে না */
+    height: 400px;    /* উচ্চতা ফিক্সড */
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 12px; /* সুন্দর রাউন্ড কর্নার */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* প্রফেশনাল শ্যাডো */
+    background: #f0f0f0;
+}
+
+.ba-img-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.ba-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ছবি যেন চ্যাপ্টা না হয় */
+    display: block;
+}
+
+/* After Image (উপরে থাকবে, স্লাইড হবে) */
+.ba-after {
+    width: 50%; /* শুরুতে অর্ধেক দেখা যাবে */
+    z-index: 2;
+    border-right: 3px solid #fff;
+}
+
+/* Labels (Before/After লেখা) */
+.ba-label {
+    position: absolute;
+    top: 20px;
+    padding: 5px 12px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+.ba-before .ba-label { right: 20px; } /* Before লেখা ডানদিকে */
+.ba-after .ba-label { left: 20px; }  /* After লেখা বামদিকে */
+
+/* Slider Handle (মাঝখানের বাটন) */
+.ba-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: #fff;
+    z-index: 3;
+    pointer-events: none; /* যাতে ইনপুট এ বাধা না দেয় */
+    transform: translateX(-50%);
+}
+
+.handle-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: #007bff; /* ব্র্যান্ড কালার */
+    border: 3px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* Range Input (অদৃশ্য কন্ট্রোলার) */
+.ba-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: col-resize;
+    z-index: 4; /* সবার উপরে থাকবে */
+    margin: 0;
+}
+
+/* মোবাইলে হাইট একটু কমানো */
+@media (max-width: 600px) {
+    .ba-container { height: 250px; }
+}

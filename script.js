@@ -319,3 +319,12 @@ window.onclick = function(event) {
         closeModal();
     }
 }
+function moveSlider(val) {
+    // ছবি এবং হ্যান্ডেল খুঁজে বের করা
+    var afterImage = document.querySelector('.ba-after');
+    var handle = document.querySelector('.ba-handle');
+    
+    // ভ্যালু অনুযায়ী উইডথ পরিবর্তন করা
+    afterImage.style.width = val + "%";
+    handle.style.left = val + "%";
+}
