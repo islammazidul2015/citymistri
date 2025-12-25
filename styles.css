@@ -3077,3 +3077,65 @@ footer {
         margin-bottom: 10px;
     }
 }
+/* Recent Work Ticker Design */
+.recent-work-ticker {
+    background-color: #333; /* বারের ব্যাকগ্রাউন্ড কালার (কালো) */
+    color: #fff;            /* লেখার কালার (সাদা) */
+    padding: 8px 0;
+    font-family: sans-serif;
+    overflow: hidden;
+    border-bottom: 2px solid #007bff; /* নিচে চিকন নীল বর্ডার */
+}
+
+.ticker-container {
+    display: flex;
+    align-items: center;
+    max-width: 1200px; /* আপনার সাইটের কন্টেইনার সাইজ অনুযায়ী */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.ticker-label {
+    background-color: #007bff; /* লেবেলের লাল/নীল ব্যাকগ্রাউন্ড */
+    padding: 2px 8px;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 3px;
+    margin-right: 10px;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.ticker-text-wrap {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ticker-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll-left 20s linear infinite; /* লেখা চলার স্পিড */
+    margin: 0;
+    font-size: 14px;
+}
+
+/* এনিমেশন কোড */
+@keyframes scroll-left {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-100%, 0);
+    }
+}
+
+/* মোবাইলের জন্য একটু এডজাস্টমেন্ট */
+@media screen and (max-width: 768px) {
+    .recent-work-ticker {
+        font-size: 12px;
+    }
+    .ticker-label {
+        display: none; /* মোবাইলে স্পেস বাঁচাতে 'Recent Work' লেখাটা লুকিয়ে রাখা যেতে পারে */
+    }
+}
