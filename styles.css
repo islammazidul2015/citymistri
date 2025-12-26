@@ -3139,7 +3139,7 @@ footer {
         display: none; /* মোবাইলে স্পেস বাঁচাতে 'Recent Work' লেখাটা লুকিয়ে রাখা যেতে পারে */
     }
 }
-/* Mobile Sticky Call Button Design (Floating Button Only) */
+/* Mobile Sticky Call Button Design (Small & Compact) */
 .mobile-sticky-footer {
     display: none;
 }
@@ -3148,39 +3148,32 @@ footer {
     .mobile-sticky-footer {
         display: block;
         position: fixed;
-        bottom: 20px; /* একদম নিচে লেগে না থেকে একটু উপরে ভাসবে */
-        left: 50%; /* স্ক্রিনের মাঝখানে */
-        transform: translateX(-50%); /* মাঝখানে পজিশন ঠিক করার জন্য */
+        bottom: 15px; /* নিচ থেকে একটু কম গ্যাপ */
+        left: 50%;
+        transform: translateX(-50%);
         width: auto;
-        background: transparent; /* পেছনের সাদা ব্যাকগ্রাউন্ড রিমুভ করা হলো */
+        background: transparent;
         padding: 0;
-        box-shadow: none;
         z-index: 9999;
     }
 
     .sticky-call-btn {
-        background: #28a745; /* সবুজ বাটন */
+        background: #28a745;
         color: white;
-        font-size: 16px;
-        font-weight: bold;
+        font-size: 14px; /* ফন্ট সাইজ ছোট করা হলো */
+        font-weight: 600;
         text-decoration: none;
-        padding: 12px 35px; /* বাটনটি দেখতে সুন্দর লাগবে */
+        padding: 8px 20px; /* বাটনের সাইজ বা প্যাডিং অনেক কমানো হলো */
         border-radius: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
-        /* ভাসমান বাটনের জন্য সুন্দর শ্যাডো */
-        box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
-        transition: all 0.3s ease;
-    }
-    
-    .sticky-call-btn:active {
-        transform: scale(0.95); /* ক্লিক করলে একটু ছোট হবে */
+        gap: 8px; /* আইকন আর লেখার মাঝের গ্যাপ কমানো হলো */
+        box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3); /* শ্যাডো হালকা করা হলো */
     }
 
-    /* হোয়াটসঅ্যাপ বাটনগুলো যাতে কল বাটনের সাথে লেগে না যায় */
+    /* হোয়াটসঅ্যাপ বাটনগুলো পজিশন ঠিক করা */
     .whatsapp-float, .messenger-float {
-        bottom: 95px !important;
+        bottom: 75px !important; 
     }
 }
