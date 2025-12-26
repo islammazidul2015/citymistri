@@ -3139,40 +3139,48 @@ footer {
         display: none; /* মোবাইলে স্পেস বাঁচাতে 'Recent Work' লেখাটা লুকিয়ে রাখা যেতে পারে */
     }
 }
-/* Mobile Sticky Call Button Design (Updated Slim Version) */
+/* Mobile Sticky Call Button Design (Floating Button Only) */
 .mobile-sticky-footer {
-    display: none; 
+    display: none;
 }
 
 @media (max-width: 768px) {
     .mobile-sticky-footer {
         display: block;
         position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: #ffffff;
-        padding: 8px 0; /* প্যাডিং কমিয়ে ১০ থেকে ৮ করা হলো */
-        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        bottom: 20px; /* একদম নিচে লেগে না থেকে একটু উপরে ভাসবে */
+        left: 50%; /* স্ক্রিনের মাঝখানে */
+        transform: translateX(-50%); /* মাঝখানে পজিশন ঠিক করার জন্য */
+        width: auto;
+        background: transparent; /* পেছনের সাদা ব্যাকগ্রাউন্ড রিমুভ করা হলো */
+        padding: 0;
+        box-shadow: none;
         z-index: 9999;
-        text-align: center;
     }
 
     .sticky-call-btn {
-        background: #28a745; 
+        background: #28a745; /* সবুজ বাটন */
         color: white;
-        font-size: 15px; /* ফন্ট ১৮ থেকে ১৫ করা হলো */
+        font-size: 16px;
         font-weight: bold;
         text-decoration: none;
-        padding: 8px 25px; /* সাইজ কমানো হলো */
+        padding: 12px 35px; /* বাটনটি দেখতে সুন্দর লাগবে */
         border-radius: 50px;
-        display: inline-block;
-        box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
-        /* এনিমেশন বাদ দিলাম যাতে বেশি নড়াচড়া না করে, সিম্পল দেখাবে */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        /* ভাসমান বাটনের জন্য সুন্দর শ্যাডো */
+        box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
+        transition: all 0.3s ease;
+    }
+    
+    .sticky-call-btn:active {
+        transform: scale(0.95); /* ক্লিক করলে একটু ছোট হবে */
     }
 
-    /* হোয়াটসঅ্যাপ বাটনগুলো যাতে কল বাটনের উপরে থাকে */
+    /* হোয়াটসঅ্যাপ বাটনগুলো যাতে কল বাটনের সাথে লেগে না যায় */
     .whatsapp-float, .messenger-float {
-        bottom: 70px !important; 
+        bottom: 95px !important;
     }
 }
