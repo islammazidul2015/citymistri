@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap Location
 Sitemap: https://www.citymistri.xyz/sitemap.xml
