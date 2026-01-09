@@ -3238,3 +3238,77 @@ footer {
         padding-right: 15px !important;
     }
 }
+/* --- MOBILE SCROLL & LAYOUT FIX --- */
+
+/* ১. মেইন লেআউট ফ্লেক্স করা (যাতে পিসিতে পাশাপাশি থাকে) */
+.service-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start; /* পিসিতে সাইডবার ও কন্টেন্ট টপ থেকে শুরু হবে */
+}
+
+/* সাইডবারের ডিফল্ট সাইজ (পিসির জন্য) */
+.service-sidebar {
+    flex: 0 0 250px; /* সাইডবার ফিক্সড ২৫০ পিক্সেল */
+    position: sticky;
+    top: 20px;
+    z-index: 10;
+}
+
+.service-content-area {
+    flex: 1; /* বাকি জায়গা কন্টেন্ট নিবে */
+    width: 0; /* ফ্লেক্সবক্স বাগ ফিক্স */
+}
+
+/* ২. মোবাইলের জন্য স্পেশাল ফিক্স */
+@media (max-width: 768px) {
+    
+    /* সাইডবার এবং কন্টেন্ট নিচে নিচে আসবে */
+    .service-layout {
+        flex-direction: column;
+    }
+
+    /* মোবাইলে সাইডবার স্টিকি থাকবে না (ঝামেলা কমবে) */
+    .service-sidebar {
+        position: relative; 
+        top: 0;
+        width: 100%; /* পুরো স্ক্রিন জুড়ে থাকবে */
+        margin-bottom: 20px;
+        flex: none;
+    }
+    
+    /* সাইডবারের ভেতরের লিংকগুলো পাশাপাশি থাকবে (Nav Style) */
+    .service-nav {
+        display: flex;
+        overflow-x: auto; /* ডানে-বামে স্ক্রল করা যাবে */
+        gap: 10px;
+        padding-bottom: 10px;
+        white-space: nowrap;
+    }
+
+    .service-nav a {
+        display: inline-block;
+        padding: 8px 15px;
+        background: #f1f1f1;
+        border-radius: 20px;
+        border: 1px solid #ddd;
+        margin-bottom: 0;
+    }
+
+    /* কন্টেন্ট এরিয়া ফুল উইডথ হবে */
+    .service-content-area {
+        width: 100%;
+        flex: none;
+    }
+
+    /* ৩. স্ক্রল স্মুথনেস ফিক্স */
+    html, body {
+        overflow-x: hidden; /* ডানে-বামে নড়বে না */
+        width: 100%;
+    }
+    
+    /* হোভার এফেক্ট মোবাইলে বন্ধ (পারফরম্যান্স ফাস্ট হবে) */
+    .service-row:hover {
+        transform: none !important;
+    }
+}
