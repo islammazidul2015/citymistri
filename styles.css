@@ -3177,3 +3177,64 @@ footer {
         bottom: 75px !important; 
     }
 }
+/* --- Mobile Typography & Layout Fixes --- */
+
+@media (max-width: 768px) {
+    
+    /* ১. প্যারাগ্রাফ বা বডি টেক্সট ফিক্স */
+    p, .service-text p, .content-wrapper p {
+        text-align: left !important; /* জাস্টিফাই বাদ দিয়ে বামে এলাইনমেন্ট */
+        font-size: 16px !important; /* পড়ার জন্য আদর্শ সাইজ */
+        line-height: 1.6 !important; /* লাইনের মাঝে আরামদায়ক ফাঁকা */
+        color: #444; /* চোখের জন্য আরামদায়ক কালার */
+        margin-bottom: 15px; /* প্যারাগ্রাফের নিচে গ্যাপ */
+        letter-spacing: 0.3px; /* অক্ষরগুলো গায়ে গায়ে লেগে থাকবে না */
+    }
+
+    /* ২. হেডিং (Title) ডিজাইন */
+    h1, h2, h3 {
+        text-align: center; /* মোবাইলে টাইটেল মাঝখানে সুন্দর লাগে */
+        line-height: 1.3 !important;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 15px;
+    }
+
+    h1 { font-size: 24px !important; margin-top: 10px; }
+    h2 { font-size: 20px !important; margin-top: 30px; border-bottom: none !important; }
+
+    /* ৩. কার্ড বা বক্সের ডিজাইন (Card Style) */
+    .service-detail-box, .step-box, .cta-box {
+        padding: 20px !important;
+        border-radius: 12px !important; /* কোণাগুলো বেশি গোল হবে */
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* হালকা ছায়া */
+        background: #fff;
+        margin-bottom: 25px;
+    }
+
+    /* ৪. লিস্ট বা বুলেট পয়েন্ট ফিক্স */
+    ul, ol {
+        padding-left: 20px !important;
+        text-align: left;
+    }
+    
+    li {
+        margin-bottom: 10px;
+        line-height: 1.5;
+    }
+
+    /* ৫. টেবিল ফিক্স (যাতে টেবিল স্ক্রিনের বাইরে না যায়) */
+    .rate-table {
+        display: block;
+        width: 100%;
+        overflow-x: auto; /* টেবিল বড় হলে স্ক্রল করা যাবে */
+        white-space: nowrap;
+        font-size: 14px;
+    }
+    
+    /* ৬. সাইড স্পেস (Breathing Room) */
+    .container, section {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
