@@ -3428,7 +3428,7 @@ footer {
     /* ছবির ওপর লেখা থাকলে সেটা নিচে নামিয়ে দেওয়া */
     .service-box .content, .portfolio-overlay {
         position: relative !important; /* ছবির ওপর ভাসবে না */
-        background: #333 !important; /* সলিড কালো ব্যাকগ্রাউন্ড */
+        background: #000000 !important; /* সলিড কালো ব্যাকগ্রাউন্ড */
         opacity: 1 !important;
         visibility: visible !important;
         padding: 15px !important;
