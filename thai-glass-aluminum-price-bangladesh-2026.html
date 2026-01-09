@@ -25,7 +25,7 @@
         .blog-container h1 { font-size: 2.2rem; color: #2c3e50; margin-bottom: 20px; }
         .blog-container h2 { font-size: 1.8rem; color: #007bff; margin-top: 40px; margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 10px; scroll-margin-top: 80px; }
         
-        /* Table of Contents (TOC) Style */
+        /* Table of Contents */
         .toc-box { background: #f8f9fa; border: 1px solid #ddd; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
         .toc-box h3 { margin-top: 0; color: #2c3e50; font-size: 1.2rem; }
         .toc-box ul { list-style: none; padding: 0; }
@@ -40,7 +40,7 @@
 
         .step-box { background: #e3f2fd; padding: 25px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #007bff; }
         
-        /* FAQ Design (Professional Look) */
+        /* FAQ Design */
         .faq-container { margin-top: 30px; }
         .faq-item { margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; }
         .faq-question { 
@@ -71,41 +71,68 @@
         @media (max-width: 768px) { .sticky-cta { display: flex; } .blog-container { padding-bottom: 80px; } }
         .btn-call { background: #007bff; color: white; padding: 10px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; }
         .btn-wa { background: #25D366; color: white; padding: 10px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; }
+        
+        /* Internal Link Highlight */
+        .content-link { color: #d35400; font-weight: bold; text-decoration: underline; }
     </style>
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [{
-        "@type": "Question",
-        "name": "থাই জানালায় ৫মিমি নাকি ৬মিমি গ্লাস ভালো?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "সাধারণ বাসা-বাড়ির জন্য ৫মিমি গ্লাসই যথেষ্ট এবং স্ট্যান্ডার্ড। তবে জানালার সাইজ যদি অনেক বড় হয় (যেমন ৭ ফিট হাইট), তবে ৬মিমি ব্যবহার করা নিরাপদ।"
+      "@graph": [
+        {
+          "@type": "Article",
+          "headline": "Thai Glass & Aluminum Price in Bangladesh 2026",
+          "description": "Complete price list for Kai, Chung Hua, BTA aluminum and 5mm/6mm glass in Bangladesh.",
+          "image": "https://www.citymistri.xyz/images/thai-glass-price-bd-2026.png",
+          "datePublished": "2026-01-09",
+          "dateModified": "2026-01-09",
+          "author": {
+            "@type": "Organization",
+            "name": "City Mistri"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "City Mistri",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.citymistri.xyz/images/favicon.png"
+            }
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [{
+            "@type": "Question",
+            "name": "থাই জানালায় ৫মিমি নাকি ৬মিমি গ্লাস ভালো?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "সাধারণ বাসা-বাড়ির জন্য ৫মিমি গ্লাসই যথেষ্ট এবং স্ট্যান্ডার্ড। তবে জানালার সাইজ যদি অনেক বড় হয় (যেমন ৭ ফিট হাইট), তবে ৬মিমি ব্যবহার করা নিরাপদ।"
+            }
+          }, {
+            "@type": "Question",
+            "name": "কাই (Kai) নাকি চুং হুয়া—কোনটি ভালো?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "নিঃসন্দেহে কাই (Kai) অ্যালুমিনিয়াম বাংলাদেশের সেরা ব্র্যান্ড। তবে বাজেট কম থাকলে চুং হুয়াও (Chung Hua) একটি ভালো অপশন।"
+            }
+          }, {
+            "@type": "Question",
+            "name": "এক স্কয়ার ফিট থাই গ্লাসের খরচ কত পড়ে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "এটি নির্ভর করে অ্যালুমিনিয়ামের সেকশনের ওপর। গড়ে সব খরচ মিলিয়ে (ম্যাটেরিয়াল + মিস্ত্রি) প্রতি স্কয়ার ফিট ৪৫০ টাকা থেকে ৬৫০ টাকা পর্যন্ত পড়তে পারে।"
+            }
+          }, {
+            "@type": "Question",
+            "name": "আপনারা কি ঢাকার বাইরে কাজ করেন?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "হ্যাঁ, আমরা সারা বাংলাদেশে কাজ করি। চট্টগ্রাম, সিলেট, রাজশাহীসহ সব জেলায় আমাদের সার্ভিস এভেইলেবল।"
+            }
+          }]
         }
-      }, {
-        "@type": "Question",
-        "name": "কাই (Kai) নাকি চুং হুয়া—কোনটি ভালো?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "নিঃসন্দেহে কাই (Kai) অ্যালুমিনিয়াম বাংলাদেশের সেরা ব্র্যান্ড। তবে বাজেট কম থাকলে চুং হুয়াও (Chung Hua) একটি ভালো অপশন।"
-        }
-      }, {
-        "@type": "Question",
-        "name": "এক স্কয়ার ফিট থাই গ্লাসের খরচ কত পড়ে?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "এটি নির্ভর করে অ্যালুমিনিয়ামের সেকশনের ওপর। গড়ে সব খরচ মিলিয়ে (ম্যাটেরিয়াল + মিস্ত্রি) প্রতি স্কয়ার ফিট ৪৫০ টাকা থেকে ৬৫০ টাকা পর্যন্ত পড়তে পারে।"
-        }
-      }, {
-        "@type": "Question",
-        "name": "আপনারা কি ঢাকার বাইরে কাজ করেন?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "হ্যাঁ, আমরা সারা বাংলাদেশে কাজ করি। বড় প্রজেক্টের ক্ষেত্রে আমাদের টিম যেকোনো জেলায় গিয়ে কাজ সম্পন্ন করে আসে।"
-        }
-      }]
+      ]
     }
     </script>
 </head>
@@ -129,7 +156,7 @@
         <h1>থাই গ্লাস ও অ্যালুমিনিয়ামের দাম কত? জানুন ২০২৬ সালের আপডেট রেট (Thai Glass Price in BD)</h1>
         
         <div class="meta-info">
-            <i class="far fa-calendar-alt"></i> আপডেট: জানুয়ারি ৯, ২০২৬ | <i class="fas fa-map-marker-alt"></i> এলাকা: সারা বাংলাদেশ
+            <i class="far fa-calendar-alt"></i> সর্বশেষ আপডেট: জানুয়ারি ৯, ২০২৬ | <i class="fas fa-map-marker-alt"></i> এলাকা: সারা বাংলাদেশ
         </div>
 
         <div class="toc-box">
@@ -143,7 +170,7 @@
             </ul>
         </div>
 
-        <p>নতুন বাড়ি বা অফিসের জন্য <a href="repair-service.html">থাই গ্লাস ও অ্যালুমিনিয়াম</a> লাগানোর আগে সঠিক দাম জানা খুবই জরুরি। <strong>City Mistri</strong> আপনাদের জন্য নিয়ে এসেছে ২০২৬ সালের লেটেস্ট প্রাইস লিস্ট।</p>
+        <p>নতুন বাড়ি বা অফিসের জন্য <a href="repair-service.html" class="content-link">থাই গ্লাস রিপেয়ার সার্ভিস</a> এবং অ্যালুমিনিয়াম লাগানোর আগে সঠিক দাম জানা খুবই জরুরি। <strong>City Mistri</strong> আপনাদের জন্য নিয়ে এসেছে ২০২৬ সালের লেটেস্ট প্রাইস লিস্ট।</p>
 
         <img src="images/thai-3.png" alt="Thai glass and aluminum price list table 2026 Bangladesh" style="width:100%; border-radius:10px; margin-bottom:30px;">
 
@@ -183,7 +210,7 @@
         </table>
 
         <h2 id="glass-price">গ্লাসের দাম (Glass Price Per Sqft)</h2>
-        <p>আপনার জানালার জন্য ৫মিমি নাকি ৬মিমি গ্লাস দরকার? বিস্তারিত দেখুন:</p>
+        <p>আপনার জানালার জন্য ৫মিমি নাকি ৬মিমি গ্লাস দরকার? এছাড়া বাথরুমের জন্য <a href="shower-enclosure.html" class="content-link">শাওয়ার এনক্লোজার (Shower Enclosure)</a> এর গ্লাস ভিন্ন হয়। বিস্তারিত দেখুন:</p>
 
         <table class="rate-table">
             <thead>
@@ -218,11 +245,11 @@
         </table>
 
         <div class="cta-box" style="background: #fff3cd; padding: 20px; border-radius: 8px; margin: 30px 0; border: 1px solid #ffeeba;">
-            <p><strong>নোট:</strong> আপনার পুরনো জানালা বা দরজা কি নষ্ট হয়ে গেছে? আমাদের <a href="repair-service.html" style="color:#d35400; font-weight:bold; text-decoration:underline;">থাই গ্লাস রিপেয়ার সার্ভিস</a> পেজটি ভিজিট করুন অথবা সরাসরি কল করুন।</p>
+            <p><strong>নোট:</strong> আপনি কি অফিসের জন্য <a href="office-partition.html" class="content-link">গ্লাস পার্টিশন (Glass Partition)</a> বা বাসা পরিবর্তনের পর থাই গ্লাস ফিটিং করাতে চান? আমাদের এক্সপার্ট টিম রেডি আছে।</p>
         </div>
 
         <h2 id="calculation">থাই জানালার পূর্ণাঙ্গ খরচ কীভাবে হিসাব করবেন?</h2>
-        <p>শুধু গ্লাস কিনলেই হবে না, এর সাথে চাকা, লক এবং রাবার বা সিলিকন লাগে। এছাড়া আপনি যদি <a href="office-partition.html">অফিস গ্লাস পার্টিশন</a> করতে চান, তবে তার হিসাব আলাদা হবে।</p>
+        <p>শুধু গ্লাস কিনলেই হবে না, এর সাথে চাকা, লক এবং রাবার বা সিলিকন লাগে। এছাড়া আপনি যদি <a href="office-partition.html" class="content-link">গ্লাস পার্টিশন বাংলাদেশ</a> এর কাজ করতে চান, তবে তার হিসাব আলাদা হবে।</p>
         
         <h2 id="process">আমাদের কাজের ধাপসমূহ</h2>
         <div class="step-box">
@@ -284,12 +311,10 @@
                 question.addEventListener('click', function() {
                     const parent = this.parentElement;
                     
-                    // Close others (Optional)
                     document.querySelectorAll('.faq-item').forEach(item => {
                         if (item !== parent) item.classList.remove('active');
                     });
 
-                    // Toggle current
                     if (parent.classList.contains('active')) {
                         parent.classList.remove('active');
                     } else {
