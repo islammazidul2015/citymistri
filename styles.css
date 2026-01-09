@@ -3312,74 +3312,65 @@ footer {
         transform: none !important;
     }
 }
-/* --- HOME PAGE MOBILE FIXES --- */
+/* --- HOME PAGE MOBILE FIX (CORRECTED) --- */
 
 @media (max-width: 768px) {
     
-    /* ১. পুরো সাইটের স্ক্রল ফিক্স (ডানে-বামে নড়বে না) */
+    /* ১. পুরো বডি এবং html ফিক্স */
     html, body {
-        overflow-x: hidden;
+        overflow-x: hidden; /* ডানে-বামে নড়বে না */
         width: 100%;
-        max-width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
-    /* ২. কন্টেইনারের দুই পাশে জায়গা রাখা */
+    /* ২. কন্টেইনার মাঝখানে রাখা (সবচেয়ে জরুরি) */
     .container {
-        padding-left: 15px !important;
-        padding-right: 15px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 20px !important; /* দুই পাশে একটু ফাঁকা */
+        padding-right: 20px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        box-sizing: border-box;
+    }
+
+    /* ৩. ফ্লেক্সবক্সের আইটেমগুলো সোজা করা */
+    .row, .flex-row, .d-flex {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    /* ৪. সব সেকশন এবং কার্ড ফুল উইডথ করা */
+    section, .service-box, .portfolio-item {
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* ৫. ইমেজ রেস্পন্সিভ এবং মাঝখানে রাখা */
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto; /* ইমেজ মাঝখানে থাকবে */
+    }
+
+    /* ৬. হিরো সেকশন বা ব্যানার টেক্সট ফিক্স */
+    .hero-content, .banner-text {
+        text-align: center; /* লেখা মাঝখানে */
         width: 100%;
+        padding: 20px 10px;
     }
 
-    /* ৩. হিরো সেকশন বা স্লাইডার টেক্সট সাইজ ঠিক করা */
-    .hero-content h1, .banner-text h1 {
-        font-size: 24px !important;
-        line-height: 1.3;
-    }
-    
-    .hero-content p, .banner-text p {
-        font-size: 14px !important;
+    /* ৭. ফুটার ফিক্স */
+    .footer-main {
+        text-align: center;
     }
 
-    /* ৪. সার্ভিস বা কার্ডগুলো নিচে নিচে সাজানো */
-    .service-grid, .portfolio-grid, .client-grid, .features-row {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    /* ৫. প্রাইস টেবিল ফিক্স (খুবই গুরুত্বপূর্ণ) */
-    /* টেবিলটি যাতে স্ক্রিনের বাইরে না যায় এবং স্ক্রল করা যায় */
+    /* ৮. টেবিল স্ক্রল ফিক্স */
     table {
         display: block;
         width: 100%;
         overflow-x: auto;
-        white-space: nowrap; /* লেখা ভাঙবে না, স্ক্রল হবে */
-    }
-
-    /* ৬. সেকশনগুলোর প্যাডিং কমানো (মোবাইলে বেশি গ্যাপ খারাপ লাগে) */
-    section {
-        padding: 40px 0 !important;
-    }
-
-    /* ৭. ফ্লেক্সবক্সের আইটেমগুলো নিচে নামিয়ে দেওয়া */
-    .flex-row, .row, .d-flex {
-        flex-direction: column !important;
-    }
-    
-    /* ইমেজ সাইজ রেস্পন্সিভ করা */
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-    
-    /* ফুটার কলামগুলো নিচে নিচে সাজানো */
-    .footer-main, .footer-row {
-        flex-direction: column;
-        text-align: center; /* ফুটার টেক্সট মাঝখানে সুন্দর লাগে */
-    }
-    
-    .footer-col {
-        width: 100%;
-        margin-bottom: 30px;
     }
 }
