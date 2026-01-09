@@ -3374,59 +3374,69 @@ footer {
         overflow-x: auto;
     }
 }
-/* --- MOBILE TEXT CLARITY FIX --- */
+/* --- MOBILE TEXT SHARPNESS FIX (UPDATED) --- */
 
 @media (max-width: 768px) {
-    
-    /* ১. স্লাইডার (Hero) টেক্সট স্পষ্ট করা */
-    .hero-content, .banner-text {
-        position: relative;
-        z-index: 10; /* টেক্সট সবার উপরে থাকবে */
-        opacity: 1 !important; /* ঝাপসা হবে না */
+
+    /* ১. স্লাইডার বা হিরো সেকশনের লেখা পরিষ্কার করা */
+    .hero-content, .banner-text, .carousel-caption {
+        background-color: rgba(0, 0, 0, 0.7) !important; /* লেখার পেছনে কালো বক্স */
+        padding: 20px !important;
+        border-radius: 10px !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+        
+        /* ব্লার ফিক্স (সবচেয়ে জরুরি) */
+        transform: none !important; /* ট্রান্সফর্ম বন্ধ */
+        top: auto !important;
+        bottom: 20px !important; /* নিচে ফিক্সড থাকবে */
+        left: 5% !important;
+        right: 5% !important;
+        width: 90% !important;
+        margin: 0 auto !important;
+        position: absolute !important;
+    }
+
+    /* ২. ফন্ট শার্পনেস বাড়ানো */
+    .hero-content h1, .hero-content p, 
+    .banner-text h1, .banner-text p {
+        color: #ffffff !important;
+        text-shadow: none !important; /* শ্যাডো বাদ, কারণ বক্স আছে */
+        opacity: 1 !important;
+        filter: none !important; /* কোনো ফিল্টার থাকলে বাদ */
+        -webkit-font-smoothing: antialiased; /* ফন্ট স্মুথ করবে */
     }
 
     .hero-content h1, .banner-text h1 {
-        color: #ffffff !important; /* ধবধবে সাদা */
-        text-shadow: 2px 2px 10px rgba(0,0,0,0.9); /* লেখার নিচে কড়া কালো ছায়া */
-        font-weight: 700; /* লেখা একটু মোটা হবে */
+        font-size: 20px !important;
+        margin-bottom: 10px !important;
+        font-weight: 700 !important;
     }
 
     .hero-content p, .banner-text p {
-        color: #f0f0f0 !important;
-        text-shadow: 1px 1px 5px rgba(0,0,0,0.9);
-        font-weight: 500;
+        font-size: 14px !important;
+        line-height: 1.5 !important;
     }
 
-    /* ২. স্লাইডারের ইমেজের উপর কালো আস্তরণ (Overlay) */
-    .hero-section::before, .slider-item::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5); /* ৫০% কালো শেড */
-        z-index: 1;
+    /* ৩. Recent Work বা সার্ভিস বক্সের লেখা ফিক্স */
+    .service-box, .portfolio-item, .recent-work-item {
+        background: #fff !important; /* ব্যাকগ্রাউন্ড সাদা */
+        border: 1px solid #ddd !important;
+        border-radius: 8px !important;
+        overflow: hidden;
     }
 
-    /* ৩. Recent Work বা প্রোজেক্ট সেকশন ফিক্স */
-    .recent-work-item .overlay, 
-    .project-box .hover-content,
-    .service-box .content {
-        background: rgba(0, 0, 0, 0.7) !important; /* ব্যাকগ্রাউন্ড গাঢ় কালো */
-        opacity: 1 !important; /* সবসময় দেখা যাবে */
-        visibility: visible !important;
-    }
-
-    .recent-work-item h3, .recent-work-item p,
-    .service-box h3, .service-box p {
-        color: #fff !important;
-        text-shadow: 1px 1px 2px #000;
-    }
-
-    /* ৪. বাটন বা CTA স্পষ্ট করা */
-    .btn-primary, .cta-btn {
+    /* ছবির ওপর লেখা থাকলে সেটা নিচে নামিয়ে দেওয়া */
+    .service-box .content, .portfolio-overlay {
+        position: relative !important; /* ছবির ওপর ভাসবে না */
+        background: #333 !important; /* সলিড কালো ব্যাকগ্রাউন্ড */
         opacity: 1 !important;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        visibility: visible !important;
+        padding: 15px !important;
+        transform: none !important;
+    }
+
+    .service-box h3, .portfolio-item h3 {
+        color: #fff !important;
+        font-size: 18px !important;
     }
 }
