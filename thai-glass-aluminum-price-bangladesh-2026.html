@@ -47,29 +47,31 @@
 
         .step-box { background: #e3f2fd; padding: 25px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #007bff; }
         
+        /* --- NEW ADDITION: CALCULATOR STYLES --- */
+        .calculator-wrapper { background: #f0f8ff; border: 2px solid #007bff; border-radius: 10px; padding: 30px; margin: 30px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .calc-input, .calc-select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; }
+        .calc-btn { grid-column: span 2; background: #28a745; color: white; border: none; padding: 14px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 10px; font-size: 1.1rem; transition: 0.3s; }
+        .calc-btn:hover { background: #218838; }
+        .result-display { margin-top: 20px; padding: 15px; background: #d4edda; color: #155724; border-radius: 6px; display: none; text-align: center; font-weight: bold; font-size: 1.1rem; border: 1px solid #c3e6cb; }
+        
+        /* --- NEW ADDITION: COMPARISON CHART STYLES --- */
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; margin-bottom: 30px; }
+        .compare-card { padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: white; }
+        .compare-card.good { border-top: 4px solid #28a745; }
+        .compare-card.best { border-top: 4px solid #ffc107; background: #fffdf5; }
+        .compare-card h3 { margin-top: 0; font-size: 1.2rem; color: #333; }
+        .compare-card ul { padding-left: 20px; margin-bottom: 0; }
+        .compare-card li { margin-bottom: 8px; color: #555; }
+        
+        @media (max-width: 600px) { .form-grid, .comparison-grid { grid-template-columns: 1fr; } }
+
         /* FAQ Design */
         .faq-container { margin-top: 30px; }
         .faq-item { margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; }
-        .faq-question { 
-            background-color: #f8f9fa; 
-            padding: 15px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            color: #2c3e50;
-            transition: 0.3s;
-        }
+        .faq-question { background-color: #f8f9fa; padding: 15px; cursor: pointer; font-weight: bold; display: flex; justify-content: space-between; align-items: center; color: #2c3e50; transition: 0.3s; }
         .faq-question:hover { background-color: #e9ecef; }
-        .faq-answer { 
-            padding: 20px; 
-            display: none; 
-            background-color: #fff; 
-            border-top: 1px solid #ddd; 
-            color: #555;
-            line-height: 1.6;
-        }
+        .faq-answer { padding: 20px; display: none; background-color: #fff; border-top: 1px solid #ddd; color: #555; line-height: 1.6; }
         .faq-item.active .faq-answer { display: block; }
         .faq-item.active .faq-question { background-color: #007bff; color: white; }
         .faq-item.active .faq-question i { transform: rotate(180deg); }
@@ -79,7 +81,6 @@
         .btn-call { background: #007bff; color: white; padding: 10px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; }
         .btn-wa { background: #25D366; color: white; padding: 10px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; }
         
-        /* Internal Link Highlight */
         .content-link { color: #d35400; font-weight: bold; text-decoration: underline; }
     </style>
 
@@ -105,6 +106,27 @@
               "@type": "ImageObject",
               "url": "https://www.citymistri.xyz/images/favicon.png"
             }
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "185",
+            "bestRating": "5",
+            "worstRating": "1"
+          }
+        },
+        {
+          "@type": "Service",
+          "name": "Thai Glass Installation",
+          "provider": { "@type": "LocalBusiness", "name": "City Mistri" },
+          "areaServed": "Bangladesh",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Aluminum Services",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Thai Window Installation" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Office Glass Partition" } }
+            ]
           }
         },
         {
@@ -171,9 +193,10 @@
             <ul>
                 <li><a href="#aluminum-price">১. অ্যালুমিনিয়াম সেকশনের দাম (Aluminum Price)</a></li>
                 <li><a href="#glass-price">২. গ্লাসের দাম (Glass Price Per Sqft)</a></li>
-                <li><a href="#calculation">৩. থাই জানালার খরচ হিসাব করার নিয়ম</a></li>
-                <li><a href="#process">৪. কাজের ধাপসমূহ</a></li>
-                <li><a href="#faq">৫. সচরাচর জিজ্ঞাসিত প্রশ্ন (FAQ)</a></li>
+                <li><a href="#calculation">৩. থাই জানালার খরচ ক্যালকুলেটর</a></li>
+                <li><a href="#comparison">৪. কাই বনাম চুং হুয়া (তুলনা)</a></li>
+                <li><a href="#process">৫. কাজের ধাপসমূহ</a></li>
+                <li><a href="#faq">৬. সচরাচর জিজ্ঞাসিত প্রশ্ন (FAQ)</a></li>
             </ul>
         </div>
 
@@ -194,7 +217,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>KAI (কাই)</strong></td>
+                    <td><strong>KAI (কাই)</strong> 🔥</td>
                     <td>সিলভার (Silver)</td>
                     <td>৪২০ - ৪৪০ টাকা</td>
                 </tr>
@@ -216,8 +239,30 @@
             </tbody>
         </table>
 
+        <h2 id="comparison">কোন ব্র্যান্ড কেন সেরা? (Technical Comparison)</h2>
+        <div class="comparison-grid">
+            <div class="compare-card good">
+                <h3><i class="fas fa-check"></i> Chung Hua / Local</h3>
+                <ul>
+                    <li><strong>Thickness:</strong> 0.8mm - 1.0mm (পাতলা)</li>
+                    <li><strong>Color Warranty:</strong> ৫-৭ বছর</li>
+                    <li><strong>বাজেট:</strong> কম বাজেটের জন্য সেরা।</li>
+                    <li><strong>ব্যবহার:</strong> ভাড়া বাসা বা সাধারণ দোকানের জন্য।</li>
+                </ul>
+            </div>
+            <div class="compare-card best">
+                <h3><i class="fas fa-star" style="color: gold;"></i> KAI Aluminum (Original)</h3>
+                <ul>
+                    <li><strong>Thickness:</strong> 1.2mm - 1.6mm (খুব মজবুত)</li>
+                    <li><strong>Color Warranty:</strong> ২০ বছর (গ্যারান্টিড)</li>
+                    <li><strong>ফিনিশিং:</strong> প্রিমিয়াম লুক এবং স্মুথ স্লাইডিং।</li>
+                    <li><strong>ব্যবহার:</strong> নিজের বাসা বা লাক্সারি অফিসের জন্য।</li>
+                </ul>
+            </div>
+        </div>
+
         <h2 id="glass-price">গ্লাসের দাম (Glass Price Per Sqft)</h2>
-        <p>আপনার জানালার জন্য ৫মিমি নাকি ৬মিমি গ্লাস দরকার? এছাড়া বাথরুমের জন্য <a href="shower-enclosure.html" class="content-link">শাওয়ার এনক্লোজার (Shower Enclosure)</a> এর গ্লাস ভিন্ন হয়। বিস্তারিত দেখুন:</p>
+        <p>আপনার জানালার জন্য ৫মিমি নাকি ৬মিমি গ্লাস দরকার? বিস্তারিত দেখুন:</p>
 
         <table class="rate-table">
             <thead>
@@ -252,11 +297,34 @@
         </table>
 
         <div class="cta-box" style="background: #fff3cd; padding: 20px; border-radius: 8px; margin: 30px 0; border: 1px solid #ffeeba;">
-            <p><strong>নোট:</strong> আপনি কি অফিসের জন্য <a href="office-partition.html" class="content-link">গ্লাস পার্টিশন (Glass Partition)</a> বা বাসা পরিবর্তনের পর থাই গ্লাস ফিটিং করাতে চান? আমাদের এক্সপার্ট টিম রেডি আছে।</p>
+            <p><strong>নোট:</strong> আপনি কি অফিসের জন্য <a href="office-partition.html" class="content-link">গ্লাস পার্টিশন (Glass Partition)</a> করাতে চান? আমাদের এক্সপার্ট টিম রেডি আছে।</p>
         </div>
 
-        <h2 id="calculation">থাই জানালার পূর্ণাঙ্গ খরচ কীভাবে হিসাব করবেন?</h2>
-        <p>শুধু গ্লাস কিনলেই হবে না, এর সাথে চাকা, লক এবং রাবার বা সিলিকন লাগে। এছাড়া আপনি যদি <a href="office-partition.html" class="content-link">গ্লাস পার্টিশন বাংলাদেশ</a> এর কাজ করতে চান, তবে তার হিসাব আলাদা হবে।</p>
+        <h2 id="calculation">থাই জানালার খরচ ক্যালকুলেটর 🧮</h2>
+        <p>নিচের বক্সে আপনার জানালার মাপ দিন এবং আনুমানিক খরচ বের করুন (মজুরি সহ):</p>
+        
+        <div class="calculator-wrapper">
+            <div class="form-grid">
+                <div>
+                    <label><strong>উচ্চতা (Height - ft)</strong></label>
+                    <input type="number" id="height" class="calc-input" placeholder="যেমন: 4.5">
+                </div>
+                <div>
+                    <label><strong>চওড়া (Width - ft)</strong></label>
+                    <input type="number" id="width" class="calc-input" placeholder="যেমন: 5">
+                </div>
+                <div style="grid-column: span 2;">
+                    <label><strong>ম্যাটেরিয়াল কোয়ালিটি</strong></label>
+                    <select id="material" class="calc-select">
+                        <option value="450">ইকোনমি (Chung Hua) - 450tk/sqft</option>
+                        <option value="520">স্ট্যান্ডার্ড (KAI 1.2mm) - 520tk/sqft (Best Seller)</option>
+                        <option value="600">প্রিমিয়াম (KAI 1.5mm) - 600tk/sqft</option>
+                    </select>
+                </div>
+                <button onclick="calculateCost()" class="calc-btn"><i class="fas fa-calculator"></i> খরচ বের করুন</button>
+            </div>
+            <div id="result" class="result-display"></div>
+        </div>
         
         <h2 id="process">আমাদের কাজের ধাপসমূহ</h2>
         <div class="step-box">
@@ -312,24 +380,39 @@
     </div>
 
     <script>
+        // FAQ Toggle
         document.addEventListener('DOMContentLoaded', function() {
             const faqQuestions = document.querySelectorAll('.faq-question');
             faqQuestions.forEach(question => {
                 question.addEventListener('click', function() {
                     const parent = this.parentElement;
-                    
                     document.querySelectorAll('.faq-item').forEach(item => {
                         if (item !== parent) item.classList.remove('active');
                     });
-
-                    if (parent.classList.contains('active')) {
-                        parent.classList.remove('active');
-                    } else {
-                        parent.classList.add('active');
-                    }
+                    parent.classList.toggle('active');
                 });
             });
         });
+
+        // NEW: Calculator Logic
+        function calculateCost() {
+            var h = parseFloat(document.getElementById('height').value);
+            var w = parseFloat(document.getElementById('width').value);
+            var rate = parseInt(document.getElementById('material').value);
+            
+            if(h > 0 && w > 0) {
+                var area = h * w;
+                var total = area * rate;
+                var resultBox = document.getElementById('result');
+                
+                resultBox.style.display = 'block';
+                resultBox.innerHTML = 
+                    "মোট সাইজ: " + area.toFixed(2) + " sqft<br>" +
+                    "আনুমানিক খরচ: " + total.toLocaleString() + " টাকা (মজুরি ও মালামাল সহ)";
+            } else {
+                alert("দয়া করে সঠিক উচ্চতা এবং চওড়া লিখুন (0 বা ঋণাত্মক সংখ্যা হবে না)।");
+            }
+        }
     </script>
 </body>
 </html>
