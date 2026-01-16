@@ -14,7 +14,7 @@
     <title>Thai Glass & Aluminum Price in Bangladesh 2026 | Full Rate Chart</title>
     
     <meta name="description" content="২০২৬ সালের থাই গ্লাস ও অ্যালুমিনিয়ামের দাম জানুন এবং আমাদের ফ্রি ক্যালকুলেটর দিয়ে জানালার খরচ বের করুন। কাই (Kai), চুং হুয়া ও বিটিএ অ্যালুমিনিয়াম রেট চার্ট।">
-    <meta name="keywords" content="thai glass price in bangladesh 2026, aluminum window price bd, kai aluminum price list, thai glass calculator, thai window cost estimate, থাই গ্লাসের দাম ২০২৬, থাই জানালার খরচ, কাই অ্যালুমিনিয়াম দাম, থাই মিস্ত্রি, গ্লাস পার্টিশন রেট">
+    <meta name="keywords" content="thai glass price in bangladesh 2026, aluminum window price bd, kai aluminum price list, thai glass calculator, thai window cost estimate, থাই গ্লাসের দাম ২০২৬, থাই জানালার খরচ, কাই অ্যালুমিনিয়াম দাম">
     
     <meta property="og:title" content="Thai Glass & Aluminum Price List 2026 | City Mistri">
     <meta property="og:description" content="২০২৬ সালের আপডেট রেট। কাই, চুং হুয়া, এবং বিটিএ অ্যালুমিনিয়ামের বিস্তারিত মূল্য তালিকা দেখুন।">
@@ -34,63 +34,82 @@
         .blog-container h2 { font-size: 1.8rem; color: #007bff; margin-top: 40px; margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 10px; scroll-margin-top: 80px; }
         
         /* Table Styles */
-        .rate-table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .rate-table th, .rate-table td { border: 1px solid #ddd; padding: 15px; text-align: left; }
-        .rate-table th { background-color: #2c3e50; color: white; }
+        .rate-table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; }
+        .rate-table th, .rate-table td { border: 1px solid #eee; padding: 15px; text-align: left; }
+        .rate-table th { background-color: #006064; color: white; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
         .rate-table tr:nth-child(even) { background-color: #f8f9fa; }
+        .rate-table tr:hover { background-color: #e0f7fa; transition: 0.3s; }
         
-        /* Calculator Styles */
+        /* --- PREMIUM CALCULATOR DESIGN --- */
         .calculator-wrapper { 
-            background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%); 
-            border: 2px solid #00bcd4; 
-            border-radius: 15px; 
-            padding: 40px; 
-            margin: 40px 0; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            background: #fff;
+            border-radius: 20px; 
+            padding: 0; 
+            margin: 50px 0; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15); 
             text-align: center;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #e0e0e0;
         }
-        .calculator-header { margin-bottom: 25px; color: #006064; font-size: 1.5rem; font-weight: bold; }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; }
+        .calc-top-bar {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            padding: 25px;
+            color: white;
+        }
+        .calc-top-bar h3 { margin: 0; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        
+        .calc-body { padding: 40px; background: #fff; }
+        
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; text-align: left; }
+        
+        .input-group { position: relative; }
+        .input-group label { font-weight: bold; color: #555; display: block; margin-bottom: 10px; font-size: 0.95rem; }
+        .input-group i { position: absolute; top: 48px; left: 15px; color: #007bff; }
+        
         .calc-input, .calc-select { 
-            width: 100%; padding: 15px; border: 2px solid #b2ebf2; border-radius: 8px; font-size: 1.1rem; outline: none; transition: 0.3s; 
+            width: 100%; padding: 15px 15px 15px 45px; /* Space for icon */
+            border: 2px solid #f0f0f0; background: #f9f9f9;
+            border-radius: 10px; font-size: 1.1rem; outline: none; transition: 0.3s; 
         }
-        .calc-input:focus, .calc-select:focus { border-color: #00bcd4; box-shadow: 0 0 8px rgba(0, 188, 212, 0.3); }
-        .calc-label { font-weight: bold; color: #555; display: block; margin-bottom: 8px; }
+        .calc-input:focus, .calc-select:focus { border-color: #007bff; background: #fff; box-shadow: 0 0 10px rgba(0, 123, 255, 0.1); }
         
         .calc-btn { 
             grid-column: span 2; 
-            background: linear-gradient(45deg, #00bcd4, #0097a7); 
+            background: linear-gradient(45deg, #11998e, #38ef7d); 
             color: white; border: none; padding: 18px; border-radius: 50px; 
-            font-weight: bold; cursor: pointer; margin-top: 20px; font-size: 1.3rem; 
-            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4); transition: 0.3s; 
+            font-weight: bold; cursor: pointer; margin-top: 20px; font-size: 1.2rem; 
+            box-shadow: 0 10px 20px rgba(56, 239, 125, 0.3); transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;
         }
-        .calc-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 188, 212, 0.5); }
+        .calc-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(56, 239, 125, 0.4); }
         
         .result-display { 
-            margin-top: 30px; padding: 25px; 
-            background: #e0f2f1; color: #004d40; border-radius: 10px; 
-            display: none; text-align: center; font-weight: bold; font-size: 1.3rem; 
-            border: 2px dashed #009688; animation: fadeIn 0.5s ease-in-out;
+            margin-top: 30px; padding: 30px; 
+            background: #f0fff4; color: #2d3436; border-radius: 15px; 
+            display: none; text-align: center; border: 2px dashed #38ef7d;
+            animation: slideUp 0.5s ease;
         }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Comparison Grid */
         .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
-        .compare-card { padding: 25px; border: 1px solid #eee; border-radius: 10px; background: white; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .compare-card.best { border-top: 5px solid gold; background: #fffdf5; }
+        .compare-card { padding: 30px; border-radius: 15px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #f0f0f0; }
+        .compare-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .compare-card.best { border-top: 5px solid gold; background: linear-gradient(to bottom, #fffdf0, #fff); }
         .compare-card h3 { margin-top: 0; font-size: 1.3rem; color: #333; display: flex; align-items: center; gap: 10px; }
-        .compare-card ul { padding-left: 20px; margin-bottom: 0; line-height: 1.8; }
+        .compare-card ul { padding-left: 20px; margin-bottom: 0; line-height: 1.8; color: #555; }
         
         /* FAQ & Mobile */
-        .faq-item { margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; }
-        .faq-question { background-color: #f8f9fa; padding: 15px; cursor: pointer; font-weight: bold; display: flex; justify-content: space-between; align-items: center; color: #2c3e50; }
-        .faq-answer { padding: 20px; display: none; background-color: #fff; border-top: 1px solid #ddd; color: #555; }
+        .faq-item { margin-bottom: 15px; border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .faq-question { background-color: #fff; padding: 20px; cursor: pointer; font-weight: bold; display: flex; justify-content: space-between; align-items: center; color: #2c3e50; transition: 0.3s; }
+        .faq-question:hover { background-color: #f8f9fa; }
+        .faq-answer { padding: 25px; display: none; background-color: #fcfcfc; border-top: 1px solid #eee; color: #555; line-height: 1.6; }
         .faq-item.active .faq-answer { display: block; }
         .faq-item.active .faq-question { background-color: #007bff; color: white; }
         
-        .sticky-cta { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 10px; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); display: flex; justify-content: space-around; z-index: 1000; display: none; }
+        .sticky-cta { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 10px; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); display: flex; justify-content: space-around; z-index: 1000; display: none; }
         @media (max-width: 768px) { .sticky-cta { display: flex; } .blog-container { padding-bottom: 80px; } .form-grid { grid-template-columns: 1fr; } }
-        .btn-call, .btn-wa { padding: 10px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; color: white; }
+        .btn-call, .btn-wa { padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; color: white; flex: 1; text-align: center; margin: 0 5px; }
         .btn-call { background: #007bff; } .btn-wa { background: #25D366; }
     </style>
 
@@ -169,27 +188,37 @@
 
         <h2 id="calculation">থাই জানালার খরচ ক্যালকুলেটর 🧮</h2>
         <div class="calculator-wrapper">
-            <div class="calculator-header"><i class="fas fa-calculator"></i> জানালার মাপ দিয়ে খরচ বের করুন</div>
-            <div class="form-grid">
-                <div>
-                    <label class="calc-label">উচ্চতা (Height - ft)</label>
-                    <input type="number" id="height" class="calc-input" placeholder="উচ্চতা লিখুন (যেমন: 4.5)">
-                </div>
-                <div>
-                    <label class="calc-label">চওড়া (Width - ft)</label>
-                    <input type="number" id="width" class="calc-input" placeholder="চওড়া লিখুন (যেমন: 5)">
-                </div>
-                <div style="grid-column: span 2;">
-                    <label class="calc-label">ব্র্যান্ড ও কোয়ালিটি বেছে নিন</label>
-                    <select id="material" class="calc-select">
-                        <option value="450">বাজেট (Chung Hua / Max) - 450tk/sqft</option>
-                        <option value="520">স্ট্যান্ডার্ড (KAI 1.2mm) - 520tk/sqft (সেরা মান)</option>
-                        <option value="600">প্রিমিয়াম (KAI 1.5mm) - 600tk/sqft (সবচেয়ে মজবুত)</option>
-                    </select>
-                </div>
-                <button onclick="calculateCost()" class="calc-btn">খরচ দেখুন <i class="fas fa-arrow-right"></i></button>
+            <div class="calc-top-bar">
+                <h3><i class="fas fa-calculator"></i> Cost Estimator</h3>
+                <p style="margin: 5px 0 0 0; font-size: 0.9rem; opacity: 0.9;">নিজের জানালার খরচ নিজেই হিসাব করুন</p>
             </div>
-            <div id="result" class="result-display"></div>
+            
+            <div class="calc-body">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label class="calc-label">উচ্চতা (Height - ft)</label>
+                        <i class="fas fa-arrows-alt-v"></i>
+                        <input type="number" id="height" class="calc-input" placeholder="যেমন: 4.5">
+                    </div>
+                    <div class="input-group">
+                        <label class="calc-label">চওড়া (Width - ft)</label>
+                        <i class="fas fa-arrows-alt-h"></i>
+                        <input type="number" id="width" class="calc-input" placeholder="যেমন: 5">
+                    </div>
+                    <div class="input-group" style="grid-column: span 2;">
+                        <label class="calc-label">কোয়ালিটি ও বাজেট</label>
+                        <i class="fas fa-layer-group"></i>
+                        <select id="material" class="calc-select">
+                            <option value="450">বাজেট (Chung Hua / Max) - 450tk/sqft</option>
+                            <option value="520">স্ট্যান্ডার্ড (KAI 1.2mm) - 520tk/sqft (সেরা মান)</option>
+                            <option value="600">প্রিমিয়াম (KAI 1.5mm) - 600tk/sqft (মজবুত)</option>
+                        </select>
+                    </div>
+                    <button onclick="calculateCost()" class="calc-btn">খরচ দেখুন <i class="fas fa-arrow-right"></i></button>
+                </div>
+                
+                <div id="result" class="result-display"></div>
+            </div>
         </div>
 
         <h2 id="aluminum-price">অ্যালুমিনিয়াম সেকশনের দাম (Aluminum Profile Price List)</h2>
@@ -348,10 +377,9 @@
                 
                 resultBox.style.display = 'block';
                 resultBox.innerHTML = 
-                    "<div style='font-size:1.5rem; color:#00bcd4; margin-bottom:5px;'><i class='fas fa-check-circle'></i> ফলাফল</div>" +
-                    "মোট সাইজ: " + area.toFixed(2) + " sqft<br>" +
-                    "<span style='font-size:1.6rem; color:#d35400;'>আনুমানিক খরচ: " + total.toLocaleString() + " টাকা</span><br>" +
-                    "<span style='font-size:0.9rem; font-weight:normal; color:#666;'>(মজুরি ও মালামাল সহ)</span>";
+                    "<div style='font-size:1.2rem; color:#888; margin-bottom:10px;'>আপনার এস্টিমেট রেডি!</div>" +
+                    "<div style='font-size:2rem; font-weight:bold; color:#00b894; line-height:1;'>৳ " + total.toLocaleString() + "</div>" +
+                    "<div style='margin-top:5px; font-size:0.9rem; color:#636e72;'>মোট সাইজ: " + area.toFixed(2) + " sqft</div>";
             } else {
                 alert("দয়া করে সঠিক উচ্চতা এবং চওড়া লিখুন (0 বা ঋণাত্মক সংখ্যা হবে না)।");
             }
