@@ -3440,3 +3440,56 @@ footer {
         font-size: 18px !important;
     }
 }
+/* MOBILE RESPONSIVE FIXES */
+@media only screen and (max-width: 600px) {
+    
+    /* 1. Hero Section Text Fix */
+    .hero-content h1 {
+        font-size: 1.8rem !important; /* মোবাইলে টাইটেল ছোট হবে */
+        line-height: 1.4 !important;
+        padding: 0 10px;
+    }
+    .hero-content p {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+        padding: 0 5px;
+        text-align: justify; /* প্যারাগ্রাফ সুন্দরভাবে সমান হবে */
+    }
+
+    /* 2. Global Text Adjustment for Bangla */
+    body, p, li {
+        font-size: 16px !important; /* বাংলা লেখা ছোট মনে হলে এটা ফিক্স করবে */
+        line-height: 1.7 !important; /* লাইনগুলোর মাঝে ফাঁকা বাড়বে */
+    }
+
+    /* 3. Section Heading Fix */
+    h2 {
+        font-size: 1.5rem !important;
+        line-height: 1.4;
+    }
+    h3 {
+        font-size: 1.2rem !important;
+    }
+
+    /* 4. Container Padding (সাইডে লেগে থাকবে না) */
+    .container, .hero-content {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        width: 100% !important;
+    }
+
+    /* 5. Table Scrolling (যদি প্রাইস লিস্ট টেবিল থাকে) */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    /* 6. Button Adjustment */
+    .btn-hero, .btn-service {
+        width: 100%; /* বাটন মোবাইলে ফুল উইডথ হবে */
+        display: block;
+        margin: 10px 0 !important;
+        text-align: center;
+    }
+}
