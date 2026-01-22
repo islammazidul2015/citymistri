@@ -1,63 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.citymistri.xyz/</loc>
-    <lastmod>2026-01-20</lastmod>
-    <priority>1.00</priority>
-  </url>
-  <url>
-    <loc>https://www.citymistri.xyz/index.html</loc>
-    <lastmod>2026-01-20</lastmod>
-    <priority>0.80</priority>
-  </url>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <url>
-    <loc>https://www.citymistri.xyz/thai-glass-aluminum-price-bangladesh-2026.html</loc>
-    <lastmod>2026-01-20</lastmod>
-    <priority>0.90</priority>
-  </url>
+<url>
+  <loc>https://www.citymistri.xyz/</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/index.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/contact.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.90</priority>
+</url>
 
-  <url>
-    <loc>https://www.citymistri.xyz/folding-door.html</loc>
-    <lastmod>2026-01-20</lastmod>
-    <priority>0.90</priority>
-  </url>
+<url>
+  <loc>https://www.citymistri.xyz/sheba-alternative.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.95</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/guide-aluminum-folding-door.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/thai-glass-aluminum-price-bangladesh-2026.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.90</priority>
+</url>
 
-  <url>
-    <loc>https://www.citymistri.xyz/mirror-wall.html</loc>
-    <lastmod>2026-01-20</lastmod>
-    <priority>0.90</priority>
-  </url>
+<url>
+  <loc>https://www.citymistri.xyz/folding-door.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/mirror-wall.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/repair-service.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/shower-enclosure.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/services.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/office-partition.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.80</priority>
+</url>
 
-  <url>
-    <loc>https://www.citymistri.xyz/repair-service.html</loc>
-    <lastmod>2026-01-20</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://www.citymistri.xyz/services.html</loc>
-    <lastmod>2026-01-20</lastmod>
-    <priority>0.80</priority>
-  </url>
+<url>
+  <loc>https://www.citymistri.xyz/blog.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/blog-post-1.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/blog-post-2.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/blog-post-3.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/blog-post-4.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/blog-post-5.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/blog-post-6.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.70</priority>
+</url>
 
-  <url>
-    <loc>https://www.citymistri.xyz/contact.html</loc>
-    <lastmod>2026-01-20</lastmod>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://www.citymistri.xyz/about.html</loc>
-    <lastmod>2026-01-20</lastmod>
-    <priority>0.60</priority>
-  </url>
-  <url>
-    <loc>https://www.citymistri.xyz/portfolio.html</loc>
-    <lastmod>2026-01-20</lastmod>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://www.citymistri.xyz/blog.html</loc>
-    <lastmod>2026-01-20</lastmod>
-    <priority>0.60</priority>
-  </url>
+<url>
+  <loc>https://www.citymistri.xyz/about.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/portfolio.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/offers.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.60</priority>
+</url>
+
+<url>
+  <loc>https://www.citymistri.xyz/dhaka.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/chittagong.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.citymistri.xyz/sylhet.html</loc>
+  <lastmod>2026-01-23</lastmod>
+  <priority>0.60</priority>
+</url>
+
 </urlset>
