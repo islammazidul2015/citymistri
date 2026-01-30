@@ -59,17 +59,42 @@
     </script>
 
     <style>
-        .hero-folding {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/folding-door-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
+        /* --- NEW HERO SECTION STYLE (IMAGE TOP, TEXT BOTTOM) --- */
+        .hero-wrapper {
+            background: #fff;
+            border-bottom: 1px solid #eee;
         }
-        .hero-folding h1 { font-size: 2.5rem; margin-bottom: 20px; text-shadow: 2px 2px 4px black; line-height: 1.3; }
-        
-        /* --- SMART TABLE STYLE (DESKTOP) --- */
+        .hero-image-box {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            background: #000; /* Loading bg */
+        }
+        .hero-image-box img {
+            width: 100%;
+            height: auto;
+            max-height: 500px; /* ডেস্কটপে খুব বেশি লম্বা হবে না */
+            display: block;
+            object-fit: cover; /* ছবি সুন্দরভাবে ফিট হবে */
+        }
+        .hero-content-box {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+        }
+        .hero-content-box h1 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        .hero-content-box p {
+            color: #555;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        /* --- PRICE TABLE STYLE --- */
         .price-table-container { margin: 40px 0; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); overflow: hidden; }
         .price-table { width: 100%; border-collapse: collapse; }
         .price-table th { background: #004085; color: white; padding: 15px; text-align: left; }
@@ -92,28 +117,17 @@
 
         /* --- MOBILE RESPONSIVE RULES --- */
         @media(max-width: 768px) {
-            .hero-folding h1 { font-size: 1.8rem; }
+            /* Hero Mobile Adjustments */
+            .hero-content-box { padding: 30px 15px; }
+            .hero-content-box h1 { font-size: 1.6rem; }
             
-            /* MOBILE CARD VIEW FOR TABLE */
-            .price-table thead { display: none; } /* Hide Header */
+            /* Table Card View */
+            .price-table thead { display: none; }
             .price-table, .price-table tbody, .price-table tr, .price-table td { display: block; width: 100%; }
             .price-table tr { margin-bottom: 20px; border: 1px solid #ddd; border-radius: 10px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); padding: 10px; }
             .price-table td { text-align: right; padding: 10px; border-bottom: 1px solid #eee; position: relative; padding-left: 50%; }
             .price-table td:last-child { border-bottom: none; }
-            
-            /* ADD LABELS BEFORE DATA */
-            .price-table td::before { 
-                content: attr(data-label); 
-                position: absolute; 
-                left: 10px; 
-                width: 45%; 
-                padding-right: 10px; 
-                white-space: nowrap; 
-                text-align: left; 
-                font-weight: bold; 
-                color: #555; 
-            }
-            .price-tag { font-size: 1.1rem; }
+            .price-table td::before { content: attr(data-label); position: absolute; left: 10px; width: 45%; padding-right: 10px; white-space: nowrap; text-align: left; font-weight: bold; color: #555; }
         }
     </style>
 </head>
@@ -134,16 +148,18 @@
         </div>
     </header>
 
-    <div class="hero-folding">
-        <div class="container">
+    <div class="hero-wrapper">
+        <div class="hero-image-box">
+            <img src="images/folding-door-bg.jpg" alt="Luxury Aluminum Folding Door Design in Dhaka">
+        </div>
+        <div class="hero-content-box container">
             <h1>EDF & Max Aluminum Folding Door Price in Bangladesh 2026</h1>
-            <p style="font-size: 1.3rem;">Premium Kinglong Fittings & 10mm Tempered Glass.<br>Luxury Solutions for Modern Homes & Offices.</p>
-            <br>
-            <a href="#price-table" class="btn-hero" style="background: #ffc107; color: #000; font-weight: bold;">Check New Price List</a>
+            <p>Premium Kinglong Fittings & 10mm Tempered Glass.<br>Luxury Solutions for Modern Homes & Offices.</p>
+            <a href="#price-table" class="btn-hero" style="background: #ffc107; color: #000; font-weight: bold; display: inline-block; padding: 12px 25px; border-radius: 5px; text-decoration: none;">Check New Price List</a>
         </div>
     </div>
 
-    <div class="container" style="padding: 50px 20px;">
+    <div class="container" style="padding: 20px;">
         
         <p>
             Are you looking for a luxury <strong>Folding Glass Door</strong> with premium specifications? 
@@ -187,7 +203,6 @@
                         <td data-label="Glass Spec">10mm Tempered Glass</td>
                         <td data-label="Price (Per Sft)"><span class="price-tag">৳1,950</span></td>
                     </tr>
-                    
                     <tr>
                         <td data-label="Brand Profile"><strong>EDF Aluminum (Premium)</strong></td>
                         <td data-label="Glass Spec">6mm Tempered Glass</td>
