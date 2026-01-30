@@ -118,72 +118,71 @@
         /* --- MOBILE RESPONSIVE RULES --- */
         @media(max-width: 768px) {
             /* Hero Mobile Adjustments */
-            .hero-content-box { padding: 25px 15px; }
+            .hero-content-box { padding: 20px 15px; text-align: center; }
             .hero-content-box h1 { font-size: 1.5rem; }
             
-            /* Table Card View Fix (Centered & Balanced) */
+            /* --- FORCE CENTER CARD VIEW --- */
             .price-table-container {
+                display: block;
+                width: 100%;
                 overflow: visible;
+                padding: 10px 0;
                 background: transparent;
                 box-shadow: none;
-                margin: 20px auto; /* কন্টেইনার মাঝে থাকবে */
-                padding: 0 10px; /* ডানে-বামে একটু জায়গা */
             }
 
-            .price-table { 
-                display: block; 
-                width: 100%; 
+            .price-table, .price-table tbody {
+                display: block;
+                width: 100%;
             }
             
-            .price-table thead { display: none; }
-            .price-table tbody, .price-table tr, .price-table td { display: block; width: 100%; }
-            
-            .price-table tr { 
-                margin: 0 auto 20px auto; /* কার্ড মাঝখানে থাকবে */
-                border: 1px solid #e0e0e0; 
-                border-radius: 12px; 
-                background: #fff; 
-                box-shadow: 0 4px 12px rgba(0,0,0,0.06); 
-                padding: 15px; 
-                max-width: 100%; /* স্ক্রিনের বাইরে যাবে না */
+            .price-table thead { display: none; } /* হেডলাইন হাইড */
+
+            .price-table tr {
+                display: block;
+                /* কার্ডের সাইজ স্ক্রিনের ৯০% হবে, যাতে দুই পাশে জায়গা থাকে */
+                width: 90%; 
+                max-width: 350px; /* কার্ড খুব বেশি বড় হবে না */
+                margin: 0 auto 20px auto; /* ⚠️ এই লাইনটি কার্ড মাঝখানে রাখবে */
+                background: #fff;
+                border: 1px solid #e1e1e1;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+                padding: 15px;
             }
-            
-            .price-table td { 
-                padding: 12px 5px; /* টেক্সটের পাশে একটু স্পেস */
-                border-bottom: 1px solid #f1f1f1; 
-                position: relative; 
-                padding-left: 0;
-                display: flex; 
-                justify-content: space-between; /* দুই প্রান্তে সমান দূরত্ব */
+
+            .price-table td {
+                display: flex;
+                justify-content: space-between; /* লেখা দুই প্রান্তে ছড়াবে */
                 align-items: center;
-                text-align: left;
-            }
-            
-            .price-table td:last-child { border-bottom: none; }
-            
-            /* লেবেল (বাম পাশ - Brand/Glass) */
-            .price-table td::before { 
-                content: attr(data-label); 
-                font-weight: 600; 
-                color: #555; 
-                font-size: 0.95rem;
-                flex: 1; /* বাম পাশ জায়গা নিবে */
-                text-align: left;
-                padding-right: 10px;
+                border-bottom: 1px solid #eee;
+                padding: 12px 0;
+                text-align: right;
             }
 
-            /* ভ্যালু (ডান পাশ - Price) */
-            .price-table td > span, .price-table td {
-                 font-weight: 600;
-                 color: #333;
-                 text-align: right;
-                 flex: 1; /* ডান পাশ জায়গা নিবে */
+            .price-table td:last-child { border-bottom: none; }
+
+            /* বাম পাশের লেখা (Label) */
+            .price-table td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: #555;
+                font-size: 0.9rem;
+                text-align: left;
+                flex: 1; /* বামে জায়গা নেবে */
             }
-            
-            .price-tag { 
-                font-size: 1.1rem; 
+
+            /* ডান পাশের লেখা (Price/Value) */
+            .price-table td span, .price-table td {
+                font-weight: bold;
+                color: #333;
+                text-align: right;
+                flex: 1; /* ডানে জায়গা নেবে */
+            }
+
+            .price-tag {
                 color: #d32f2f;
-                display: block; /* প্রাইস ট্যাগ ব্লক লেভেলে */
+                font-size: 1.1rem;
             }
         }
     </style>
