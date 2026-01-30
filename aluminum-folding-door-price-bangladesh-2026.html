@@ -118,19 +118,21 @@
         /* --- MOBILE RESPONSIVE RULES --- */
         @media(max-width: 768px) {
             /* Hero Mobile Adjustments */
-            .hero-content-box { padding: 30px 15px; }
-            .hero-content-box h1 { font-size: 1.6rem; }
+            .hero-content-box { padding: 25px 15px; }
+            .hero-content-box h1 { font-size: 1.5rem; }
             
-            /* Table Card View Fix */
+            /* Table Card View Fix (Overflow issue solved) */
             .price-table-container {
-                overflow: visible; /* কন্টেইনার যেন কেটে না যায় */
-                box-shadow: none; /* মোবাইলে শ্যাডো দরকার নেই */
+                overflow: hidden; /* বাইরে যাওয়া আটকাতে */
+                background: transparent;
+                box-shadow: none;
+                margin: 20px 0;
             }
 
             .price-table { 
                 display: block; 
                 width: 100%; 
-                min-width: 0; /* ⚠️ এই লাইনটিই আসল ফিক্স (আগে 600px ছিল) */
+                min-width: 0; 
             }
             
             .price-table thead { display: none; }
@@ -139,36 +141,46 @@
             .price-table tr { 
                 margin-bottom: 20px; 
                 border: 1px solid #ddd; 
-                border-radius: 10px; 
+                border-radius: 12px; /* একটু গোল শেপ */
                 background: #fff; 
-                box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
-                padding: 15px; /* একটু স্পেস বাড়ানো হলো */
+                box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* সুন্দর শ্যাডো */
+                padding: 15px; 
             }
             
             .price-table td { 
-                text-align: right; 
-                padding: 10px 0; /* ডানে-বামে প্যাডিং কমানো হলো */
-                border-bottom: 1px solid #eee; 
+                text-align: left; /* বাম দিক থেকে শুরু হবে */
+                padding: 12px 0; 
+                border-bottom: 1px solid #f1f1f1; 
                 position: relative; 
-                padding-left: 50%; 
-                display: flex; /* ফ্লেক্সবক্স দিয়ে এলাইনমেন্ট ঠিক করা */
-                justify-content: space-between; /* দুই প্রান্তে ছড়িয়ে দেওয়া */
+                padding-left: 0; /* ❌ আগের সমস্যা ছিল এখানে (50% ছিল), এখন 0 */
+                display: flex; 
+                justify-content: space-between; /* নাম বামে, দাম ডানে */
                 align-items: center;
+                flex-wrap: wrap; /* লেখা বড় হলে নিচে নামবে, বাইরে যাবে না */
             }
             
             .price-table td:last-child { border-bottom: none; }
             
-            /* লেবেল ফিক্স */
+            /* লেবেল (বাম পাশ) */
             .price-table td::before { 
                 content: attr(data-label); 
-                position: static; /* অ্যাবসলিউট পজিশন সরিয়ে স্ট্যাটিক করা হলো */
+                position: static; 
                 width: auto;
-                font-weight: bold; 
+                font-weight: 600; 
                 color: #555; 
-                text-align: left;
+                font-size: 0.95rem;
+                flex-basis: 40%; /* বামের অংশ ৪০% জায়গা নেবে */
+            }
+
+            /* ভ্যালু (ডান পাশ) */
+            .price-table td > span, .price-table td {
+                 font-weight: 500;
+                 color: #333;
+                 text-align: right;
+                 flex-basis: 55%; /* ডানের অংশ ৫৫% জায়গা নেবে */
             }
             
-            .price-tag { font-size: 1.1rem; }
+            .price-tag { font-size: 1.1rem; color: #d32f2f; }
         }
     </style>
 </head>
