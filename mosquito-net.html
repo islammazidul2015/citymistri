@@ -174,7 +174,7 @@
             <p style="text-align: center; font-size: 0.9rem;">Enter your window size to get an estimated cost.</p>
             <div class="form-group"><label>Window Width (ফিট):</label><input type="number" id="netWidth" class="form-control" placeholder="Example: 4"></div>
             <div class="form-group"><label>Window Height (ফিট):</label><input type="number" id="netHeight" class="form-control" placeholder="Example: 4"></div>
-            <div class="form-group"><label>Select Net Type (নেটের ধরণ):</label><select id="netType" class="form-control"><option value="180">Velcro Fiber Net (Magic Mesh) - ৳180/sqft</option><option value="480">Thai Aluminum Frame Net - ৳480/sqft</option></select></div>
+            <div class="form-group"><label>Select Net Type (নেটের ধরণ):</label><select id="netType" class="form-control"><option value="120">Velcro Fiber Net (Magic Fiber Net) - ৳120/sqft</option><option value="480">Thai Aluminum Frame Net - ৳480/sqft</option></select></div>
             <button onclick="calculateNetPrice()" class="btn-calc">Calculate Total Cost</button>
             <div id="resultBox" class="result-box"><p>Total Area: <span id="totalArea">0</span> sq.ft</p><p>Estimated Cost:</p><div id="totalPrice" class="result-price">৳0</div><small>*Minimum order quantity applies. Price includes installation.</small><br><br><a href="https://wa.me/8801997426656" class="btn-hero" style="background: #25D366; color: white; padding: 5px 15px; font-size: 0.9rem;">Order via WhatsApp</a></div>
         </div>
@@ -233,22 +233,44 @@
         </ul>
 
         <h2>Comparison: Velcro vs Aluminum Net</h2>
-        <table class="comp-table">
-            <thead>
-                <tr>
-                    <th>Feature</th>
-                    <th>Velcro Fiber Net (ম্যাজিক মেশ)</th>
-                    <th>Thai Aluminum Frame Net</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>Price</strong></td><td>Low (৳160 - ৳220 / sqft)</td><td>High (৳450 - ৳600 / sqft)</td></tr>
-                <tr><td><strong>Material</strong></td><td>Fiber Glass + Tape</td><td>Aluminum + SS Net</td></tr>
-                <tr><td><strong>Installation</strong></td><td>Paste with Tape</td><td>Requires Drilling & Screws</td></tr>
-                <tr><td><strong>Durability</strong></td><td>2-3 Years</td><td>10+ Years (Lifetime)</td></tr>
-                <tr><td><strong>Best For</strong></td><td>Rented House (ভাড়া বাসা)</td><td>Own Apartment (নিজের বাসা)</td></tr>
-            </tbody>
-        </table>
+        <div class="price-table-container">
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Feature</th>
+                        <th style="width: 37%;">Velcro Fiber Net (ম্যাজিক মেশ)</th>
+                        <th style="width: 37%;">Thai Aluminum Frame Net</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Feature">Price</td>
+                        <td data-label="Velcro Net">Low (৳80 - ৳120 / sqft)</td>
+                        <td data-label="Aluminum Net" style="font-weight: bold; color: #d32f2f;">High (৳370 - ৳500 / sqft)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Feature">Material</td>
+                        <td data-label="Velcro Net">Fiber Glass + Tape</td>
+                        <td data-label="Aluminum Net">Aluminum + SS Net</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Feature">Installation</td>
+                        <td data-label="Velcro Net">Paste with Tape</td>
+                        <td data-label="Aluminum Net">Requires Drilling & Screws</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Feature">Durability</td>
+                        <td data-label="Velcro Net">3-5 Years</td>
+                        <td data-label="Aluminum Net">10+ Years (Lifetime)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Feature">Best For</td>
+                        <td data-label="Velcro Net">Rented House (ভাড়া বাসা)</td>
+                        <td data-label="Aluminum Net">Own Apartment (নিজের বাসা)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <h2>Why Install Mosquito Net in Dhaka?</h2>
         <p>
