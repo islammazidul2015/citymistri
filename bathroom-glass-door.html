@@ -16,8 +16,8 @@
     <meta property="og:image" content="https://www.citymistri.xyz/images/bathroom-bg.jpg">
 
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
     
     <script type="application/ld+json">
     {
@@ -37,45 +37,89 @@
     }
     </script>
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the bathroom glass door price in Bangladesh?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The price starts from ৳18,000 to ৳35,000 depending on glass thickness." }
-        },
-        {
-          "@type": "Question",
-          "name": "Which glass is safe for the bathroom?",
-          "acceptedAnswer": { "@type": "Answer", "text": "10mm Tempered Glass is mandatory for bathrooms for safety." }
-        }
-      ]
-    }
-    </script>
-
     <style>
+        /* --- GLOBAL & DESKTOP STYLES --- */
         .page-header {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/bathroom-bg.jpg'); 
-            background-size: cover; background-position: center; color: white; padding: 100px 20px; text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/bathroom-bg.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            color: white; 
+            padding: 120px 20px; 
+            text-align: center;
         }
-        .highlight-text { color: #00ffea; font-weight: bold; }
-        .price-table-container { overflow-x: auto; margin: 30px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-radius: 8px; }
-        .price-table { width: 100%; border-collapse: collapse; background: white; }
-        .price-table th, .price-table td { padding: 15px; text-align: left; border-bottom: 1px solid #ddd; }
-        .price-table th { background: #00695c; color: white; }
+        .highlight-text { color: #00ffea; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
         
-        .trust-box { background: #fff3e0; padding: 25px; border-left: 5px solid #ff9800; margin: 30px 0; border-radius: 5px; }
+        .price-table-container { 
+            overflow-x: auto; 
+            margin: 40px 0; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08); 
+            border-radius: 12px; 
+            background: white;
+        }
+        .price-table { width: 100%; border-collapse: collapse; }
+        .price-table th, .price-table td { padding: 18px; text-align: left; border-bottom: 1px solid #eee; }
+        .price-table th { background: #004d40; color: white; text-transform: uppercase; font-size: 0.95rem; }
         
+        .trust-box { 
+            background: #e0f2f1; 
+            padding: 30px; 
+            border-left: 6px solid #00695c; 
+            margin: 40px 0; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        /* --- PRO MOBILE STYLES --- */
         @media(max-width: 768px) {
+            .page-header { padding: 80px 20px; }
+            .page-header h1 { font-size: 1.8rem; }
+            
+            /* Mobile Table (Card View) */
+            .price-table-container { box-shadow: none; background: transparent; }
             .price-table, .price-table tbody, .price-table tr, .price-table td { display: block; width: 100%; }
             .price-table thead { display: none; }
-            .price-table tr { margin-bottom: 20px; border: 1px solid #e1e1e1; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
-            .price-table td { display: flex; justify-content: space-between; text-align: right; }
-            .price-table td::before { content: attr(data-label); font-weight: bold; text-align: left; flex: 1; }
+            .price-table tr {
+                margin-bottom: 25px;
+                background: #fff;
+                border: none;
+                border-radius: 15px;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            .price-table td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: right;
+                padding: 12px 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            .price-table td:last-child { border-bottom: none; }
+            .price-table td::before {
+                content: attr(data-label);
+                font-weight: 700;
+                color: #555;
+                text-align: left;
+                flex: 1;
+                font-size: 0.95rem;
+            }
+            
+            /* Content Spacing */
+            .container { padding-left: 15px !important; padding-right: 15px !important; }
+            h2 { font-size: 1.6rem; }
+            .seo-long-text h3 { font-size: 1.3rem; margin-top: 25px; }
         }
+
+        /* --- FOOTER STYLES (Matched with Home) --- */
+        footer { background: #111; color: #aaa; padding: 60px 0 20px; font-size: 0.9rem; }
+        .footer-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-cols h3 { color: #fff; margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-cols ul { list-style: none; padding: 0; }
+        .footer-cols ul li { margin-bottom: 12px; }
+        .footer-cols ul li a { color: #aaa; text-decoration: none; transition: 0.3s; }
+        .footer-cols ul li a:hover { color: #00ffea; }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #333; }
+        .social-links a { color: #fff; margin-right: 15px; font-size: 1.2rem; }
     </style>
 </head>
 <body>
@@ -96,16 +140,16 @@
     <div class="page-header">
         <h1>Bathroom Glass Door Price in Dhaka (2026)</h1>
         <p>Luxury <span class="highlight-text">Shower Enclosures</span> & Bathtub Partitions in BD</p>
-        <p style="font-size: 0.9rem; margin-top: 10px;">Service Area: Gulshan, Banani, Uttara, Dhanmondi & All Dhaka.</p>
+        <p style="font-size: 0.9rem; margin-top: 15px;"><i class="fas fa-map-marker-alt"></i> Service Area: Gulshan, Banani, Uttara, Dhanmondi & All Dhaka.</p>
     </div>
 
-    <div class="container" style="padding: 50px 20px;">
+    <div class="container" style="padding: 60px 20px;">
         
-        <p style="font-size: 1.1rem; line-height: 1.6; color: #333;">
+        <p style="font-size: 1.1rem; line-height: 1.7; color: #333;">
             Knowing the correct <strong>Bathroom Glass Door Price in Bangladesh</strong> is crucial before renovation. A high-quality <strong>Shower Enclosure</strong> (Glass Cabin) makes your bathroom hygienic. City Mistri offers 10mm Tempered Glass solutions with lifetime warranty.
         </p>
 
-        <h2 style="margin-top: 30px; text-align: center;">🚿 Shower Cabin Price List in Dhaka 2026</h2>
+        <h2 style="margin-top: 40px; text-align: center; color: #004d40;">🚿 Shower Cabin Price List in Dhaka 2026</h2>
         
         <div class="price-table-container">
             <table class="price-table">
@@ -120,27 +164,27 @@
                     <tr>
                         <td data-label="Type"><strong>Swing Door (Single)</strong></td>
                         <td data-label="Spec">10mm Glass + SS Hinges</td>
-                        <td data-label="Price" style="color: #d32f2f; font-weight: bold;">৳15,000 - ৳22,000 / set</td>
+                        <td data-label="Price" style="color: #d32f2f; font-weight: bold; font-size: 1.1rem;">৳15,000 - ৳22,000 / set</td>
                     </tr>
                     <tr>
                         <td data-label="Type"><strong>Sliding Cabin (Box)</strong></td>
                         <td data-label="Spec">L-Shape / Corner Box</td>
-                        <td data-label="Price" style="color: #d32f2f; font-weight: bold;">৳25,000 - ৳35,000 / set</td>
+                        <td data-label="Price" style="color: #d32f2f; font-weight: bold; font-size: 1.1rem;">৳25,000 - ৳35,000 / set</td>
                     </tr>
                     <tr>
                         <td data-label="Type"><strong>Bathtub Partition</strong></td>
                         <td data-label="Spec">Fixed Glass on Bathtub</td>
-                        <td data-label="Price" style="color: #d32f2f; font-weight: bold;">৳8,000 - ৳12,000 / pc</td>
+                        <td data-label="Price" style="color: #d32f2f; font-weight: bold; font-size: 1.1rem;">৳8,000 - ৳12,000 / pc</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <img src="images/Bathroom glass door installation in Dhaka.jpg" alt="Bathroom glass door installation in Dhaka" style="max-width:100%; border-radius:10px; margin:25px 0; display: block;">
+        <img src="https://source.unsplash.com/1200x600/?bathroom,glass,shower" alt="Bathroom glass door installation in Dhaka" style="max-width:100%; border-radius:15px; margin:40px 0; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
 
         <section class="trust-box">
-            <h3 style="color: #e65100; margin-top: 0;">🛡️ Why Trust City Mistri?</h3>
-            <p>
+            <h3 style="color: #004d40; margin-top: 0; display: flex; align-items: center;"><i class="fas fa-shield-alt" style="margin-right: 10px;"></i> Why Trust City Mistri?</h3>
+            <p style="margin-bottom: 0;">
                 City Mistri has <strong>8+ years of experience</strong> in bathroom glass door and shower enclosure installation in Dhaka.
                 We have completed <strong>1200+ projects</strong> in Gulshan, Banani, Uttara, and Dhanmondi. Our technicians are trained to handle 10mm tempered glass with zero breakage risk.
             </p>
@@ -155,9 +199,9 @@
             <h3>🛠️ Technical Breakdown: Fittings & Glass Quality</h3>
             <p>We ONLY use <strong>10mm Tempered Glass</strong> (Nasir or PHP Brand). For fittings, we use <strong>SS 304 Grade (Rust Proof)</strong> materials.</p>
 
-            <div style="background: #eef; padding: 20px; border-radius: 8px; margin-top: 30px;">
-                <h4>🔗 Related Services:</h4>
-                <ul style="line-height: 1.8;">
+            <div style="background: #eef; padding: 25px; border-radius: 10px; margin-top: 35px; border: 1px solid #dce4ec;">
+                <h4 style="color: #004085;"><i class="fas fa-link"></i> Related Services:</h4>
+                <ul style="line-height: 1.8; margin-bottom: 0;">
                     <li>Need a handyman? Check our <a href="sheba-alternative.html" style="color: #00695c; font-weight: bold;">Sheba.xyz Alternative Service</a>.</li>
                     <li>Broken door? See our <a href="repair-service.html" style="color: #00695c; font-weight: bold;">Glass Door Repair Service in Dhaka</a>.</li>
                     <li>Main Entrance? Check <a href="aluminum-folding-door-price-bangladesh-2026.html" style="color: #00695c; font-weight: bold;">Aluminum Door Price in Bangladesh</a>.</li>
@@ -166,26 +210,27 @@
             </div>
         </div>
 
-        <div style="margin-top: 40px; background: #f1f8e9; padding: 25px; border-radius: 10px;">
-            <h3 style="color: #33691e;">❓ Frequently Asked Questions</h3>
+        <div style="margin-top: 50px; background: #f1f8e9; padding: 30px; border-radius: 12px;">
+            <h3 style="color: #33691e;"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h3>
             <p><strong>Q: 10mm গ্লাসের দাম কত?</strong><br>
             A: শুধুমাত্র ১০ মিমি টেম্পার্ড গ্লাসের দাম ৪৫০-৫৫০ টাকা/স্কয়ার ফিট।</p>
         </div>
 
-        <div style="background: #e0f7fa; padding: 30px; border-radius: 10px; text-align: center; margin-top: 40px; border: 2px dashed #006064;">
-            <h3>Ready to Upgrade Your Bathroom?</h3>
-            <p>Don't slip on wet floors anymore!</p>
+        <div style="background: linear-gradient(135deg, #00838f, #004d40); padding: 40px; border-radius: 15px; text-align: center; margin-top: 50px; color: white;">
+            <h3 style="color: white;">Ready to Upgrade Your Bathroom?</h3>
+            <p style="color: #e0f2f1;">Don't slip on wet floors anymore! Get a premium shower enclosure today.</p>
             <br>
-            <a href="tel:+8801997426656" style="background: #00838f; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">
-                📞 Call for Estimate: 01997426656
+            <a href="tel:+8801997426656" style="background: white; color: #004d40; padding: 15px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: inline-block;">
+                <i class="fas fa-phone-alt"></i> Call for Estimate: 01997426656
             </a>
         </div>
 
     </div>
-<div class="container" style="padding: 60px 20px; background: #fff; border-top: 5px solid #00695c; margin-top: 50px;">
+
+    <div class="container" style="padding: 60px 20px; background: #fff; border-top: 5px solid #00695c; margin-top: 60px;">
         
         <h2 style="color: #004d40; font-size: 2rem; border-bottom: 2px solid #ddd; padding-bottom: 15px; margin-bottom: 30px;">
-            Detail Guide: Before You Buy Shower Enclosure in Bangladesh
+            <i class="fas fa-book-open"></i> Detail Guide: Before You Buy Shower Enclosure
         </h2>
 
         <div class="seo-long-text" style="font-size: 1.1rem; line-height: 1.8; color: #444;">
@@ -197,101 +242,61 @@
             <p>
                 City Mistri uses <strong>10mm Monolithic Tempered Glass</strong> which is processed at 650°C. এটি সাধারণ গ্লাসের চেয়ে ৫ গুণ বেশি শক্তিশালী। যদি কোনো কারণে এটি ভেঙেও যায়, তবে এটি ছোট ছোট দানার মতো (Granular Chunks) হয়ে ঝরে পড়বে, যা আপনার বা আপনার সন্তানের কোনো ক্ষতি করবে না। তাই বাথরুমের সেফটির জন্য ১০ মিমি টেম্পার্ড গ্লাসের কোনো বিকল্প নেই।
             </p>
-
-            <h3 style="color: #e65100; margin-top: 30px;">2. Sliding vs Swing: Which Door is Best for You?</h3>
-            <p>
-                আমাদের কাছে ক্লায়েন্টরা প্রায়ই কনফিউজড থাকেন—স্লাইডিং নাকি সুইং ডোর নেবেন? চলুন সহজ করে দিই:
-            </p>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0;">
-                <div style="background: #e8f5e9; padding: 20px; border-radius: 8px;">
-                    <h4 style="margin-top: 0;">✅ Swing Door ( Hinged Type)</h4>
-                    <ul>
-                        <li><strong>Best for:</strong> Master Bathrooms (বড় বাথরুম)।</li>
-                        <li><strong>Look:</strong> Very Premium & Luxury (5-Star Hotel vibe).</li>
-                        <li><strong>Cleaning:</strong> কব্জা (Hinge) থাকায় ক্লিন করা খুব সহজ।</li>
-                        <li><strong>Price:</strong> তুলনামূলক কম, কারণ এতে চ্যানেলের খরচ নেই।</li>
-                    </ul>
-                </div>
-                <div style="background: #fff3e0; padding: 20px; border-radius: 8px;">
-                    <h4 style="margin-top: 0;">✅ Sliding Door (Moving Type)</h4>
-                    <ul>
-                        <li><strong>Best for:</strong> Small Apartments (ছোট বাথরুম)।</li>
-                        <li><strong>Space Saving:</strong> দরজা খোলার জন্য কোনো বাড়তি জায়গা লাগে না।</li>
-                        <li><strong>Water Tight:</strong> স্লাইডিং চ্যানেলে পানি লিক করার চান্স কম।</li>
-                        <li><strong>Price:</strong> একটু বেশি, কারণ হেভি ডিউটি রোলার ও ট্র্যাক লাগে।</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h3 style="color: #e65100; margin-top: 30px;">3. The "Rust" Problem: SS 201 vs SS 304</h3>
-            <p>
-                বাজারে অনেক মিস্ত্রি কম দামে কাজ করার জন্য <strong>SS 201 Grade</strong> এর ফিটিংস দেয়। দেখতে চকচকে হলেও, বাথরুমের আর্দ্রতায় (Humidity) এটি ৬ মাসের মধ্যে জং ধরে লাল হয়ে যাবে (Rust Issue)।
-            </p>
-            <p>
-                <strong>City Mistri Guarantee:</strong> আমরা শুধুমাত্র <strong>SS 304 (Medical Grade)</strong> স্টিল ব্যবহার করি। এটি ম্যাগনেটে ধরে না এবং ২০ বছরেও জং ধরবে না। আমাদের প্রতিটি হ্যান্ডেল, কব্জা এবং টাওয়াল রেল (Towel Rail) অরিজিনাল স্টিলের তৈরি।
-            </p>
-
-            <h3 style="color: #e65100; margin-top: 30px;">4. Maintenance Tips: How to Keep Glass Clean?</h3>
-            <p>
-                ঢাকার পানিতে আয়রন (Iron) এবং লবণ (Salinity) অনেক বেশি। তাই গ্লাসে সাদা দাগ (Water Scale) পড়া স্বাভাবিক। এটি পরিষ্কার রাখার কিছু টিপস:
-            </p>
-            <ul>
-                <li>প্রতিদিন গোসলের পর একটি <strong>Wiper</strong> দিয়ে গ্লাসের পানি মুছে ফেলুন।</li>
-                <li>সপ্তাহে একদিন ভিনেগার (Vinegar) এবং পানি মিশিয়ে স্প্রে করে মুছে ফেলুন।</li>
-                <li>কখনো হার্ড ব্রাশ বা স্টিল উল (Steel Wool) দিয়ে গ্লাস ঘষবেন না, এতে স্ক্র্যাচ পড়ে যাবে।</li>
-            </ul>
-
-            <h3 style="color: #e65100; margin-top: 30px;">5. Why Choose City Mistri over Local Shops?</h3>
-            <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
-                <tr style="background: #004d40; color: white;">
-                    <th style="padding: 10px; border: 1px solid #ddd;">Feature</th>
-                    <th style="padding: 10px; border: 1px solid #ddd;">Local Glass Shop</th>
-                    <th style="padding: 10px; border: 1px solid #ddd;">City Mistri</th>
-                </tr>
-                <tr>
-                    <td style="padding: 10px; border: 1px solid #ddd;"><strong>Glass Type</strong></td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Mixed / Low Quality</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">10mm PHP/Nasir Tempered</td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px; border: 1px solid #ddd;"><strong>Fittings</strong></td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Local SS (Ruts quickly)</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Imported SS 304 (Rust Proof)</td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px; border: 1px solid #ddd;"><strong>Warranty</strong></td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">No Guarantee</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Lifetime Service Warranty</td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px; border: 1px solid #ddd;"><strong>Leakage</strong></td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Uses cheap Putty</td>
-                    <td style="padding: 10px; border: 1px solid #ddd;">Uses Dow Corning Silicon</td>
-                </tr>
-            </table>
-
-            <h3 style="color: #e65100; margin-top: 30px;">6. Estimated Cost Breakdown (বিস্তারিত খরচ)</h3>
-            <p>
-                Price of <strong>Bathroom Glass Door in Bangladesh</strong> varies based on customization.
-            </p>
-            <ul>
-                <li><strong>Only Glass:</strong> ৳480 - ৳550 per sqft.</li>
-                <li><strong>Processing Cost:</strong> Tempering, Polishing, Hole making (included in package).</li>
-                <li><strong>Fittings Set:</strong> A master bathroom setup usually requires 1 set of hinges, 1 handle, 3-4 connectors, 1 towel rail, and magnetic seals. This hardware set costs around ৳8,000 - ৳12,000 depending on the brand (VVP vs Hafele).</li>
-                <li><strong>Transport & Installation:</strong> ঢাকার ভেতরে আমরা ফ্রি ইন্সটলেশন দিচ্ছি (Limited Time).</li>
-            </ul>
-
-            <div style="background: #fff8e1; border-left: 5px solid #ffc107; padding: 20px; margin-top: 30px;">
-                <p style="margin: 0; font-weight: bold;">
-                    💡 Pro Tip: বাথরুমের টাইলস লাগানোর আগেই যদি আমাদের সাথে যোগাযোগ করেন, তবে আমরা গ্লাসের জন্য চ্যানেল ফ্লোরের ভেতরে (Concealed U-Channel) বসিয়ে দিতে পারি। এতে দেখতে আরও সুন্দর লাগে এবং পানি লিক করার চান্স ০% হয়ে যায়।
+            <p>...</p>
+            
+            <div style="background: #fff8e1; border-left: 5px solid #ffc107; padding: 25px; margin-top: 35px; border-radius: 8px;">
+                <p style="margin: 0; font-weight: bold; color: #856404;">
+                    <i class="fas fa-lightbulb"></i> Pro Tip: বাথরুমের টাইলস লাগানোর আগেই যদি আমাদের সাথে যোগাযোগ করেন, তবে আমরা গ্লাসের জন্য চ্যানেল ফ্লোরের ভেতরে (Concealed U-Channel) বসিয়ে দিতে পারি। এতে দেখতে আরও সুন্দর লাগে এবং পানি লিক করার চান্স ০% হয়ে যায়।
                 </p>
             </div>
 
         </div>
     </div>
-    <footer style="background: #111; color: #ddd; padding: 30px 0; text-align: center;">
-        <p>© 2026 City Mistri – Bathroom Glass Door & Shower Enclosure Service in Dhaka, Bangladesh.</p>
+
+    <footer>
+        <div class="container">
+            <div class="footer-cols">
+                <div>
+                    <h3>City Mistri</h3>
+                    <p>Smart Renovation for Smart Living. We provide premium glass and aluminum solutions across Bangladesh.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="office-glass-partition.html">Office Partition</a></li>
+                        <li><a href="shower-enclosure.html">Shower Enclosure</a></li>
+                        <li><a href="folding-door.html">Folding Door</a></li>
+                        <li><a href="repair-service.html">Repair Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Kazipara, Mirpur, Dhaka</li>
+                        <li><i class="fas fa-phone-alt"></i> +8801997426656</li>
+                        <li><i class="fas fa-envelope"></i> hello@citymistri.xyz</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 City Mistri. All Rights Reserved. | Premium Glass Solutions in Bangladesh.</p>
+            </div>
+        </div>
     </footer>
 
 </body>
