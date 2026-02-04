@@ -67,8 +67,17 @@
 
     <style>
         /* --- GLOBAL STYLES --- */
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; color: #333; background-color: #f9f9f9; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; color: #333; background-color: #f9f9f9; padding-bottom: 60px; /* Space for sticky footer */ }
         
+        /* HEADER STYLES */
+        header { background: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-link { font-weight: bold; font-size: 1.5rem; text-decoration: none; color: #004d40; display: flex; align-items: center; gap: 10px; }
+        .logo-img { height: 35px; }
+        .nav-links a { text-decoration: none; color: #333; margin-left: 20px; font-weight: 500; font-size: 1rem; transition: 0.3s; }
+        .book-btn { background: #004d40; color: white !important; padding: 10px 20px; border-radius: 50px; font-weight: bold; }
+        .book-btn:hover { background: #00695c; }
+
         .page-header {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/bathroom-bg.jpg'); 
             background-size: cover; 
@@ -100,9 +109,8 @@
             border-radius: 8px; 
         }
 
-        /* --- ✅ 2. FOOTER STYLES (WITH BACKGROUND IMAGE) --- */
+        /* --- ✅ FOOTER STYLES (WITH BACKGROUND IMAGE) --- */
         footer { 
-            /* Footer BG Image added here */
             background: linear-gradient(rgba(0,0,0,0.92), rgba(0,0,0,0.92)), url('images/bathroom-bg.jpg'); 
             background-size: cover; 
             background-position: center;
@@ -111,7 +119,7 @@
             font-size: 0.95rem; 
             margin-top: 50px; 
         }
-        .footer-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .footer-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; padding: 0 20px; max-width: 1200px; margin: 0 auto; }
         .footer-col h3 { color: #fff; margin-bottom: 20px; font-size: 1.2rem; border-bottom: 2px solid #00695c; display: inline-block; padding-bottom: 5px; }
         .footer-col p { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
         .footer-col ul { list-style: none; padding: 0; }
@@ -123,35 +131,38 @@
         .social-links a:hover { background: #00695c; }
 
         /* Float Buttons */
-        .messenger-float { position: fixed; bottom: 90px; right: 20px; background: #0084ff; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1000; text-decoration: none; }
-        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1000; text-decoration: none; }
+        .messenger-float { position: fixed; bottom: 90px; right: 20px; background: #0084ff; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 990; text-decoration: none; }
+        .whatsapp-float { position: fixed; bottom: 150px; right: 20px; background: #25d366; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 990; text-decoration: none; }
 
         /* Mobile Sticky Footer */
         .mobile-sticky-footer { display: none; }
         
-        /* --- ✅ 3. PROFESSIONAL MOBILE VIEW FIXES --- */
+        /* --- ✅ PROFESSIONAL MOBILE VIEW FIXES --- */
         @media(max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 15px; }
+            .nav-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+            .nav-links a { margin: 0; font-size: 0.9rem; }
+            
             .page-header { padding: 80px 20px; }
             .page-header h1 { font-size: 1.8rem; line-height: 1.3; }
             
-            /* TABLE TO CARD TRANSFORMATION */
-            .price-table-container { box-shadow: none; border: none; background: transparent; padding: 0; }
+            /* --- CARD VIEW FOR TABLE --- */
+            .price-table-container { box-shadow: none; border: none; background: transparent; padding: 0; margin: 20px 0; }
             .price-table thead { display: none; }
             .price-table, .price-table tbody, .price-table tr, .price-table td { display: block; width: 100%; }
             
             .price-table tr {
-                margin-bottom: 25px;
+                margin-bottom: 20px;
                 background: white;
                 border-radius: 12px;
                 padding: 20px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Professional Shadow */
-                border: 1px solid #f1f1f1;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Better Shadow */
+                border: 1px solid #e0e0e0;
                 position: relative;
-                overflow: hidden;
             }
-            /* Add a colored strip to each card */
+            /* Green Strip */
             .price-table tr::after {
-                content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: #00695c;
+                content: ''; position: absolute; left: 0; top: 15px; bottom: 15px; width: 5px; background: #00695c; border-radius: 0 5px 5px 0;
             }
             
             .price-table td {
@@ -169,40 +180,36 @@
                 font-weight: 700;
                 color: #555;
                 text-align: left;
-                font-size: 0.85rem;
+                font-size: 0.9rem;
                 text-transform: uppercase;
-                letter-spacing: 0.5px;
             }
             
-            /* Specific Color for Price in Mobile */
-            .price-table td[data-label="Estimated Cost"], 
-            .price-table td[data-label="Price"] {
-                color: #d32f2f !important;
-                font-weight: 800;
-                font-size: 1.1rem;
-            }
+            /* Price Color */
+            .price-table td[data-label="Price"] { color: #d32f2f !important; font-weight: 800; font-size: 1.2rem; }
+            .price-table td[data-label="Estimated Cost"] { color: #d32f2f !important; font-weight: 800; font-size: 1.2rem; }
 
-            /* Footer Adjustments */
-            .whatsapp-float { bottom: 70px; right: 15px; width: 50px; height: 50px; font-size: 24px; }
-            .messenger-float { bottom: 130px; right: 15px; width: 45px; height: 45px; font-size: 20px; }
-            .mobile-sticky-footer { display: block; position: fixed; bottom: 0; left: 0; width: 100%; background: #fff; padding: 10px; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 999; display: flex; justify-content: center; box-sizing: border-box; }
-            .sticky-call-btn { background: #d32f2f; color: white; width: 100%; text-align: center; padding: 12px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 10px; }
+            /* Sticky Footer Button */
+            .mobile-sticky-footer { display: block; position: fixed; bottom: 0; left: 0; width: 100%; background: #fff; padding: 10px; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 999; text-align: center; }
+            .sticky-call-btn { display: block; background: #d32f2f; color: white; width: 95%; margin: 0 auto; text-align: center; padding: 12px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+            
             footer { padding-bottom: 80px; } /* Space for sticky footer */
+            .whatsapp-float { bottom: 80px; right: 15px; }
+            .messenger-float { bottom: 140px; right: 15px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container">
-            <a href="index.html" class="logo-link"><img src="images/favicon.png" alt="City Mistri" class="logo-img"></a>
-            <nav class="primary-navigation">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="office-glass-partition.html">Office Partition</a></li>
-                    <li><a href="contact.html" class="btn-primary">Book Measurement</a></li>
-                </ul>
-            </nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="images/favicon.png" alt="City Mistri" class="logo-img"> City Mistri
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="office-glass-partition.html">Office</a>
+                <a href="contact.html" class="book-btn">Book Now</a>
+            </div>
         </div>
     </header>
 
@@ -212,7 +219,7 @@
         <p style="font-size: 0.9rem; margin-top: 15px;"><i class="fas fa-map-marker-alt"></i> Service Area: Gulshan, Banani, Uttara, Dhanmondi & All Dhaka.</p>
     </div>
 
-    <div class="container" style="padding: 60px 20px;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 60px 20px;">
         
         <p style="font-size: 1.1rem; line-height: 1.7; color: #333;">
             Knowing the correct <strong>Bathroom Glass Door Price in Bangladesh</strong> is crucial before renovation. A high-quality <strong>Shower Enclosure</strong> (Glass Cabin) makes your bathroom hygienic. City Mistri offers 10mm Tempered Glass solutions with lifetime warranty.
@@ -296,7 +303,7 @@
 
     </div>
 
-    <div class="container" style="padding: 60px 20px; background: #fff; border-top: 5px solid #00695c; margin-top: 60px;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 60px 20px; background: #fff; border-top: 5px solid #00695c; margin-top: 60px;">
         
         <h2 style="color: #004d40; font-size: 2rem; border-bottom: 2px solid #ddd; padding-bottom: 15px; margin-bottom: 30px;">
             <i class="fas fa-book-open"></i> Detail Guide: Before You Buy Shower Enclosure
