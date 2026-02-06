@@ -319,23 +319,3 @@ window.onclick = function(event) {
         closeModal();
     }
 }
-document.addEventListener('DOMContentLoaded', function() {
-    // FAQ কার্যকারিতা
-    const faqQuestions = document.querySelectorAll('.faq-question');
-
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', function() {
-            const currentItem = this.parentElement;
-            
-            // অপশনাল: একটি খুললে বাকিগুলো বন্ধ হয়ে যাবে (Accordion Effect)
-            document.querySelectorAll('.faq-item').forEach(item => {
-                if (item !== currentItem) {
-                    item.classList.remove('active');
-                }
-            });
-
-            // বর্তমান আইটেমটি টগল (Toggle) করুন
-            currentItem.classList.toggle('active');
-        });
-    });
-});
