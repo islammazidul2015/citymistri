@@ -3493,3 +3493,12 @@ footer {
         text-align: center;
     }
 }
+/* FAQ Icon Rotation */
+.faq-item .faq-question i {
+    transition: transform 0.3s ease;
+}
+
+/* Active হলে আইকন ১৮০ ডিগ্রি ঘুরবে */
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
