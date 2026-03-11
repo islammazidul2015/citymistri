@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Invoice | City Mistri</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .invoice-box {
+            background: white;
+            width: 100%;
+            max-width: 450px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 5px solid #004d40;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .header h2 {
+            margin: 0;
+            color: #004d40;
+            font-size: 1.8rem;
+        }
+        .header p {
+            margin: 5px 0 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+        }
+        .form-control:focus {
+            border-color: #004d40;
+            box-shadow: 0 0 0 2px rgba(0, 77, 64, 0.2);
+        }
+        .amount-row {
+            display: flex;
+            gap: 15px;
+        }
+        .amount-row .form-group {
+            flex: 1;
+        }
+        .due-box {
+            background: #ffebee;
+            border: 1px solid #ffcdd2;
+            color: #c62828;
+            font-weight: bold;
+        }
+        .submit-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        .submit-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invoice-box">
+        <div class="header">
+            <h2><i class="fas fa-file-invoice-dollar"></i> Digital Invoice</h2>
+            <p>City Mistri - WhatsApp Billing System</p>
+        </div>
+
+        <form id="invoiceForm" onsubmit="generateInvoice(event)">
+            
+            <div class="form-group">
+                <label>কাস্টমারের নাম</label>
+                <input type="text" id="customerName" class="form-control" placeholder="যেমন: জনাব রহিম" required>
+            </div>
+
+            <div class="form-group">
+                <label>হোয়াটসঅ্যাপ নাম্বার</label>
+                <input type="tel" id="customerPhone" class="form-control" placeholder="017XXXXXXXX" required>
+            </div>
+
+            <div class="form-group">
+                <label>কাজের বিবরণ (সার্ভিস)</label>
+                <input type="text" id="serviceName" class="form-control" placeholder="যেমন: থাই গ্লাস ও মশার নেট" required>
+            </div>
+
+            <div class="amount-row">
+                <div class="form-group">
+                    <label>মোট বিল (৳)</label>
+                    <input type="number" id="totalBill" class="form-control" placeholder="0" oninput="calculateDue()" required>
+                </div>
+                <div class="form-group">
+                    <label>অ্যাডভান্স জমা (৳)</label>
+                    <input type="number" id="advancePayment" class="form-control" placeholder="0" oninput="calculateDue()" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>বাকি টাকা (৳)</label>
+                <input type="number" id="dueAmount" class="form-control due-box" placeholder="0" readonly>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <i class="fab fa-whatsapp" style="font-size: 1.3rem;"></i> ইনভয়েস পাঠান
+            </button>
+        </form>
+    </div>
+
+    <script>
+        // অটোমেটিক বাকি টাকা হিসাব করার ফাংশন
+        function calculateDue() {
+            var total = document.getElementById('totalBill').value || 0;
+            var advance = document.getElementById('advancePayment').value || 0;
+            var due = parseInt(total) - parseInt(advance);
+            
+            if(due < 0) due = 0; // যদি অ্যাডভান্স বেশি হয়, তাহলে মাইনাস দেখাবে না
+            
+            document.getElementById('dueAmount').value = due;
+        }
+
+        // WhatsApp-এ ইনভয়েস পাঠানোর ফাংশন
+        function generateInvoice(event) {
+            event.preventDefault();
+
+            var name = document.getElementById('customerName').value;
+            var phone = document.getElementById('customerPhone').value.trim();
+            var service = document.getElementById('serviceName').value;
+            var total = document.getElementById('totalBill').value;
+            var advance = document.getElementById('advancePayment').value;
+            var due = document.getElementById('dueAmount').value;
+
+            // নাম্বার ফরমেটিং (যদি +88 না থাকে, যোগ করে নেবে)
+            if(phone.startsWith("01")) {
+                phone = "88" + phone;
+            }
+
+            // সুন্দর করে মেসেজ সাজানো
+            var msg = `🧾 *CITY MISTRI - DIGITAL INVOICE*\n`;
+            msg += `------------------------------------------------\n`;
+            msg += `👤 *কাস্টমার:* ${name}\n`;
+            msg += `🛠️ *সার্ভিস:* ${service}\n\n`;
+            msg += `💰 *মোট বিল:* ${total} টাকা\n`;
+            msg += `💵 *অ্যাডভান্স:* ${advance} টাকা\n`;
+            msg += `💳 *বাকি টাকা:* ${due} টাকা\n\n`;
+            msg += `✅ *পেমেন্ট করার মাধ্যম:*\n`;
+            msg += `বিকাশ/নগদ: 01997426656 (Personal)\n\n`;
+            msg += `*City Mistri-এর সেবা নেওয়ার জন্য আপনাকে ধন্যবাদ!* 🌙`;
+
+            // WhatsApp লিংকে রিডাইরেক্ট করা
+            var encodedMsg = encodeURIComponent(msg);
+            var waUrl = `https://wa.me/${phone}?text=${encodedMsg}`;
+
+            // নতুন ট্যাবে WhatsApp খুলবে
+            window.open(waUrl, '_blank');
+            
+            // ফর্ম ক্লিয়ার করে দেওয়া
+            document.getElementById('invoiceForm').reset();
+            document.getElementById('dueAmount').value = '';
+        }
+    </script>
+</body>
+</html>
