@@ -948,83 +948,131 @@
     </div>
 <div id="eidPopup" class="popup-overlay">
     <div class="popup-content">
-
         <span class="close-btn" onclick="closePopup()">&times;</span>
-
+        
         <div class="popup-header">
-            <i class="fas fa-moon" style="font-size: 2.5rem; color: #ffc107; margin-bottom: 10px;"></i>
-            <h2 style="color:#fff; margin:0;">ঈদ মোবারক! 🌙</h2>
-            <p style="color:#ffc107; font-weight:bold; margin-top:5px;">মেগা ডিসকাউন্ট অফার</p>
+            <i class="fas fa-gift" style="font-size: 2.5rem; color: #ffeb3b; margin-bottom: 10px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));"></i>
+            <h2>ঈদ মোবারক! 🌙</h2>
+            <p>স্পেশাল মেগা অফার</p>
         </div>
 
         <div class="popup-body">
-
-            <p style="color: #444; font-size: 1.05rem;">
-                সামনেই ঈদ! আপনার বাসা বা অফিসের সৌন্দর্য বাড়াতে
-                <strong>City Mistri</strong> নিয়ে এলো বিশেষ অফার।
+            <p class="intro-text">
+                আপনার বাসা বা অফিসের সৌন্দর্য বাড়াতে <strong>City Mistri</strong> নিয়ে এলো ধামাকা ডিসকাউন্ট!
             </p>
-
+            
             <ul class="offer-list">
-                <li>✔ থাই গ্লাস ও পার্টিশনে <strong>১০% ছাড়</strong></li>
-                <li>✔ Mosquito Net এ <strong>১৫% ছাড়</strong></li>
-                <li>✔ ফ্রি হোম ভিজিট ও মেজারমেন্ট</li>
+                <li><i class="fas fa-check-circle"></i> থাই গ্লাস ও পার্টিশনে <strong>১০% ছাড়!</strong></li>
+                <li><i class="fas fa-check-circle"></i> মশার নেট (Mosquito Net) এ <strong>১৫% ছাড়!</strong></li>
+                <li><i class="fas fa-check-circle"></i> ফ্রি হোম ভিজিট ও মেজারমেন্ট!</li>
             </ul>
 
-            <div class="popup-buttons">
-                <a href="tel:+8801997426656" class="call-btn">
-                    📞 কল করুন
-                </a>
-                <a href="https://wa.me/8801997426656?text=হ্যালো%20আমি%20ঈদ%20অফারটি%20নিতে%20চাচ্ছি"
-                class="whatsapp-btn">
-                    💬 WhatsApp
-                </a>
+            <div class="form-box">
+                <p class="form-title">অফারটি লুফে নিতে আপনার নাম্বার দিন:</p>
+                
+                <div class="input-group">
+                    <span class="country-code">+88</span>
+                    <input type="tel" id="customerPhone" placeholder="017XXXXXXXX" maxlength="11" autocomplete="off">
+                </div>
+                
+                <button onclick="submitEidOffer()" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit & Get Offer
+                </button>
+                
+                <p id="errorMsg" class="error-msg">⚠️ সঠিক ১১ ডিজিটের নাম্বার দিন!</p>
             </div>
-
         </div>
-
     </div>
 </div>
 
 <style>
-.popup-overlay {
-    position:fixed; top:0; left:0; width:100%; height:100%;
-    background:rgba(0,0,0,0.7); display:flex; justify-content:center; align-items:center;
-    z-index:9999; visibility:hidden; opacity:0; transition:0.4s; backdrop-filter: blur(3px);
-}
-.popup-overlay.show { visibility:visible; opacity:1; }
-.popup-content {
-    background:#fff; width:90%; max-width:420px; border-radius:15px;
-    overflow:hidden; text-align:center; position:relative;
-    transform:scale(0.8); transition:0.4s; box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-}
-.popup-overlay.show .popup-content { transform:scale(1); }
-.popup-header { background:linear-gradient(135deg,#0f2027,#203a43,#2c5364); padding:25px; }
-.popup-body { padding:25px; }
-.offer-list {
-    list-style:none; background:#f8f9fa; padding:15px; border-radius:8px;
-    text-align:left; margin-bottom:20px; line-height: 1.8; color: #333; font-weight: 500; border: 1px dashed #d32f2f;
-}
-.popup-buttons { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
-.call-btn { background:#d32f2f; color:white; padding:12px 20px; border-radius:40px; text-decoration:none; font-weight:bold; box-shadow: 0 4px 10px rgba(211,47,47,0.3); }
-.whatsapp-btn { background:#25D366; color:white; padding:12px 20px; border-radius:40px; text-decoration:none; font-weight:bold; box-shadow: 0 4px 10px rgba(37,211,102,0.3); }
-.close-btn { position:absolute; top:10px; right:15px; font-size:28px; color:white; cursor:pointer; font-weight:bold; }
+    .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.75); display: flex; justify-content: center; align-items: center; z-index: 9999; visibility: hidden; opacity: 0; transition: all 0.4s ease; backdrop-filter: blur(5px); padding: 15px; box-sizing: border-box; }
+    .popup-overlay.show { visibility: visible; opacity: 1; }
+    
+    .popup-content { background: #fff; width: 100%; max-width: 400px; border-radius: 20px; overflow: hidden; text-align: center; position: relative; transform: translateY(30px) scale(0.9); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+    .popup-overlay.show .popup-content { transform: translateY(0) scale(1); }
+    
+    .close-btn { position: absolute; top: 12px; right: 18px; font-size: 2rem; color: rgba(255,255,255,0.8); cursor: pointer; line-height: 1; transition: 0.3s; z-index: 10; }
+    .close-btn:hover { color: #fff; transform: rotate(90deg); }
+    
+    .popup-header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); padding: 35px 20px 25px; position: relative; }
+    .popup-header::after { content: ''; position: absolute; bottom: -15px; left: 0; width: 100%; height: 30px; background: #fff; border-radius: 50% 50% 0 0; }
+    .popup-header h2 { color: #fff; margin: 0; font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; }
+    .popup-header p { color: #ffeb3b; font-weight: bold; font-size: 1.1rem; margin-top: 5px; text-transform: uppercase; }
+    
+    .popup-body { padding: 10px 25px 30px; }
+    .intro-text { font-size: 1.05rem; color: #555; margin-bottom: 15px; line-height: 1.6; }
+    
+    .offer-list { text-align: left; background: #f8f9fa; padding: 15px; border-radius: 12px; list-style: none; color: #333; font-weight: 600; margin-bottom: 20px; border: 1px solid #e9ecef; }
+    .offer-list li { margin-bottom: 8px; display: flex; align-items: center; gap: 8px; font-size: 0.95rem; }
+    .offer-list li:last-child { margin-bottom: 0; }
+    .offer-list i { color: #28a745; font-size: 1.1rem; }
+    
+    .form-box { background: #f0f7ff; padding: 20px; border-radius: 15px; border: 1px solid #cce3ff; }
+    .form-title { margin: 0 0 12px 0; font-weight: 700; color: #0d47a1; font-size: 0.95rem; }
+    
+    .input-group { display: flex; background: #fff; border: 2px solid #ddd; border-radius: 8px; overflow: hidden; margin-bottom: 12px; transition: 0.3s; }
+    .input-group:focus-within { border-color: #0d47a1; box-shadow: 0 0 0 3px rgba(13,71,161,0.1); }
+    .country-code { background: #f8f9fa; padding: 12px 15px; color: #555; font-weight: bold; border-right: 1px solid #ddd; font-size: 1rem; display: flex; align-items: center; }
+    #customerPhone { border: none; padding: 12px; width: 100%; font-size: 1.05rem; outline: none; font-weight: 600; color: #333; letter-spacing: 1px; box-sizing: border-box; }
+    
+    .submit-btn { background: linear-gradient(135deg, #d32f2f, #e53935); color: white; border: none; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; box-shadow: 0 5px 15px rgba(211,47,47,0.3); transition: 0.3s; width: 100%; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: center; align-items: center; gap: 8px; }
+    .submit-btn:hover { background: linear-gradient(135deg, #b71c1c, #d32f2f); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(211,47,47,0.4); }
+    
+    .error-msg { color: #d32f2f; font-size: 0.85rem; margin-top: 10px; display: none; font-weight: bold; background: #ffebee; padding: 8px; border-radius: 5px; animation: shake 0.3s; }
+    
+    @keyframes shake { 0%, 100% {transform: translateX(0);} 25% {transform: translateX(-5px);} 75% {transform: translateX(5px);} }
+
+    /* Mobile View Optimization */
+    @media(max-width: 480px) {
+        .popup-header { padding: 25px 15px 20px; }
+        .popup-header h2 { font-size: 1.5rem; }
+        .popup-body { padding: 10px 15px 25px; }
+        .offer-list li { font-size: 0.9rem; }
+        .form-box { padding: 15px; }
+        .submit-btn { padding: 12px; font-size: 1rem; }
+        #customerPhone { font-size: 1rem; /* Prevents auto-zoom on iPhone */ }
+    }
 </style>
 
 <script>
-document.addEventListener("DOMContentLoaded", function(){
-    // চেক করবে ইউজার আগে পপআপ কেটে দিয়েছে কিনা
-    if(!localStorage.getItem("eidPopupClosed")){
-        setTimeout(function(){
-            document.getElementById("eidPopup").classList.add("show");
-        }, 3000); // ৩ সেকেন্ড পর দেখাবে
-    }
-});
+    document.addEventListener("DOMContentLoaded", function() {
+        // চেক করবে ইউজার আগে পপআপ কেটে দিয়েছে কিনা
+        if(!localStorage.getItem("eidPopupClosed")) {
+            setTimeout(function() {
+                document.getElementById('eidPopup').classList.add('show');
+            }, 1500); // ঠিক ১.৫ সেকেন্ড পর আসবে
+        }
+    });
 
-function closePopup(){
-    document.getElementById("eidPopup").classList.remove("show");
-    // ব্রাউজারে সেভ করে রাখবে যাতে বারবার না আসে
-    localStorage.setItem("eidPopupClosed", "true");
-}
+    function closePopup() {
+        document.getElementById('eidPopup').classList.remove('show');
+        // ব্রাউজারে সেভ করে রাখবে যাতে বারবার বিরক্ত না করে
+        localStorage.setItem("eidPopupClosed", "true");
+    }
+
+    function submitEidOffer() {
+        var phone = document.getElementById('customerPhone').value.trim();
+        var errorMsg = document.getElementById('errorMsg');
+        
+        // Validation: Check if phone number is exactly 11 digits and starts with 01
+        var phoneRegex = /^(01)[3-9][0-9]{8}$/;
+        
+        if(phoneRegex.test(phone)) {
+            errorMsg.style.display = 'none';
+            
+            // Redirect to WhatsApp
+            var textMsg = "হ্যালো City Mistri, আমি আপনাদের ওয়েবসাইট থেকে ঈদ অফারটি নিতে চাচ্ছি। আমার মোবাইল নাম্বার: " + phone;
+            var waUrl = "https://wa.me/8801997426656?text=" + encodeURIComponent(textMsg);
+            
+            // সাবমিট করার পর পপআপটা স্মার্টলি ক্লোজ করে দিবে
+            localStorage.setItem("eidPopupClosed", "true"); 
+            window.location.href = waUrl;
+        } else {
+            // Show Error Message with shake animation
+            errorMsg.style.display = 'block';
+        }
+    }
 </script>
 </body>
 </html>
