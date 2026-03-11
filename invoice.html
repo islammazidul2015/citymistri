@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Invoice | City Mistri</title>
+    <title>Digital Paper Invoice | City Mistri</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f4f7f6;
+            background: #e9ecef;
             margin: 0;
             padding: 20px;
             display: flex;
@@ -18,187 +18,259 @@
             align-items: center;
             min-height: 100vh;
         }
-        .invoice-box {
+
+        /* Form Section */
+        .form-section {
             background: white;
             width: 100%;
-            max-width: 450px;
+            max-width: 500px;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             border-top: 5px solid #004d40;
         }
-        .header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        .header h2 {
-            margin: 0;
-            color: #004d40;
-            font-size: 1.8rem;
-        }
-        .header p {
-            margin: 5px 0 0;
-            color: #666;
-            font-size: 0.95rem;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-            font-size: 0.95rem;
-        }
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
+
+        .header { text-align: center; margin-bottom: 25px; }
+        .header h2 { margin: 0; color: #004d40; font-size: 1.8rem; }
+        .header p { margin: 5px 0 0; color: #666; font-size: 0.95rem; }
+        
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: bold; color: #333; margin-bottom: 5px; font-size: 0.95rem; }
+        .form-control { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; box-sizing: border-box; outline: none; }
+        .form-control:focus { border-color: #004d40; box-shadow: 0 0 0 2px rgba(0, 77, 64, 0.2); }
+        .amount-row { display: flex; gap: 15px; }
+        .amount-row .form-group { flex: 1; }
+        .due-box { background: #ffebee; border: 1px solid #ffcdd2; color: #c62828; font-weight: bold; }
+        
+        .btn-generate { background: #004d40; color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        .btn-generate:hover { background: #00796b; }
+
+        /* Paper Invoice Section (Hidden initially) */
+        .invoice-paper-wrapper { display: none; width: 100%; max-width: 600px; }
+        .invoice-paper {
+            background: white;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
             border-radius: 8px;
-            font-size: 1rem;
-            box-sizing: border-box;
-            outline: none;
-            transition: 0.3s;
+            position: relative;
         }
-        .form-control:focus {
-            border-color: #004d40;
-            box-shadow: 0 0 0 2px rgba(0, 77, 64, 0.2);
-        }
-        .amount-row {
-            display: flex;
-            gap: 15px;
-        }
-        .amount-row .form-group {
-            flex: 1;
-        }
-        .due-box {
-            background: #ffebee;
-            border: 1px solid #ffcdd2;
-            color: #c62828;
-            font-weight: bold;
-        }
-        .submit-btn {
-            background: #25D366;
-            color: white;
-            border: none;
-            padding: 15px;
-            width: 100%;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-        }
-        .submit-btn:hover {
-            background: #128C7E;
-            transform: translateY(-2px);
+        
+        .paper-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px dashed #ccc; padding-bottom: 20px; margin-bottom: 20px; }
+        .brand h1 { margin: 0; color: #004d40; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 1px; }
+        .brand p { margin: 5px 0 0; color: #555; font-size: 0.9rem; line-height: 1.5; }
+        .invoice-details { text-align: right; }
+        .invoice-details h3 { margin: 0; color: #d32f2f; font-size: 1.5rem; text-transform: uppercase; }
+        .invoice-details p { margin: 5px 0 0; color: #444; font-size: 0.9rem; font-weight: bold; }
+
+        .bill-to { margin-bottom: 30px; }
+        .bill-to h4 { margin: 0 0 5px; color: #004d40; font-size: 1.1rem; border-bottom: 1px solid #eee; display: inline-block; padding-bottom: 3px; }
+        .bill-to p { margin: 5px 0; color: #333; font-size: 1rem; }
+
+        .invoice-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+        .invoice-table th { background: #004d40; color: white; padding: 12px; text-align: left; font-size: 1rem; }
+        .invoice-table td { padding: 12px; border-bottom: 1px solid #eee; color: #333; font-size: 1rem; }
+        .invoice-table .amount-col { text-align: right; font-weight: bold; }
+
+        .summary-box { width: 50%; float: right; margin-bottom: 30px; }
+        .summary-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; }
+        .summary-row.total { font-size: 1.2rem; font-weight: bold; color: #d32f2f; border-bottom: 2px solid #d32f2f; }
+
+        .footer-note { clear: both; text-align: center; margin-top: 50px; font-size: 0.9rem; color: #777; border-top: 1px solid #eee; padding-top: 15px; }
+        
+        .signature { margin-top: 50px; display: flex; justify-content: space-between; }
+        .sign-line { width: 150px; border-top: 1px solid #333; text-align: center; padding-top: 5px; font-size: 0.9rem; color: #333; }
+
+        /* Action Buttons */
+        .action-buttons { display: flex; gap: 10px; margin-top: 20px; }
+        .btn-print { flex: 1; background: #d32f2f; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; }
+        .btn-wa { flex: 1; background: #25D366; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; }
+        .btn-back { flex: 1; background: #555; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; }
+
+        /* Print Settings (Hide everything except the paper) */
+        @media print {
+            body { background: white; padding: 0; align-items: flex-start; }
+            .no-print { display: none !important; }
+            .invoice-paper-wrapper { display: block; max-width: 100%; }
+            .invoice-paper { box-shadow: none; border: none; padding: 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="invoice-box">
+    <div class="form-section no-print" id="formSection">
         <div class="header">
-            <h2><i class="fas fa-file-invoice-dollar"></i> Digital Invoice</h2>
-            <p>City Mistri - WhatsApp Billing System</p>
+            <h2><i class="fas fa-file-invoice"></i> Create Memo</h2>
+            <p>ডিজিটাল ক্যাশ মেমো জেনারেটর</p>
         </div>
 
-        <form id="invoiceForm" onsubmit="generateInvoice(event)">
-            
+        <form id="invoiceForm" onsubmit="generatePaperInvoice(event)">
             <div class="form-group">
                 <label>কাস্টমারের নাম</label>
-                <input type="text" id="customerName" class="form-control" placeholder="যেমন: জনাব রহিম" required>
+                <input type="text" id="cName" class="form-control" placeholder="যেমন: জনাব রহিম" required>
             </div>
-
             <div class="form-group">
-                <label>হোয়াটসঅ্যাপ নাম্বার</label>
-                <input type="tel" id="customerPhone" class="form-control" placeholder="017XXXXXXXX" required>
+                <label>ফোন / হোয়াটসঅ্যাপ নাম্বার</label>
+                <input type="tel" id="cPhone" class="form-control" placeholder="017XXXXXXXX" required>
             </div>
-
             <div class="form-group">
                 <label>কাজের বিবরণ (সার্ভিস)</label>
-                <input type="text" id="serviceName" class="form-control" placeholder="যেমন: থাই গ্লাস ও মশার নেট" required>
+                <input type="text" id="cService" class="form-control" placeholder="যেমন: থাই গ্লাস ও মশার নেট" required>
             </div>
-
             <div class="amount-row">
                 <div class="form-group">
                     <label>মোট বিল (৳)</label>
-                    <input type="number" id="totalBill" class="form-control" placeholder="0" oninput="calculateDue()" required>
+                    <input type="number" id="cTotal" class="form-control" placeholder="0" oninput="calcDue()" required>
                 </div>
                 <div class="form-group">
                     <label>অ্যাডভান্স জমা (৳)</label>
-                    <input type="number" id="advancePayment" class="form-control" placeholder="0" oninput="calculateDue()" required>
+                    <input type="number" id="cAdvance" class="form-control" placeholder="0" oninput="calcDue()" required>
                 </div>
             </div>
-
             <div class="form-group">
                 <label>বাকি টাকা (৳)</label>
-                <input type="number" id="dueAmount" class="form-control due-box" placeholder="0" readonly>
+                <input type="number" id="cDue" class="form-control due-box" placeholder="0" readonly>
             </div>
-
-            <button type="submit" class="submit-btn">
-                <i class="fab fa-whatsapp" style="font-size: 1.3rem;"></i> ইনভয়েস পাঠান
+            <button type="submit" class="btn-generate">
+                <i class="fas fa-magic"></i> মেমো তৈরি করুন
             </button>
         </form>
     </div>
 
+    <div class="invoice-paper-wrapper" id="paperSection">
+        
+        <div class="invoice-paper" id="printableArea">
+            <div class="paper-header">
+                <div class="brand">
+                    <h1>City Mistri</h1>
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i> Al Helal Hospital, Kazipara, Mirpur<br>
+                        <i class="fas fa-phone-alt"></i> 01997426656<br>
+                        <i class="fas fa-globe"></i> www.citymistri.xyz
+                    </p>
+                </div>
+                <div class="invoice-details">
+                    <h3>CASH MEMO</h3>
+                    <p>No: <span id="invNo">INV-0001</span></p>
+                    <p>Date: <span id="invDate">DD-MM-YYYY</span></p>
+                </div>
+            </div>
+
+            <div class="bill-to">
+                <h4>Bill To:</h4>
+                <p><strong>Name:</strong> <span id="pName">Customer Name</span></p>
+                <p><strong>Phone:</strong> <span id="pPhone">01XXXXXXXXX</span></p>
+            </div>
+
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>Description of Work / Service</th>
+                        <th class="amount-col">Amount (৳)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="pService">Service Name</td>
+                        <td class="amount-col" id="pTotal1">0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="summary-box">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="pTotal2">0 ৳</span>
+                </div>
+                <div class="summary-row">
+                    <span>Advance Paid:</span>
+                    <span id="pAdvance">0 ৳</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total Due:</span>
+                    <span id="pDue">0 ৳</span>
+                </div>
+            </div>
+
+            <div class="signature">
+                <div class="sign-line">Customer Signature</div>
+                <div class="sign-line">Authorized Signature</div>
+            </div>
+
+            <div class="footer-note">
+                <p><strong>Payment Method:</strong> bKash / Nagad: 01997426656 (Personal)</p>
+                <p>Thank you for choosing City Mistri for your interior solutions!</p>
+            </div>
+        </div>
+
+        <div class="action-buttons no-print">
+            <button onclick="window.print()" class="btn-print"><i class="fas fa-file-pdf"></i> Save / Print</button>
+            <button onclick="sendWA()" class="btn-wa"><i class="fab fa-whatsapp"></i> Send Text</button>
+            <button onclick="goBack()" class="btn-back"><i class="fas fa-arrow-left"></i> Back</button>
+        </div>
+
+    </div>
+
     <script>
-        // অটোমেটিক বাকি টাকা হিসাব করার ফাংশন
-        function calculateDue() {
-            var total = document.getElementById('totalBill').value || 0;
-            var advance = document.getElementById('advancePayment').value || 0;
+        // Calculate Due
+        function calcDue() {
+            var total = document.getElementById('cTotal').value || 0;
+            var advance = document.getElementById('cAdvance').value || 0;
             var due = parseInt(total) - parseInt(advance);
-            
-            if(due < 0) due = 0; // যদি অ্যাডভান্স বেশি হয়, তাহলে মাইনাস দেখাবে না
-            
-            document.getElementById('dueAmount').value = due;
+            document.getElementById('cDue').value = due < 0 ? 0 : due;
         }
 
-        // WhatsApp-এ ইনভয়েস পাঠানোর ফাংশন
-        function generateInvoice(event) {
+        // Generate the Paper Invoice
+        function generatePaperInvoice(event) {
             event.preventDefault();
 
-            var name = document.getElementById('customerName').value;
-            var phone = document.getElementById('customerPhone').value.trim();
-            var service = document.getElementById('serviceName').value;
-            var total = document.getElementById('totalBill').value;
-            var advance = document.getElementById('advancePayment').value;
-            var due = document.getElementById('dueAmount').value;
-
-            // নাম্বার ফরমেটিং (যদি +88 না থাকে, যোগ করে নেবে)
-            if(phone.startsWith("01")) {
-                phone = "88" + phone;
-            }
-
-            // সুন্দর করে মেসেজ সাজানো
-            var msg = `🧾 *CITY MISTRI - DIGITAL INVOICE*\n`;
-            msg += `------------------------------------------------\n`;
-            msg += `👤 *কাস্টমার:* ${name}\n`;
-            msg += `🛠️ *সার্ভিস:* ${service}\n\n`;
-            msg += `💰 *মোট বিল:* ${total} টাকা\n`;
-            msg += `💵 *অ্যাডভান্স:* ${advance} টাকা\n`;
-            msg += `💳 *বাকি টাকা:* ${due} টাকা\n\n`;
-            msg += `✅ *পেমেন্ট করার মাধ্যম:*\n`;
-            msg += `বিকাশ/নগদ: 01997426656 (Personal)\n\n`;
-            msg += `*City Mistri-এর সেবা নেওয়ার জন্য আপনাকে ধন্যবাদ!* 🌙`;
-
-            // WhatsApp লিংকে রিডাইরেক্ট করা
-            var encodedMsg = encodeURIComponent(msg);
-            var waUrl = `https://wa.me/${phone}?text=${encodedMsg}`;
-
-            // নতুন ট্যাবে WhatsApp খুলবে
-            window.open(waUrl, '_blank');
+            // Set Data to Paper
+            document.getElementById('pName').innerText = document.getElementById('cName').value;
+            document.getElementById('pPhone').innerText = document.getElementById('cPhone').value;
+            document.getElementById('pService').innerText = document.getElementById('cService').value;
             
-            // ফর্ম ক্লিয়ার করে দেওয়া
-            document.getElementById('invoiceForm').reset();
-            document.getElementById('dueAmount').value = '';
+            var total = document.getElementById('cTotal').value;
+            var advance = document.getElementById('cAdvance').value;
+            var due = document.getElementById('cDue').value;
+
+            document.getElementById('pTotal1').innerText = total + " ৳";
+            document.getElementById('pTotal2').innerText = total + " ৳";
+            document.getElementById('pAdvance').innerText = advance + " ৳";
+            document.getElementById('pDue').innerText = due + " ৳";
+
+            // Generate Date & Invoice Number
+            var date = new Date();
+            var dateStr = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+            var invNum = "INV-" + date.getFullYear() + Math.floor(1000 + Math.random() * 9000); // Random 4 digit
+            
+            document.getElementById('invDate').innerText = dateStr;
+            document.getElementById('invNo').innerText = invNum;
+
+            // Switch Views
+            document.getElementById('formSection').style.display = 'none';
+            document.getElementById('paperSection').style.display = 'block';
+        }
+
+        // WhatsApp Text Send
+        function sendWA() {
+            var phone = document.getElementById('cPhone').value.trim();
+            if(phone.startsWith("01")) phone = "88" + phone;
+
+            var msg = `🧾 *CITY MISTRI - CASH MEMO*\n`;
+            msg += `------------------------------------\n`;
+            msg += `👤 *Name:* ${document.getElementById('cName').value}\n`;
+            msg += `🛠️ *Work:* ${document.getElementById('cService').value}\n\n`;
+            msg += `💰 *Total Bill:* ${document.getElementById('cTotal').value} tk\n`;
+            msg += `💵 *Advance:* ${document.getElementById('cAdvance').value} tk\n`;
+            msg += `💳 *Due Amount:* ${document.getElementById('cDue').value} tk\n\n`;
+            msg += `✅ *Payment:* bKash/Nagad: 01997426656\n`;
+            
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // Go Back to Form
+        function goBack() {
+            document.getElementById('paperSection').style.display = 'none';
+            document.getElementById('formSection').style.display = 'block';
         }
     </script>
 </body>
