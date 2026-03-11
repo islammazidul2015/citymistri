@@ -975,7 +975,7 @@
                     <input type="tel" id="customerPhone" placeholder="017XXXXXXXX" maxlength="11" autocomplete="off">
                 </div>
                 
-                <button onclick="submitEidOffer()" class="submit-btn">
+                <button onclick="submitEidOffer(event)" class="submit-btn">
                     <i class="fas fa-paper-plane"></i> Submit & Get Offer
                 </button>
                 
@@ -983,6 +983,10 @@
             </div>
         </div>
     </div>
+</div>
+
+<div id="toastMessage" class="toast-msg">
+    <i class="fas fa-check-circle"></i> অফারটি সফলভাবে সাবমিট হয়েছে!
 </div>
 
 <style>
@@ -1023,7 +1027,10 @@
     
     @keyframes shake { 0%, 100% {transform: translateX(0);} 25% {transform: translateX(-5px);} 75% {transform: translateX(5px);} }
 
-    /* Mobile View Optimization */
+    /* 🍞 Toast Notification Design */
+    .toast-msg { position: fixed; top: -100px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #28a745, #20c997); color: white; padding: 15px 30px; border-radius: 50px; font-weight: bold; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(40, 167, 69, 0.4); z-index: 100000; transition: top 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); display: flex; align-items: center; gap: 10px; }
+    .toast-msg.show { top: 40px; }
+
     @media(max-width: 480px) {
         .popup-header { padding: 25px 15px 20px; }
         .popup-header h2 { font-size: 1.5rem; }
@@ -1031,45 +1038,88 @@
         .offer-list li { font-size: 0.9rem; }
         .form-box { padding: 15px; }
         .submit-btn { padding: 12px; font-size: 1rem; }
-        #customerPhone { font-size: 1rem; /* Prevents auto-zoom on iPhone */ }
+        #customerPhone { font-size: 1rem; }
+        .toast-msg { width: 90%; font-size: 1rem; padding: 12px 20px; justify-content: center; }
     }
 </style>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // চেক করবে ইউজার আগে পপআপ কেটে দিয়েছে কিনা
         if(!localStorage.getItem("eidPopupClosed")) {
             setTimeout(function() {
                 document.getElementById('eidPopup').classList.add('show');
-            }, 1500); // ঠিক ১.৫ সেকেন্ড পর আসবে
+            }, 1500); 
         }
     });
 
     function closePopup() {
         document.getElementById('eidPopup').classList.remove('show');
-        // ব্রাউজারে সেভ করে রাখবে যাতে বারবার বিরক্ত না করে
         localStorage.setItem("eidPopupClosed", "true");
     }
 
-    function submitEidOffer() {
-        var phone = document.getElementById('customerPhone').value.trim();
+    function submitEidOffer(event) {
+        var phoneInput = document.getElementById('customerPhone');
+        var phone = phoneInput.value.trim();
         var errorMsg = document.getElementById('errorMsg');
-        
-        // Validation: Check if phone number is exactly 11 digits and starts with 01
+        var btn = event.currentTarget;
+        var originalBtnText = btn.innerHTML;
+
         var phoneRegex = /^(01)[3-9][0-9]{8}$/;
         
         if(phoneRegex.test(phone)) {
             errorMsg.style.display = 'none';
             
-            // Redirect to WhatsApp
-            var textMsg = "হ্যালো City Mistri, আমি আপনাদের ওয়েবসাইট থেকে ঈদ অফারটি নিতে চাচ্ছি। আমার মোবাইল নাম্বার: " + phone;
-            var waUrl = "https://wa.me/8801997426656?text=" + encodeURIComponent(textMsg);
-            
-            // সাবমিট করার পর পপআপটা স্মার্টলি ক্লোজ করে দিবে
-            localStorage.setItem("eidPopupClosed", "true"); 
-            window.location.href = waUrl;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.style.opacity = '0.7';
+            btn.disabled = true;
+
+            // Formspree API call
+            fetch("https://formspree.io/f/mkgppyyz", {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    "Subject": "Eid Mega Offer Lead from Popup",
+                    "Customer Phone": phone
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // 1. Close popup and set localstorage
+                    document.getElementById('eidPopup').classList.remove('show');
+                    localStorage.setItem("eidPopupClosed", "true"); 
+                    
+                    // 2. Show toast success message
+                    var toast = document.getElementById('toastMessage');
+                    toast.classList.add('show');
+                    
+                    // 3. Hide toast after 4 seconds
+                    setTimeout(function() {
+                        toast.classList.remove('show');
+                    }, 4000);
+
+                    // Reset button and input
+                    btn.innerHTML = originalBtnText;
+                    btn.style.opacity = '1';
+                    btn.disabled = false;
+                    phoneInput.value = '';
+                } else {
+                    alert("দুঃখিত, কোনো সমস্যা হয়েছে। আবার চেষ্টা করুন।");
+                    btn.innerHTML = originalBtnText;
+                    btn.style.opacity = '1';
+                    btn.disabled = false;
+                }
+            })
+            .catch(error => {
+                alert("দুঃখিত, ইন্টারনেট কানেকশন চেক করুন।");
+                btn.innerHTML = originalBtnText;
+                btn.style.opacity = '1';
+                btn.disabled = false;
+            });
+
         } else {
-            // Show Error Message with shake animation
             errorMsg.style.display = 'block';
         }
     }
