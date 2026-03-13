@@ -36,7 +36,7 @@
         
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; font-weight: bold; color: #333; margin-bottom: 5px; font-size: 0.95rem; }
-        .form-control { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; box-sizing: border-box; outline: none; }
+        .form-control { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; box-sizing: border-box; outline: none; transition: 0.3s; }
         .form-control:focus { border-color: #004d40; box-shadow: 0 0 0 2px rgba(0, 77, 64, 0.2); }
         .amount-row { display: flex; gap: 15px; }
         .amount-row .form-group { flex: 1; }
@@ -45,7 +45,7 @@
         .btn-generate { background: #004d40; color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px; }
         .btn-generate:hover { background: #00796b; }
 
-        /* Paper Invoice Section (Hidden initially) */
+        /* Paper Invoice Section */
         .invoice-paper-wrapper { display: none; width: 100%; max-width: 600px; }
         .invoice-paper {
             background: white;
@@ -53,8 +53,28 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
             border-radius: 8px;
             position: relative;
+            overflow: hidden;
         }
         
+        /* 🟢 BIG GREEN PAID STAMP */
+        .paid-stamp {
+            display: none;
+            position: absolute;
+            top: 250px;
+            right: 50px;
+            font-size: 4rem;
+            color: #25D366;
+            border: 6px solid #25D366;
+            padding: 10px 30px;
+            border-radius: 15px;
+            transform: rotate(-25deg);
+            font-weight: 900;
+            letter-spacing: 5px;
+            opacity: 0.6;
+            z-index: 10;
+            pointer-events: none;
+        }
+
         .paper-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px dashed #ccc; padding-bottom: 20px; margin-bottom: 20px; }
         .brand h1 { margin: 0; color: #004d40; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 1px; }
         .brand p { margin: 5px 0 0; color: #555; font-size: 0.9rem; line-height: 1.5; }
@@ -71,13 +91,13 @@
         .invoice-table td { padding: 12px; border-bottom: 1px solid #eee; color: #333; font-size: 1rem; }
         .invoice-table .amount-col { text-align: right; font-weight: bold; }
 
-        .summary-box { width: 50%; float: right; margin-bottom: 30px; }
+        .summary-box { width: 50%; float: right; margin-bottom: 30px; position: relative; z-index: 5; }
         .summary-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; }
         .summary-row.total { font-size: 1.2rem; font-weight: bold; color: #d32f2f; border-bottom: 2px solid #d32f2f; }
 
         .footer-note { clear: both; text-align: center; margin-top: 50px; font-size: 0.9rem; color: #777; border-top: 1px solid #eee; padding-top: 15px; }
         
-        .signature { margin-top: 50px; display: flex; justify-content: space-between; }
+        .signature { margin-top: 50px; display: flex; justify-content: space-between; position: relative; z-index: 5; }
         .sign-line { width: 150px; border-top: 1px solid #333; text-align: center; padding-top: 5px; font-size: 0.9rem; color: #333; }
 
         /* Action Buttons */
@@ -86,7 +106,6 @@
         .btn-wa { flex: 1; background: #25D366; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; }
         .btn-back { flex: 1; background: #555; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; }
 
-        /* Print Settings (Hide everything except the paper) */
         @media print {
             body { background: white; padding: 0; align-items: flex-start; }
             .no-print { display: none !important; }
@@ -111,6 +130,10 @@
             <div class="form-group">
                 <label>ফোন / হোয়াটসঅ্যাপ নাম্বার</label>
                 <input type="tel" id="cPhone" class="form-control" placeholder="017XXXXXXXX" required>
+            </div>
+            <div class="form-group">
+                <label>কাস্টমারের ঠিকানা</label>
+                <input type="text" id="cAddress" class="form-control" placeholder="যেমন: মিরপুর ১০, ঢাকা" required>
             </div>
             <div class="form-group">
                 <label>কাজের বিবরণ (সার্ভিস)</label>
@@ -139,6 +162,9 @@
     <div class="invoice-paper-wrapper" id="paperSection">
         
         <div class="invoice-paper" id="printableArea">
+            
+            <div id="paidStamp" class="paid-stamp">PAID</div>
+
             <div class="paper-header">
                 <div class="brand">
                     <h1>City Mistri</h1>
@@ -159,6 +185,7 @@
                 <h4>Bill To:</h4>
                 <p><strong>Name:</strong> <span id="pName">Customer Name</span></p>
                 <p><strong>Phone:</strong> <span id="pPhone">01XXXXXXXXX</span></p>
+                <p><strong>Address:</strong> <span id="pAddress">Customer Address</span></p>
             </div>
 
             <table class="invoice-table">
@@ -211,7 +238,6 @@
     </div>
 
     <script>
-        // Calculate Due
         function calcDue() {
             var total = document.getElementById('cTotal').value || 0;
             var advance = document.getElementById('cAdvance').value || 0;
@@ -219,13 +245,13 @@
             document.getElementById('cDue').value = due < 0 ? 0 : due;
         }
 
-        // Generate the Paper Invoice
         function generatePaperInvoice(event) {
             event.preventDefault();
 
-            // Set Data to Paper
+            // Form theke data niye paper a boshano
             document.getElementById('pName').innerText = document.getElementById('cName').value;
             document.getElementById('pPhone').innerText = document.getElementById('cPhone').value;
+            document.getElementById('pAddress').innerText = document.getElementById('cAddress').value; // Address Update
             document.getElementById('pService').innerText = document.getElementById('cService').value;
             
             var total = document.getElementById('cTotal').value;
@@ -237,37 +263,44 @@
             document.getElementById('pAdvance').innerText = advance + " ৳";
             document.getElementById('pDue').innerText = due + " ৳";
 
-            // Generate Date & Invoice Number
+            // 🔥 PAID STAMP LOGIC
+            if (parseInt(due) === 0) {
+                document.getElementById('paidStamp').style.display = 'block';
+            } else {
+                document.getElementById('paidStamp').style.display = 'none';
+            }
+
             var date = new Date();
             var dateStr = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
-            var invNum = "INV-" + date.getFullYear() + Math.floor(1000 + Math.random() * 9000); // Random 4 digit
+            var invNum = "INV-" + date.getFullYear() + Math.floor(1000 + Math.random() * 9000); 
             
             document.getElementById('invDate').innerText = dateStr;
             document.getElementById('invNo').innerText = invNum;
 
-            // Switch Views
             document.getElementById('formSection').style.display = 'none';
             document.getElementById('paperSection').style.display = 'block';
         }
 
-        // WhatsApp Text Send
         function sendWA() {
             var phone = document.getElementById('cPhone').value.trim();
             if(phone.startsWith("01")) phone = "88" + phone;
 
+            var dueAmount = document.getElementById('cDue').value;
+            var status = (parseInt(dueAmount) === 0) ? "✅ *FULL PAID*" : `💳 *Due Amount:* ${dueAmount} tk`;
+
             var msg = `🧾 *CITY MISTRI - CASH MEMO*\n`;
             msg += `------------------------------------\n`;
             msg += `👤 *Name:* ${document.getElementById('cName').value}\n`;
+            msg += `📍 *Address:* ${document.getElementById('cAddress').value}\n`;
             msg += `🛠️ *Work:* ${document.getElementById('cService').value}\n\n`;
             msg += `💰 *Total Bill:* ${document.getElementById('cTotal').value} tk\n`;
             msg += `💵 *Advance:* ${document.getElementById('cAdvance').value} tk\n`;
-            msg += `💳 *Due Amount:* ${document.getElementById('cDue').value} tk\n\n`;
+            msg += `${status}\n\n`;
             msg += `✅ *Payment:* bKash/Nagad: 01997426656\n`;
             
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        // Go Back to Form
         function goBack() {
             document.getElementById('paperSection').style.display = 'none';
             document.getElementById('formSection').style.display = 'block';
