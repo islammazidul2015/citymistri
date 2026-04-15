@@ -319,3 +319,33 @@ window.onclick = function(event) {
         closeModal();
     }
 }
+// 1. Wait for the webpage to fully load
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // ... (Keep your existing star rating code here) ...
+
+    // 2. Select all the quantity boxes on the page
+    const qtyBoxes = document.querySelectorAll('.qty-box');
+
+    // 3. Loop through each box to give its buttons instructions
+    qtyBoxes.forEach(box => {
+        const decreaseBtn = box.querySelector('.fa-trash-alt'); 
+        const increaseBtn = box.querySelector('.fa-plus');
+        const quantitySpan = box.querySelector('span');
+
+        // 4. Add a click event to the '+' button
+        increaseBtn.addEventListener('click', () => {
+            let currentQuantity = parseInt(quantitySpan.innerText);
+            quantitySpan.innerText = currentQuantity + 1;
+        });
+
+        // 5. Add a click event to the decrease/trash button
+        decreaseBtn.addEventListener('click', () => {
+            let currentQuantity = parseInt(quantitySpan.innerText);
+            // Only decrease if the number is greater than 1
+            if (currentQuantity > 1) {
+                quantitySpan.innerText = currentQuantity - 1;
+            }
+        });
+    });
+});
