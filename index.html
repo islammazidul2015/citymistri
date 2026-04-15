@@ -112,6 +112,68 @@
             text-align: left;
         }
     }
+    /* --- Wrapping Link to ensure equal height --- */
+.service-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%; /* পাশের কার্ডের সমান লম্বা করার ম্যাজিক */
+}
+
+/* --- Tall Card Structure --- */
+.flex-tall-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* ওপর, মাঝখান ও নিচে কন্টেন্ট ভাগ করে দেবে */
+    height: 100%;
+    padding-bottom: 20px; /* নিচে লিংকের জন্য জায়গা */
+}
+
+.card-text-content {
+    flex-grow: 1; /* টেক্সট অংশটুকু ফাঁকা জায়গা পূরণ করবে */
+}
+
+/* --- Extra Large Overlapping Images --- */
+.card-img-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.card-img-group img {
+    width: 115px; /* ছবি অনেক বড় করা হলো (কাস্টমার যেন পার্টস স্পষ্ট বোঝে) */
+    height: 115px;
+    border-radius: 50%; 
+    object-fit: cover;
+    border: 4px solid #ffffff; 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* প্রিমিয়াম শ্যাডো */
+    margin-left: -45px; /* বড় ছবির কারণে ওভারল্যাপ ব্যালেন্স করা হলো */
+    transition: transform 0.3s ease;
+    background: white;
+    position: relative;
+}
+
+/* ছবিগুলোর সিরিয়াল ঠিক রাখার জন্য z-index */
+.card-img-group img:first-child { margin-left: 0; z-index: 1; }
+.card-img-group img:nth-child(2) { z-index: 2; }
+.card-img-group img:nth-child(3) { z-index: 3; }
+
+.service-card:hover .card-img-group img {
+    transform: translateY(-8px); /* হোভার করলে আগের চেয়ে বেশি লাফ দেবে */
+}
+
+/* --- Bottom Link Style --- */
+.card-bottom-link {
+    text-align: center;
+    font-weight: bold;
+    color: #3182ce;
+    margin-top: 15px;
+}
+
+.service-card:hover .card-bottom-link {
+    color: #ed8936; /* হোভার করলে লিংকের কালার পাল্টাবে */
+}
 </style>
 <div class="recent-work-ticker">
     <div class="ticker-container">
@@ -142,6 +204,7 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="repair-service.html" style="color: #007bff; font-weight: bold;">Repair Service</a></li>
         <li><a href="thai-glass-aluminum-price-bangladesh-2026.html" style="color: #ff0000; font-weight: bold;">Price List 2026</a></li>
+        <a href="thai-glass-repair-and-grill-works.html">Thai Glass & Grill</a>
         <li><a href="services.html">Services</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="blog.html">Blog</a></li>
@@ -225,6 +288,26 @@
         Check Aluminum Folding Door Price 2026
     </a>
 </p>
+<a href="thai-glass-repair-and-grill-works.html" class="service-card-link">
+    <div class="service-card flex-tall-card">
+        
+        <div class="card-img-group">
+            <img src="images/repair-1.png" alt="Lock Repair">
+            <img src="images/repair-2.png" alt="Wheel Repair">
+            <img src="images/Floor-Spring-Door-Closers.jpg" alt="Door Closer">
+        </div>
+        
+        <div class="card-text-content">
+            <h3>Thai Glass & Grill Work</h3>
+            <p>Expert mistri for sliding doors, locks & custom partitions.</p>
+        </div>
+
+        <div class="card-bottom-link">
+            <span>View Details <i class="fas fa-arrow-right"></i></span>
+        </div>
+
+    </div>
+</a>
                 <div class="service-card" style="position: relative; overflow: hidden;">
                     <a href="aluminum-folding-door-price-bangladesh-2026.html" style="text-decoration: none; color: inherit; display: block;">
                         <div class="card-image" style="position: relative;">
@@ -936,6 +1019,7 @@
             <div class="footer-col">
                 <h3>Top Services</h3>
                 <ul>
+                    <li><a href="thai-glass-repair-and-grill-works.html" style="color: #34d399; font-weight: bold;">Thai Glass & Grill Work (New)</a></li>
                     <li><a href="mirror-wall.html">LED Mirror & Mirror Wall</a></li>
                     <li><a href="folding-door.html">Aluminum Folding Door</a></li>
                     <li><a href="repair-service.html">Thai Glass Repair Service</a></li>
