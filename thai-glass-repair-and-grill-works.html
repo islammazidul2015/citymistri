@@ -37,20 +37,20 @@
 
         /* --- STICKY PAGE NAV (TAB MENU) --- */
         .page-nav-bar { background: white; position: sticky; top: 65px; z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow-x: auto; white-space: nowrap; -ms-overflow-style: none; scrollbar-width: none; }
-        .page-nav-bar::-webkit-scrollbar { display: none; } /* Magic: Hides scrollbar for premium look */
+        .page-nav-bar::-webkit-scrollbar { display: none; }
         .nav-tabs { display: flex; gap: 30px; padding: 15px 20px; }
         .nav-tabs a { text-decoration: none; color: #4a5568; font-weight: 600; font-size: 1rem; padding-bottom: 5px; transition: 0.3s; }
         .nav-tabs a:hover { color: #ed8936; border-bottom: 3px solid #ed8936; }
 
-        /* --- PREMIUM HERO SECTION --- */
-        .hero { background: linear-gradient(to bottom, #ffffff, #f7fafc); padding: 60px 0; border-bottom: 1px solid #e2e8f0; text-align: center; }
-        .hero h1 { font-size: 3rem; color: #1a202c; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px; }
-        .hero p { font-size: 1.2rem; color: #4a5568; max-width: 800px; margin: 0 auto; }
-        .rating-badge { display: inline-flex; align-items: center; background: #feebc8; color: #dd6b20; padding: 8px 20px; border-radius: 50px; font-weight: 700; margin-top: 25px; box-shadow: 0 2px 10px rgba(221, 107, 32, 0.1); }
+        /* --- COMPACT HERO SECTION --- */
+        .hero { background: linear-gradient(to bottom, #ffffff, #f7fafc); padding: 35px 0; border-bottom: 1px solid #e2e8f0; text-align: center; }
+        .hero h1 { font-size: 2.5rem; color: #1a202c; margin-bottom: 12px; font-weight: 800; letter-spacing: -1px; }
+        .hero p { font-size: 1.1rem; color: #4a5568; max-width: 800px; margin: 0 auto; }
+        .rating-badge { display: inline-flex; align-items: center; background: #feebc8; color: #dd6b20; padding: 6px 18px; border-radius: 50px; font-weight: 700; margin-top: 15px; box-shadow: 0 2px 10px rgba(221, 107, 32, 0.1); }
         .rating-badge i { margin-right: 5px; }
 
         /* --- LAYOUT GRID --- */
-        .layout-grid { display: flex; gap: 40px; margin: 50px auto; align-items: flex-start; }
+        .layout-grid { display: flex; gap: 40px; margin: 40px auto; align-items: flex-start; }
         .main-content { flex: 1.8; }
         
         /* --- SIDEBAR WIDGET (4 OPTIONS 2x2 GRID) --- */
@@ -166,16 +166,20 @@
 
         /* --- 🚀 SUPER PREMIUM MOBILE RESPONSIVE DESIGN --- */
         @media(max-width: 768px) {
-            body { padding-bottom: 80px; } /* Space for floating bar */
+            body { padding-bottom: 80px; } 
             
-            .layout-grid { flex-direction: column; margin-top: 30px; }
-            .hero h1 { font-size: 2.2rem; }
+            .layout-grid { flex-direction: column; margin-top: 25px; }
+            
+            /* Compact Hero on Mobile */
+            .hero { padding: 25px 15px; }
+            .hero h1 { font-size: 2.1rem; margin-bottom: 8px; }
+            .hero p { font-size: 1.05rem; }
+            .rating-badge { margin-top: 10px; }
+
             .content-box, .dark-faq-box { padding: 25px 20px; margin-bottom: 30px; }
             
-            /* Magic Trick: Move Sidebar to Top */
             .sidebar { position: static; width: 100%; box-sizing: border-box; order: -1; margin-bottom: 30px; padding: 20px; }
             
-            /* APP-STYLE HORIZONTAL CARDS FOR MOBILE */
             .service-grid { grid-template-columns: 1fr; gap: 12px; }
             .s-card-img { flex-direction: row; align-items: center; padding: 12px; }
             .img-wrapper { width: 80px; height: 80px; margin-bottom: 0; margin-right: 15px; }
@@ -184,12 +188,10 @@
             .qty-box { width: 70px; }
             .btn-add-cart { width: auto; padding: 6px 15px; }
             
-            /* Hide the large WhatsApp button on mobile since we have floating bar */
             .sidebar .checkout-btn { display: none; }
-
             .steps-wrapper { flex-direction: column; gap: 40px; }
             
-            /* FLOATING BOTTOM BAR FOR MOBILE */
+            /* FLOATING BOTTOM BAR */
             .mobile-bottom-bar { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 -5px 20px rgba(0,0,0,0.1); z-index: 1000; padding: 12px 15px; box-sizing: border-box; gap: 15px; align-items: center; border-top: 1px solid #e2e8f0; }
             .mobile-bottom-bar a { flex: 1; text-align: center; padding: 12px 0; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 1.05rem; display: flex; justify-content: center; align-items: center; gap: 8px; transition: 0.3s; }
             .mobile-bottom-bar .btn-call { background: #1e293b; color: white; }
@@ -394,7 +396,7 @@
                     </div>
                     <button class="btn-submit-review" onclick="submitCustomReview()"><i class="fab fa-whatsapp"></i> Submit Review</button>
 
-                    <div id="reviewSuccessMessage">
+                    <div id="reviewSuccessMessage" style="display:none; color: #2f855a; background: #c6f6d5; padding: 15px; border-radius: 8px; margin-top:15px; font-weight: bold;">
                         <i class="fas fa-check-circle"></i> Thank you! Your review has been submitted to WhatsApp.
                     </div>
                 </div>
@@ -540,7 +542,6 @@
     </div>
 
     <script>
-        // Star Rating 
         document.addEventListener("DOMContentLoaded", function() {
             const stars = document.querySelectorAll("#starRatingContainer i");
             const ratingInput = document.getElementById("selectedRatingValue");
@@ -567,7 +568,6 @@
             });
         });
 
-        // WhatsApp Submit Review
         function submitCustomReview() {
             const name = document.getElementById("reviewerInputName").value;
             const text = document.getElementById("reviewerInputText").value;
@@ -591,14 +591,13 @@
             }, 5000);
         }
 
-        // Add to Cart Animation
         function toggleCartBtn(btn) {
             if(btn.innerText === "Add") {
                 btn.innerText = "Added ✓";
-                btn.style.background = "#10b981"; // Green color
+                btn.style.background = "#10b981"; 
             } else {
                 btn.innerText = "Add";
-                btn.style.background = "#c2185b"; // Original Pink/Red
+                btn.style.background = "#c2185b"; 
             }
         }
     </script>
