@@ -180,11 +180,14 @@
         .social-links a:hover { background: #ed8936; transform: translateY(-3px); }
         .footer-bottom { border-top: 1px solid #2d3748; margin-top: 40px; padding-top: 20px; text-align: center; }
 
-        /* --- MOBILE RESPONSIVE --- */
+        /* --- MOBILE RESPONSIVE FIX --- */
         @media(max-width: 768px) {
             .layout-grid { flex-direction: column; }
-            .sidebar { position: static; width: 100%; box-sizing: border-box; }
-            .service-grid { grid-template-columns: 1fr; }
+            
+            /* MAGIC TRICK: order: -1 makes the sidebar go to the top on mobile! */
+            .sidebar { position: static; width: 100%; box-sizing: border-box; order: -1; margin-bottom: 40px; }
+            
+            .service-grid { grid-template-columns: 1fr; } /* Mobile e 1 column hobe jate chobi gulo boro dekhay */
             .steps-wrapper { flex-direction: column; gap: 40px; }
             .hero h1 { font-size: 2.2rem; }
             .content-box, .dark-faq-box { padding: 25px; }
@@ -388,7 +391,7 @@
                     </div>
                     <button class="btn-submit-review" onclick="submitCustomReview()"><i class="fab fa-whatsapp"></i> Submit Review</button>
 
-                    <div id="reviewSuccessMessage">
+                    <div id="reviewSuccessMessage" style="display:none; color: #2f855a; background: #c6f6d5; padding: 15px; border-radius: 8px; margin-top:15px; font-weight: bold;">
                         <i class="fas fa-check-circle"></i> Thank you! Your review has been submitted to WhatsApp.
                     </div>
                 </div>
