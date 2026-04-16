@@ -22,23 +22,6 @@
       gtag('config', 'G-042TGM4N1G');
     </script>
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "City Mistri",
-      "image": "https://www.citymistri.xyz/images/favicon.png",
-      "telephone": "+8801997426656",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Dhaka",
-        "addressCountry": "BD"
-      },
-      "priceRange": "৳320 - ৳5000",
-      "description": "Direct Mistri service for Thai Glass, Aluminum, and SS Grill works in Dhaka."
-    }
-    </script>
-
     <style>
         /* --- GLOBAL & TYPOGRAPHY --- */
         body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background-color: #f0f4f8; margin: 0; padding: 0; color: #2d3748; line-height: 1.7; scroll-behavior: smooth; }
@@ -53,7 +36,8 @@
         .btn-book:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(237, 137, 54, 0.4); }
 
         /* --- STICKY PAGE NAV (TAB MENU) --- */
-        .page-nav-bar { background: white; position: sticky; top: 65px; z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow-x: auto; white-space: nowrap; }
+        .page-nav-bar { background: white; position: sticky; top: 65px; z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow-x: auto; white-space: nowrap; -ms-overflow-style: none; scrollbar-width: none; }
+        .page-nav-bar::-webkit-scrollbar { display: none; } /* Magic: Hides scrollbar for premium look */
         .nav-tabs { display: flex; gap: 30px; padding: 15px 20px; }
         .nav-tabs a { text-decoration: none; color: #4a5568; font-weight: 600; font-size: 1rem; padding-bottom: 5px; transition: 0.3s; }
         .nav-tabs a:hover { color: #ed8936; border-bottom: 3px solid #ed8936; }
@@ -80,9 +64,10 @@
         .s-card-img { background: #22252a; border: 1px solid #374151; border-radius: 10px; padding: 12px; display: flex; flex-direction: column; transition: all 0.3s ease; }
         .s-card-img:hover { border-color: #4b5563; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
         
-        .img-wrapper { height: 110px; background: white; border-radius: 8px; overflow: hidden; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; padding: 5px; }
+        .img-wrapper { height: 110px; background: white; border-radius: 8px; overflow: hidden; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; padding: 5px; flex-shrink: 0; }
         .img-wrapper img { width: 100%; height: 100%; object-fit: contain; }
         
+        .s-card-details { display: flex; flex-direction: column; justify-content: center; width: 100%; }
         .s-card-img h4 { margin: 0 0 5px; font-size: 0.9rem; color: #e2e8f0; line-height: 1.3; }
         .s-price { color: #34d399; font-weight: 700; font-size: 1.05rem; margin-bottom: 15px; }
         
@@ -119,9 +104,6 @@
         .tag-wrap { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px; }
         .tag { background: #edf2f7; padding: 6px 15px; border-radius: 50px; font-size: 0.85rem; color: #4a5568; font-weight: 500; border: 1px solid #e2e8f0; }
 
-        .rules-list { padding-left: 20px; color: #4a5568; }
-        .rules-list li { margin-bottom: 12px; font-size: 1.05rem; }
-
         /* --- PROFESSIONAL DARK FAQ SECTION --- */
         .dark-faq-box { background: #1a1b1f; padding: 50px 40px; border-radius: 15px; margin-bottom: 40px; scroll-margin-top: 130px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
         .dark-faq-box h2 { color: #e2e8f0; font-size: 2.2rem; font-weight: 300; margin-top: 0; margin-bottom: 30px; border-bottom: 1px solid #2d3748; padding-bottom: 20px; border-left: none; }
@@ -149,7 +131,6 @@
         .reviewer-name { font-weight: bold; color: #2d3748; margin-bottom: 5px; display: block; }
         .review-date { font-size: 0.85rem; color: #a0aec0; margin-bottom: 10px; display: block; }
         
-        /* Custom Rating Form */
         .add-review-box { background: #ffffff; border: 2px dashed #cbd5e0; padding: 30px; border-radius: 12px; margin-top: 30px; text-align: center; }
         .add-review-box h3 { color: #2d3748; margin-top: 0; font-size: 1.4rem; margin-bottom: 10px; }
         
@@ -180,17 +161,39 @@
         .social-links a:hover { background: #ed8936; transform: translateY(-3px); }
         .footer-bottom { border-top: 1px solid #2d3748; margin-top: 40px; padding-top: 20px; text-align: center; }
 
-        /* --- MOBILE RESPONSIVE FIX --- */
+        /* --- FLOATING BOTTOM ACTION BAR (Hidden on Desktop) --- */
+        .mobile-bottom-bar { display: none; }
+
+        /* --- 🚀 SUPER PREMIUM MOBILE RESPONSIVE DESIGN --- */
         @media(max-width: 768px) {
-            .layout-grid { flex-direction: column; }
+            body { padding-bottom: 80px; } /* Space for floating bar */
             
-            /* MAGIC TRICK: order: -1 makes the sidebar go to the top on mobile! */
-            .sidebar { position: static; width: 100%; box-sizing: border-box; order: -1; margin-bottom: 40px; }
-            
-            .service-grid { grid-template-columns: 1fr; } /* Mobile e 1 column hobe jate chobi gulo boro dekhay */
-            .steps-wrapper { flex-direction: column; gap: 40px; }
+            .layout-grid { flex-direction: column; margin-top: 30px; }
             .hero h1 { font-size: 2.2rem; }
-            .content-box, .dark-faq-box { padding: 25px; }
+            .content-box, .dark-faq-box { padding: 25px 20px; margin-bottom: 30px; }
+            
+            /* Magic Trick: Move Sidebar to Top */
+            .sidebar { position: static; width: 100%; box-sizing: border-box; order: -1; margin-bottom: 30px; padding: 20px; }
+            
+            /* APP-STYLE HORIZONTAL CARDS FOR MOBILE */
+            .service-grid { grid-template-columns: 1fr; gap: 12px; }
+            .s-card-img { flex-direction: row; align-items: center; padding: 12px; }
+            .img-wrapper { width: 80px; height: 80px; margin-bottom: 0; margin-right: 15px; }
+            .s-price { margin-bottom: 5px; }
+            .control-row { justify-content: flex-start; gap: 15px; margin-top: 5px; }
+            .qty-box { width: 70px; }
+            .btn-add-cart { width: auto; padding: 6px 15px; }
+            
+            /* Hide the large WhatsApp button on mobile since we have floating bar */
+            .sidebar .checkout-btn { display: none; }
+
+            .steps-wrapper { flex-direction: column; gap: 40px; }
+            
+            /* FLOATING BOTTOM BAR FOR MOBILE */
+            .mobile-bottom-bar { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 -5px 20px rgba(0,0,0,0.1); z-index: 1000; padding: 12px 15px; box-sizing: border-box; gap: 15px; align-items: center; border-top: 1px solid #e2e8f0; }
+            .mobile-bottom-bar a { flex: 1; text-align: center; padding: 12px 0; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 1.05rem; display: flex; justify-content: center; align-items: center; gap: 8px; transition: 0.3s; }
+            .mobile-bottom-bar .btn-call { background: #1e293b; color: white; }
+            .mobile-bottom-bar .btn-wa { background: #10b981; color: white; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3); }
         }
     </style>
 </head>
@@ -391,7 +394,7 @@
                     </div>
                     <button class="btn-submit-review" onclick="submitCustomReview()"><i class="fab fa-whatsapp"></i> Submit Review</button>
 
-                    <div id="reviewSuccessMessage" style="display:none; color: #2f855a; background: #c6f6d5; padding: 15px; border-radius: 8px; margin-top:15px; font-weight: bold;">
+                    <div id="reviewSuccessMessage">
                         <i class="fas fa-check-circle"></i> Thank you! Your review has been submitted to WhatsApp.
                     </div>
                 </div>
@@ -412,14 +415,16 @@
                     <div class="img-wrapper">
                         <img src="images/repair-1.png" alt="Lock Installation" onerror="this.src='https://via.placeholder.com/150/ffffff/999999?text=Lock'">
                     </div>
-                    <h4>Lock Installation</h4>
-                    <div class="s-price">৳ 320</div>
-                    <div class="control-row">
-                        <div class="qty-box">
-                            <i class="fas fa-trash-alt"></i>
-                            <span>1 +</span>
+                    <div class="s-card-details">
+                        <h4>Lock Installation</h4>
+                        <div class="s-price">৳ 320</div>
+                        <div class="control-row">
+                            <div class="qty-box">
+                                <i class="fas fa-trash-alt"></i>
+                                <span>1 +</span>
+                            </div>
+                            <button class="btn-add-cart" onclick="toggleCartBtn(this)">Add</button>
                         </div>
-                        <button class="btn-add-cart" onclick="toggleCartBtn(this)">Add</button>
                     </div>
                 </div>
 
@@ -427,14 +432,16 @@
                     <div class="img-wrapper">
                         <img src="images/repair-1.png" alt="Lock Repair" onerror="this.src='https://via.placeholder.com/150/ffffff/999999?text=Lock'">
                     </div>
-                    <h4>Lock Repair</h4>
-                    <div class="s-price">৳ 320</div>
-                    <div class="control-row">
-                        <div class="qty-box">
-                            <i class="fas fa-trash-alt"></i>
-                            <span>1 +</span>
+                    <div class="s-card-details">
+                        <h4>Lock Repair</h4>
+                        <div class="s-price">৳ 320</div>
+                        <div class="control-row">
+                            <div class="qty-box">
+                                <i class="fas fa-trash-alt"></i>
+                                <span>1 +</span>
+                            </div>
+                            <button class="btn-add-cart" onclick="toggleCartBtn(this)">Add</button>
                         </div>
-                        <button class="btn-add-cart" onclick="toggleCartBtn(this)">Add</button>
                     </div>
                 </div>
 
@@ -442,14 +449,16 @@
                     <div class="img-wrapper">
                         <img src="images/repair-2.png" alt="Wheel Installation & Repair" onerror="this.src='https://via.placeholder.com/150/ffffff/999999?text=Wheel'">
                     </div>
-                    <h4>Wheel Installation & Repair</h4>
-                    <div class="s-price">৳ 320</div>
-                    <div class="control-row">
-                        <div class="qty-box">
-                            <i class="fas fa-trash-alt"></i>
-                            <span>1 +</span>
+                    <div class="s-card-details">
+                        <h4>Wheel Install & Repair</h4>
+                        <div class="s-price">৳ 320</div>
+                        <div class="control-row">
+                            <div class="qty-box">
+                                <i class="fas fa-trash-alt"></i>
+                                <span>1 +</span>
+                            </div>
+                            <button class="btn-add-cart" onclick="toggleCartBtn(this)">Add</button>
                         </div>
-                        <button class="btn-add-cart" onclick="toggleCartBtn(this)">Add</button>
                     </div>
                 </div>
 
@@ -457,14 +466,16 @@
                     <div class="img-wrapper">
                         <img src="images/Floor-Spring-Door-Closers.jpg" alt="Door Closer Re-Fitting" onerror="this.src='https://via.placeholder.com/150/ffffff/999999?text=Closer'">
                     </div>
-                    <h4>Door Closer Re-Fitting</h4>
-                    <div class="s-price">৳ 1620</div>
-                    <div class="control-row">
-                        <div class="qty-box">
-                            <i class="fas fa-trash-alt"></i>
-                            <span>1 +</span>
+                    <div class="s-card-details">
+                        <h4>Door Closer Re-Fitting</h4>
+                        <div class="s-price">৳ 1620</div>
+                        <div class="control-row">
+                            <div class="qty-box">
+                                <i class="fas fa-trash-alt"></i>
+                                <span>1 +</span>
+                            </div>
+                            <button class="btn-add-cart" onclick="toggleCartBtn(this)">Add</button>
                         </div>
-                        <button class="btn-add-cart" onclick="toggleCartBtn(this)">Add</button>
                     </div>
                 </div>
 
@@ -522,6 +533,11 @@
             <p>© City Mistri 2026. All Rights Reserved. | <a href="sitemap.xml" style="color: #a0aec0; text-decoration: none;">Sitemap</a></p>
         </div>
     </footer>
+
+    <div class="mobile-bottom-bar">
+        <a href="tel:+8801997426656" class="btn-call"><i class="fas fa-phone-alt"></i> Call</a>
+        <a href="https://wa.me/8801997426656?text=Hello%20City%20Mistri!%20I%20want%20to%20book%20a%20Thai%20Glass%2FGrill%20Service." target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
 
     <script>
         // Star Rating 
