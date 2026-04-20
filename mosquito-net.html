@@ -203,29 +203,37 @@
             .whatsapp-float { bottom: 90px; right: 15px; width: 50px; height: 50px; font-size: 24px; }
             .messenger-float { bottom: 155px; right: 15px; width: 50px; height: 50px; font-size: 24px; }
         }
-        /* --- INLINE VIDEO SHOWCASE --- */
+        /* --- YOUTUBE SHORTS SHOWCASE CSS --- */
 .video-showcase-box { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); margin-bottom: 40px; border: 1px solid #edf2f7; }
-.section-header h2 { color: #2d3748; font-size: 1.8rem; margin-top: 0; margin-bottom: 10px; text-align: center; border: none; padding: 0; }
+.section-header h2 { color: #2d3748; font-size: 1.8rem; margin-top: 0; margin-bottom: 5px; text-align: center; border: none; padding: 0; }
 
-.video-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 20px; }
+.video-grid { display: flex; justify-content: center; gap: 25px; margin-top: 20px; }
 
-/* Fixed Width Cards */
 .video-card { width: 300px; background: #f8fafc; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.02); display: flex; flex-direction: column; }
 .video-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-color: #cbd5e0; }
 
-/* Video Wrappers */
-.video-wrapper { width: 100%; display: flex; justify-content: center; align-items: center; background: #000; overflow: hidden; }
-.yt-wrapper { height: 533px; /* standard shorts height */ }
-.fb-wrapper { min-height: 533px; } /* FB SDK automatically adjusts height, this keeps it aligned */
+/* Perfect 9:16 Ratio for Shorts */
+.video-wrapper { position: relative; width: 100%; padding-bottom: 177.77%; background: #000; }
+.video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-.video-info { padding: 20px; text-align: center; border-top: 3px solid #10b981; flex-grow: 1; background: white;}
-.video-info h3 { margin: 0 0 8px; color: #2d3748; font-size: 1.2rem; font-weight: 700; }
-.video-info p { margin: 0; font-size: 0.95rem; color: #718096; line-height: 1.5; }
+.video-info { padding: 15px; text-align: center; border-top: 3px solid #FF0000; background: white; flex-grow: 1; }
+.video-info h3 { margin: 0 0 5px; color: #2d3748; font-size: 1.1rem; font-weight: 700; }
+.video-info p { margin: 0; font-size: 0.85rem; color: #718096; line-height: 1.4; }
 
+/* 🚀 MOBILE VIEW: 3 VIDEOS PASHAPASHI (SIDE-BY-SIDE) */
 @media(max-width: 768px) {
-    .video-showcase-box { padding: 25px 15px; }
-    .video-card { width: 100%; max-width: 350px; } 
-    .yt-wrapper, .fb-wrapper { height: auto; min-height: 400px;}
+    .video-showcase-box { padding: 20px 10px; }
+    .section-header h2 { font-size: 1.4rem; }
+    .video-grid { 
+        display: grid; 
+        grid-template-columns: repeat(3, 1fr); /* 3 ta video pashapashi */
+        gap: 8px; /* Majkhane choto faka */
+        margin-top: 15px;
+    }
+    .video-card { width: 100%; border-radius: 8px; }
+    .video-info { padding: 8px 4px; border-top: 2px solid #FF0000; }
+    .video-info h3 { font-size: 0.75rem; line-height: 1.2; margin: 0; }
+    .desktop-only { display: none; } /* Mobile a jaiga bachanir jonno description hide kora hoyeche */
 }
     </style>
 </head>
@@ -297,43 +305,40 @@
                 Are you looking for a permanent solution to keep mosquitoes out? <strong>City Mistri</strong> brings you the highest quality window mosquito nets. You can choose between budget friendly Velcro Magic Mesh nets or premium Thai Aluminum Sliding mosquito nets depending on your needs and budget.
             </p>
         </section>
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0" nonce="citymistri"></script>
-
 <section id="video-demo" class="content-box video-showcase-box">
     <div class="section-header text-center">
-        <h2><i class="fas fa-play-circle" style="color: #ed8936;"></i> Live Work Demos</h2>
-        <p style="color: #718096; text-align: center; margin-bottom: 30px;">Watch our high-quality mosquito net installations directly here.</p>
+        <h2><i class="fab fa-youtube" style="color: #FF0000;"></i> Live Work Demos</h2>
+        <p class="desktop-only" style="color: #718096; text-align: center; margin-bottom: 20px;">Watch our high-quality mosquito net installations directly here.</p>
     </div>
 
     <div class="video-grid">
         <div class="video-card">
-            <div class="video-wrapper fb-wrapper">
-                <div class="fb-video" data-href="https://www.facebook.com/reel/1417259903530443" data-width="auto" data-show-text="false"></div>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/cYEBfTqgLIQ?rel=0" title="Velcro Magic Mesh Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <div class="video-info">
                 <h3>Velcro Magic Mesh</h3>
-                <p>Drill-free & perfect for rented homes.</p>
+                <p class="desktop-only">Drill-free & perfect for rented homes.</p>
             </div>
         </div>
 
         <div class="video-card">
-            <div class="video-wrapper yt-wrapper">
-                <iframe src="https://www.youtube.com/embed/xq0Slcjt6Nk?rel=0" width="100%" height="100%" style="border:none;overflow:hidden;" title="City Mistri Net Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/xq0Slcjt6Nk?rel=0" title="Aluminum Sliding Net Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <div class="video-info">
-                <h3>Aluminum Sliding Net</h3>
-                <p>Heavy-duty setup matching Thai glass.</p>
+                <h3>Sliding Net</h3>
+                <p class="desktop-only">Heavy-duty setup matching Thai glass.</p>
             </div>
         </div>
 
         <div class="video-card">
-            <div class="video-wrapper fb-wrapper">
-                <div class="fb-video" data-href="https://www.facebook.com/100064223232323/videos/1DtUh2pgqW/" data-width="auto" data-show-text="false"></div>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/ViqkjIiqERQ?rel=0" title="Premium Folding Net Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <div class="video-info">
-                <h3>Premium Folding Net</h3>
-                <p>Modern design for luxury large doors.</p>
+                <h3>Folding Net</h3>
+                <p class="desktop-only">Modern design for luxury large doors.</p>
             </div>
         </div>
     </div>
