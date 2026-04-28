@@ -100,7 +100,9 @@
 
     <style>
         /* --- GLOBAL STYLES --- */
-        body { font-family: 'Segoe UI', 'SolaimanLipi', sans-serif; margin: 0; padding: 0; color: #333; background-color: #f9f9f9; padding-bottom: 70px; }
+        * { box-sizing: border-box; } /* Fixes layout overflow */
+        body { font-family: 'Segoe UI', 'SolaimanLipi', sans-serif; margin: 0; padding: 0; color: #333; background-color: #f9f9f9; padding-bottom: 70px; overflow-x: hidden; }
+        img { max-width: 100%; height: auto; }
         
         /* HEADER */
         header { background: white; padding: 15px 0; box-shadow: 0 4px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
@@ -110,7 +112,6 @@
         .book-btn { background: #004d40; color: white !important; padding: 10px 20px; border-radius: 5px; font-weight: bold; }
 
         /* HERO SECTION */
-        /* Fix 3: Updated background URL to .webp */
         .page-header {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/glass-sticker-service-dhaka.webp'); 
             background-size: cover;
@@ -130,14 +131,7 @@
         .trust-badge { background: #e0f2f1; color: #004d40; padding: 10px; border-radius: 5px; text-align: center; font-weight: bold; margin-bottom: 20px; border: 1px dashed #004d40; }
 
         /* TABLE STYLES */
-        .price-table-container { 
-            overflow-x: auto; 
-            margin: 40px 0; 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08); 
-            border-radius: 12px; 
-            background: white;
-            border: 1px solid #eee;
-        }
+        .price-table-container { overflow-x: auto; margin: 40px 0; box-shadow: 0 8px 20px rgba(0,0,0,0.08); border-radius: 12px; background: white; border: 1px solid #eee; }
         .price-table { width: 100%; border-collapse: collapse; min-width: 600px; }
         .price-table th { background: #004d40; color: white; padding: 18px; text-align: left; }
         .price-table td { padding: 18px; border-bottom: 1px solid #eee; }
@@ -150,13 +144,12 @@
         /* FAQ STYLES */
         .faq-section { margin-top: 50px; }
         .faq-item { background: white; border: 1px solid #ddd; margin-bottom: 10px; border-radius: 5px; }
-        .faq-question { padding: 15px; cursor: pointer; font-weight: bold; background: #f8f9fa; display: flex; justify-content: space-between; }
+        .faq-question { padding: 15px; cursor: pointer; font-weight: bold; background: #f8f9fa; display: flex; justify-content: space-between; align-items: center; }
         .faq-answer { padding: 15px; display: none; border-top: 1px solid #ddd; line-height: 1.6; }
         .faq-item.active .faq-answer { display: block; }
         .faq-item.active .faq-question { background: #e0f2f1; color: #004d40; }
 
         /* FOOTER */
-        /* Fix 3: Updated background URL to .webp */
         footer { 
             background: linear-gradient(rgba(0,0,0,0.95), rgba(0,0,0,0.95)), url('images/glass-sticker-service-dhaka.webp'); 
             background-size: cover; 
@@ -167,29 +160,46 @@
         }
         .footer-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; padding: 0 20px; max-width: 1200px; margin: 0 auto; }
         .footer-col h3 { color: #fff; border-bottom: 2px solid #004d40; display: inline-block; padding-bottom: 5px; }
-        .footer-col ul { list-style: none; padding: 0; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
         .footer-col ul li { margin-bottom: 10px; }
         .footer-col ul li a { color: #bbb; text-decoration: none; transition: 0.3s; }
         .footer-col ul li a:hover { color: #00ffea; padding-left: 5px; }
         .footer-bottom { border-top: 1px solid #333; margin-top: 40px; padding-top: 20px; text-align: center; }
 
-        /* MOBILE FIXES */
+        /* --- MOBILE FIXES --- */
         .mobile-sticky-footer { display: none; }
         @media(max-width: 768px) {
-            .nav-container { flex-direction: column; gap: 10px; }
-            .nav-links { display: flex; gap: 15px; }
-            .page-header { padding: 80px 20px; }
+            .nav-container { flex-direction: column; gap: 15px; padding: 15px; }
+            .nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
             
-            /* Card View Table */
+            .page-header { padding: 50px 15px; }
+            .page-header h1 { font-size: 1.8rem; }
+            .seo-content { font-size: 1rem; }
+
+            /* CTA Button Mobile Fix */
+            .in-content-cta a {
+                display: block !important;
+                margin-left: 0 !important;
+                margin-top: 15px !important;
+                width: 100%;
+            }
+
+            /* Card View Table Fixes */
             .price-table-container { box-shadow: none; border: none; background: transparent; padding: 0; margin: 20px 0; }
             .price-table thead { display: none; }
             .price-table, .price-table tbody, .price-table tr, .price-table td { display: block; width: 100%; }
-            .price-table tr { margin-bottom: 20px; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 1px solid #f1f1f1; position: relative; }
+            .price-table tr { margin-bottom: 20px; background: white; border-radius: 12px; padding: 15px 15px 15px 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); border: 1px solid #f1f1f1; position: relative; }
             .price-table tr::after { content: ''; position: absolute; left: 0; top: 15px; bottom: 15px; width: 5px; background: #004d40; border-radius: 0 5px 5px 0; }
-            .price-table td { display: flex; justify-content: space-between; text-align: right; padding: 12px 0; border-bottom: 1px dashed #eee; }
-            .price-table td::before { content: attr(data-label); font-weight: bold; text-align: left; color: #555; text-transform: uppercase; font-size: 0.9rem; flex: 1; }
-            .price-table td[data-label="Price"] { color: #d32f2f; font-weight: 800; font-size: 1.2rem; }
+            .price-table td { display: flex; flex-direction: column; text-align: left; padding: 10px 0; border-bottom: 1px dashed #eee; }
+            .price-table td::before { content: attr(data-label); font-weight: bold; color: #555; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; }
+            .price-table td[data-label="Price"] { color: #d32f2f; font-weight: 800; font-size: 1.2rem; border-bottom: none; }
 
+            /* Footer Mobile Fix */
+            .footer-main { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+            .footer-col h3 { margin: 0 auto 15px; }
+            .social-links { display: flex; justify-content: center; gap: 20px; }
+
+            /* Sticky Footer Fix */
             .mobile-sticky-footer { display: block; position: fixed; bottom: 0; left: 0; width: 100%; background: #fff; padding: 10px; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 1001; text-align: center; }
             .sticky-call-btn { display: block; background: #004d40; color: white; text-align: center; padding: 12px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
             footer { padding-bottom: 90px; }
@@ -301,14 +311,14 @@
         </div>
         <p style="text-align: center; font-size: 0.9rem; color: #666;">(Minimum order quantity applies. Price includes material & installation.)</p>
 
-        <div style="background:#e0f2f1; padding:25px; border-radius:10px; text-align:center; margin:35px 0;">
+        <div class="in-content-cta" style="background:#e0f2f1; padding:25px; border-radius:10px; text-align:center; margin:35px 0;">
             <h2 style="color:#004d40;">Need Glass Sticker Installation?</h2>
             <p>Send your glass size or photo on WhatsApp and get instant estimate.</p>
             <a href="tel:+8801997426656" style="background:#004d40;color:white;padding:12px 25px;border-radius:6px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:10px;">
                 📞 Call: 01997426656
             </a>
             <a href="https://wa.me/8801997426656" style="background:#25D366;color:white;padding:12px 25px;border-radius:6px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:10px;margin-left:10px;">
-                WhatsApp Estimate
+                <i class="fab fa-whatsapp"></i> WhatsApp Estimate
             </a>
         </div>
 
