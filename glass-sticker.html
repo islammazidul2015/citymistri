@@ -110,17 +110,24 @@
         .nav-links a { text-decoration: none; color: #333; margin-left: 20px; font-weight: 600; transition: 0.3s; }
         .book-btn { background: #004d40; color: white !important; padding: 10px 20px; border-radius: 5px; font-weight: bold; }
 
-        /* HERO SECTION */
-        .page-header {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/glass-sticker-service-dhaka.webp'); 
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
+        /* HERO SECTION (NEW FIX) */
+        .hero-banner {
+            width: 100%;
+            height: 450px;
+            background: url('images/glass-sticker-service-dhaka.webp') center/cover no-repeat;
         }
-        .page-header h1 { font-size: 2.2rem; margin-bottom: 10px; }
-        .highlight-text { color: #00ffea; font-weight: bold; }
+        
+        .hero-content {
+            text-align: center;
+            padding: 40px 20px;
+            background: #fff;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            margin-bottom: 30px;
+        }
+        
+        .hero-content h1 { font-size: 2.2rem; color: #004d40; margin: 0 0 10px 0; }
+        .highlight-text-dark { color: #004d40; font-weight: bold; }
         
         /* CONTENT STYLES */
         .seo-content { font-size: 1.1rem; line-height: 1.8; text-align: justify; margin-bottom: 40px; }
@@ -177,10 +184,11 @@
             .nav-links a { margin-left: 0; font-size: 0.9rem; padding: 8px 10px; }
             .book-btn { padding: 8px 14px; }
             
-            /* Premium Hero Section Fixes */
-            .page-header { padding: 50px 15px; }
-            .page-header h1 { font-size: 1.65rem; line-height: 1.3; }
-            .page-header p { font-size: 0.95rem; line-height: 1.5; }
+            /* Premium Hero Section Fixes (NEW FIX) */
+            .hero-banner { height: 220px; } 
+            .hero-content { padding: 25px 15px; }
+            .hero-content h1 { font-size: 1.65rem; line-height: 1.3; }
+            .hero-content p { font-size: 0.95rem; line-height: 1.5; }
             .seo-content { font-size: 1rem; }
 
             .trust-badge { font-size: 0.9rem; line-height: 1.5; }
@@ -244,13 +252,15 @@
         </div>
     </header>
 
-    <div class="page-header">
+    <div class="hero-banner"></div>
+
+    <div class="hero-content">
         <h1>Glass Sticker Price in Dhaka Bangladesh 2026</h1>
-        <p>Premium <span class="highlight-text">Frosted Paper & Privacy Film</span> for Office & Home</p>
-        <p style="font-size: 0.9rem; margin-top: 10px;">Service Area: Gulshan, Banani, Motijheel, Uttara & All Dhaka.</p>
+        <p>Premium <span class="highlight-text-dark">Frosted Paper & Privacy Film</span> for Office & Home</p>
+        <p style="font-size: 0.9rem; margin-top: 5px; color: #666;">Service Area: Gulshan, Banani, Motijheel, Uttara & All Dhaka.</p>
     </div>
 
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 60px 20px;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 20px 20px 60px 20px;">
         
         <div class="trust-badge">
             ⭐ Rated 4.8/5 by 120+ customers on Google Maps for glass & repair services in Dhaka.
