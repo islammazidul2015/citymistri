@@ -189,12 +189,7 @@
         .styled-table th, .styled-table td { padding: 12px 15px; border-bottom: 1px solid #dddddd; }
         .styled-table tbody tr:nth-of-type(even) { background-color: #f3f3f3; }
 
-        /* FAQ & FOOTER */
-        .faq-item { background: #f9f9f9; margin-bottom: 10px; border-radius: 5px; overflow: hidden; }
-        .faq-question { padding: 15px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; }
-        .faq-answer { padding: 15px; display: none; background: white; border-top: 1px solid #eee; color: #555; }
-        .faq-item.active .faq-answer { display: block; }
-
+        /* FOOTER */
         footer { background: #2c3e50; color: white; padding-top: 40px; margin-top: 50px; padding-bottom: 80px; }
         .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .footer-bottom { text-align: center; border-top: 1px solid #34495e; margin-top: 30px; padding-top: 20px; color: #95a5a6; }
@@ -207,6 +202,59 @@
         .sticky-cta { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 10px; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); display: flex; justify-content: space-around; z-index: 1000; display: none; }
         .btn-call, .btn-wa { padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; color: white; flex: 1; text-align: center; margin: 0 5px; font-size: 0.9rem; }
         .btn-call { background: #007bff; } .btn-wa { background: #25D366; }
+
+        /* FAQ Pro CSS (HTML5 Native) */
+        .faq-container-pro {
+          margin-top: 20px;
+        }
+
+        .faq-card {
+          background: #ffffff;
+          border: 1px solid #e5e7eb;
+          border-radius: 12px;
+          margin-bottom: 12px;
+          overflow: hidden;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .faq-card summary {
+          cursor: pointer;
+          padding: 16px 18px;
+          font-weight: 700;
+          color: #1f2937;
+          list-style: none;
+          position: relative;
+        }
+
+        .faq-card summary::-webkit-details-marker {
+          display: none;
+        }
+
+        .faq-card summary::after {
+          content: "+";
+          position: absolute;
+          right: 18px;
+          top: 14px;
+          font-size: 1.4rem;
+          color: #007bff;
+          font-weight: 700;
+        }
+
+        .faq-card[open] summary {
+          background: #eaf4ff;
+          color: #004e92;
+        }
+
+        .faq-card[open] summary::after {
+          content: "−";
+        }
+
+        .faq-card p {
+          padding: 0 18px 18px;
+          margin: 0;
+          color: #4b5563;
+          line-height: 1.7;
+        }
 
         /* Professional Mobile View Fix */
         * {
@@ -328,6 +376,23 @@
 
           footer {
             padding-bottom: 90px;
+          }
+          
+          /* Mobile specific for new FAQ */
+          .faq-card summary {
+            padding: 15px 42px 15px 15px;
+            font-size: 0.98rem;
+            line-height: 1.5;
+          }
+
+          .faq-card summary::after {
+            right: 15px;
+            top: 14px;
+          }
+
+          .faq-card p {
+            padding: 0 15px 16px;
+            font-size: 0.95rem;
           }
         }
     </style>
@@ -514,31 +579,37 @@
         <p>সাধারণত প্রতি স্কয়ার ফিট রেটের মধ্যেই মিস্ত্রি খরচ বা <strong>Installation Cost</strong> অন্তর্ভুক্ত থাকে। তবে আপনি যদি পুরনো জানালা রিপেয়ার করতে চান, তবে ভিজিট চার্জ ৫০০ টাকা এবং কাজের ধরন অনুযায়ী বিল হবে। আমরা ঢাকা ও চট্টগ্রামের সব এলাকায় সার্ভিস দেই।</p>
 
         <h2 id="faq">Frequently Asked Questions (FAQ)</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question">১. থাই জানালায় ৫মিমি নাকি ৬মিমি গ্লাস ভালো? <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">সাধারণ বাসা-বাড়ির জন্য ৫মিমি গ্লাসই যথেষ্ট। তবে জানালার সাইজ ৭ ফিটের বেশি হলে ৬মিমি ব্যবহার করা নিরাপদ।</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">২. আপনারা কি ঢাকার বাইরে কাজ করেন? <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">হ্যাঁ, আমরা ঢাকা ও চট্টগ্রামসহ সারা বাংলাদেশে কাজ করি। বড় প্রজেক্টের জন্য বিশেষ ছাড় আছে।</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">৩. Thai Glass জানালার প্রতি sqft দাম কত? <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">২০২৬ সালে Thai Glass জানালার কমপ্লিট খরচ সাধারণত ৪৫০–৬০০ টাকা প্রতি sqft, brand ও glass thickness অনুযায়ী দাম পরিবর্তন হয়।</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">৪. KAI Aluminum ভালো নাকি Chung Hua? <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">Budget ও standard home project-এর জন্য KAI ভালো। Premium finishing ও heavy-duty work-এর জন্য Chung Hua/Altec ব্যবহার করা যায়।</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">৫. Thai Glass repair service কি করেন? <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">হ্যাঁ, আমরা Thai Glass wheel, lock, roller, sliding problem, glass change এবং aluminum frame repair service দিই।</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">৬. Estimate নিতে কী লাগবে? <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">আপনার জানালার height, width অথবা একটি photo WhatsApp-এ পাঠালেই আমরা quick estimate দিতে পারি।</div>
-            </div>
+        
+        <div class="faq-container-pro">
+          <details class="faq-card">
+            <summary>১. থাই জানালায় ৫মিমি নাকি ৬মিমি গ্লাস ভালো?</summary>
+            <p>সাধারণ বাসা-বাড়ির জন্য ৫মিমি গ্লাসই যথেষ্ট। তবে জানালার সাইজ ৭ ফিটের বেশি হলে ৬মিমি ব্যবহার করা নিরাপদ।</p>
+          </details>
+
+          <details class="faq-card">
+            <summary>২. আপনারা কি ঢাকার বাইরে কাজ করেন?</summary>
+            <p>হ্যাঁ, আমরা ঢাকা ও চট্টগ্রামসহ সারা বাংলাদেশে কাজ করি। বড় প্রজেক্টের জন্য বিশেষ ছাড় আছে।</p>
+          </details>
+
+          <details class="faq-card">
+            <summary>৩. Thai Glass জানালার প্রতি sqft দাম কত?</summary>
+            <p>২০২৬ সালে Thai Glass জানালার কমপ্লিট খরচ সাধারণত ৪৫০–৬০০ টাকা প্রতি sqft, brand ও glass thickness অনুযায়ী দাম পরিবর্তন হয়।</p>
+          </details>
+
+          <details class="faq-card">
+            <summary>৪. KAI Aluminum ভালো নাকি Chung Hua?</summary>
+            <p>Budget ও standard home project-এর জন্য KAI ভালো। Premium finishing ও heavy-duty work-এর জন্য Chung Hua/Altec ব্যবহার করা যায়।</p>
+          </details>
+
+          <details class="faq-card">
+            <summary>৫. Thai Glass repair service কি করেন?</summary>
+            <p>হ্যাঁ, আমরা Thai Glass wheel, lock, roller, sliding problem, glass change এবং aluminum frame repair service দিই।</p>
+          </details>
+
+          <details class="faq-card">
+            <summary>৬. Estimate নিতে কী লাগবে?</summary>
+            <p>আপনার জানালার height, width অথবা একটি photo WhatsApp-এ পাঠালেই আমরা quick estimate দিতে পারি।</p>
+          </details>
         </div>
 
         <!-- SEO Fix: Internal Link block added -->
@@ -618,27 +689,7 @@
     <script src="script.js"></script>
 
     <script>
-        // FAQ Toggle Logic - Bulletproof
-        window.addEventListener('DOMContentLoaded', (event) => {
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            faqQuestions.forEach(q => {
-                q.addEventListener('click', function() {
-                    this.parentElement.classList.toggle('active');
-                    const icon = this.querySelector('i');
-                    if(icon) {
-                        if(this.parentElement.classList.contains('active')) {
-                            icon.classList.remove('fa-chevron-down');
-                            icon.classList.add('fa-chevron-up');
-                        } else {
-                            icon.classList.remove('fa-chevron-up');
-                            icon.classList.add('fa-chevron-down');
-                        }
-                    }
-                });
-            });
-        });
-
-        // Conversion Boost: Calculator Logic
+        // Conversion Boost: Calculator Logic Only (FAQ JS Removed)
         function calculateCost() {
           var heightInput = document.getElementById('height');
           var widthInput = document.getElementById('width');
