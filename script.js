@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         // Intersection Observer to start counter when visible
-        // This observer is now correctly defined at this scope
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -59,10 +58,9 @@ document.addEventListener("DOMContentLoaded", function() {
             observer.observe(counter);
         });
     }
-    // (The animateCounter function was previously trapped inside another observer's scope. It is now fixed.)
 
     // --- Premium Hero Slider Logic (FIXED) ---
-    const sliderWrapperPremium = document.querySelector(".hero-slider-premium"); // Changed to parent container
+    const sliderWrapperPremium = document.querySelector(".hero-slider-premium"); 
     if (sliderWrapperPremium) {
         const slidesPremium = document.querySelectorAll(".slide-premium");
         const prevBtnPremium = document.querySelector(".prev-btn-premium");
@@ -73,7 +71,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const totalSlidesPremium = slidesPremium.length;
         let slideIntervalPremium;
 
-        // Create dots dynamically
         for (let i = 0; i < totalSlidesPremium; i++) {
             const dot = document.createElement("div");
             dot.classList.add("dot");
@@ -91,15 +88,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 slide.classList.toggle("active", index === currentIndexPremium);
                 const content = slide.querySelector('.slide-content');
                 if (content) {
-                    // Reset animation for content in all slides
                     content.style.animation = 'none';
                 }
             });
-            // Reapply animation only for the active slide's content
             if (slidesPremium[currentIndexPremium]) {
                 const activeContent = slidesPremium[currentIndexPremium].querySelector('.slide-content');
                 if (activeContent) {
-                    void activeContent.offsetWidth; // Trigger reflow
+                    void activeContent.offsetWidth; 
                     activeContent.style.animation = 'fadeInSlide 1s ease-out forwards';
                 }
             }
@@ -132,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         function startIntervalPremium() {
-            slideIntervalPremium = setInterval(nextSlidePremium, 6000); // Change slide every 6 seconds
+            slideIntervalPremium = setInterval(nextSlidePremium, 6000); 
         }
 
         function resetIntervalPremium() {
@@ -140,7 +135,6 @@ document.addEventListener("DOMContentLoaded", function() {
             startIntervalPremium();
         }
 
-        // Event Listeners
         nextBtnPremium.addEventListener("click", () => {
             nextSlidePremium();
             resetIntervalPremium();
@@ -151,8 +145,7 @@ document.addEventListener("DOMContentLoaded", function() {
             resetIntervalPremium();
         });
 
-        // Initial setup
-        goToSlidePremium(0); // Show the first slide
+        goToSlidePremium(0); 
         startIntervalPremium();
     }
 
@@ -163,13 +156,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (mobileNavToggle) {
         mobileNavToggle.addEventListener("click", () => {
-            // মেন্যু খোলা বা বন্ধ করা
             body.classList.toggle("nav-open");
             const isExpanded = body.classList.contains("nav-open");
             mobileNavToggle.setAttribute("aria-expanded", isExpanded);
         });
 
-        // মেন্যুর বাইরে ক্লিক করলে মেন্যু বন্ধ করা
         document.addEventListener('click', function(e) {
             if (body.classList.contains('nav-open') && !primaryNav.contains(e.target) && !mobileNavToggle.contains(e.target)) {
                 body.classList.remove("nav-open");
@@ -183,13 +174,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const navLinks = document.querySelectorAll(".service-nav a");
 
     if (sections.length > 0 && navLinks.length > 0) {
-        
         const onScroll = () => {
             let currentSection = "";
 
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (window.scrollY >= sectionTop - 150) { // 150px offset for header
+                if (window.scrollY >= sectionTop - 150) { 
                     currentSection = section.getAttribute("id");
                 }
             });
@@ -205,9 +195,7 @@ document.addEventListener("DOMContentLoaded", function() {
         window.addEventListener("scroll", onScroll);
     }
     
-    // --- 6. Portfolio Page Filter Logic (Upgraded for multiple galleries) ---
-    
-    // Find all filterable components on the page (one on index.html, one on portfolio.html)
+    // --- 6. Portfolio Page Filter Logic ---
     const portfolioComponents = document.querySelectorAll(".portfolio-page-content, .homepage-portfolio-component"); 
 
     if (portfolioComponents.length > 0) {
@@ -218,13 +206,11 @@ document.addEventListener("DOMContentLoaded", function() {
             if (filterButtons.length > 0 && galleryItems.length > 0) {
                 filterButtons.forEach(button => {
                     button.addEventListener("click", () => {
-                        // Set active class on button *within this component*
                         filterButtons.forEach(btn => btn.classList.remove("active"));
                         button.classList.add("active");
 
                         const filterValue = button.getAttribute("data-filter");
 
-                        // Filter items *within this component*
                         galleryItems.forEach(item => {
                             if (filterValue === "all" || item.classList.contains(filterValue)) {
                                 item.classList.remove("hide");
@@ -238,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             }
         });
-    } // End of Portfolio Filter Logic
+    } 
 
     // --- Scroll Animation Logic ---
     const hiddenSections = document.querySelectorAll(".hidden-section");
@@ -251,18 +237,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
         }, {
-            threshold: 0.15 // 15% of the section must be visible
+            threshold: 0.15 
         });
 
         hiddenSections.forEach(section => {
             sectionObserver.observe(section);
         });
     }
-
 });
-// --- 7. Portfolio Detail Modal (Lightbox) Logic ---
 
-// Get the modal and its elements
+// --- 7. Portfolio Detail Modal (Lightbox) Logic ---
 const modal = document.getElementById("projectModal");
 const closeBtn = document.querySelector(".close-btn");
 const modalImage = document.getElementById("modalImage");
@@ -270,82 +254,79 @@ const modalTitle = document.getElementById("modalTitle");
 const modalDescription = document.getElementById("modalDescription");
 const modalWhatsappLink = document.getElementById("modalWhatsappLink");
 
-// Get all gallery cards
 const galleryCards = document.querySelectorAll(".portfolio-gallery-grid .gallery-item-card");
 
-if (galleryCards.length > 0) {
-    galleryCards.forEach(card => {
-        card.addEventListener("click", (e) => {
-            // Check if the click was directly on the card or its children (excluding other interactive elements if any)
-            if (e.target.closest('.gallery-item-card')) {
-                // Prevent default action if it was an anchor tag, but our current design has no anchors, so this is fine.
+// CRITICAL NULL CHECK ADDED HERE
+if (modal && closeBtn) { 
+    if (galleryCards.length > 0) {
+        galleryCards.forEach(card => {
+            card.addEventListener("click", (e) => {
+                if (e.target.closest('.gallery-item-card')) {
+                    const imgSource = card.getAttribute("data-img");
+                    const titleText = card.getAttribute("data-title");
+                    const descriptionText = card.getAttribute("data-description");
+                    
+                    modalImage.src = imgSource;
+                    modalImage.alt = titleText;
+                    modalTitle.textContent = titleText;
+                    modalDescription.textContent = descriptionText;
 
-                // 1. Extract data from the clicked card
-                const imgSource = card.getAttribute("data-img");
-                const titleText = card.getAttribute("data-title");
-                const descriptionText = card.getAttribute("data-description");
-                
-                // 2. Populate the modal elements
-                modalImage.src = imgSource;
-                modalImage.alt = titleText;
-                modalTitle.textContent = titleText;
-                modalDescription.textContent = descriptionText;
+                    const whatsappBaseUrl = "https://wa.me/8801997426656?text=";
+                    const encodedMessage = encodeURIComponent(`Hello, I am interested in the '${titleText}' design I saw on your portfolio. Can you share a quote?`);
+                    modalWhatsappLink.href = whatsappBaseUrl + encodedMessage;
 
-                // 3. Update the WhatsApp link with the project title
-                const whatsappBaseUrl = "https://wa.me/8801997426656?text=";
-                const encodedMessage = encodeURIComponent(`Hello, I am interested in the '${titleText}' design I saw on your portfolio. Can you share a quote?`);
-                modalWhatsappLink.href = whatsappBaseUrl + encodedMessage;
-
-                // 4. Display the modal
-                modal.style.display = "block";
-                document.body.style.overflow = "hidden"; // Prevent scrolling on main page
-            }
+                    modal.style.display = "block";
+                    document.body.style.overflow = "hidden"; 
+                }
+            });
         });
-    });
-}
+    }
 
-// Function to close the modal
-function closeModal() {
-    modal.style.display = "none";
-    document.body.style.overflow = "auto"; // Restore scrolling
-}
+    function closeModal() {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto"; 
+    }
 
-// 1. Close the modal when the close button (x) is clicked
-closeBtn.onclick = closeModal;
+    closeBtn.onclick = closeModal;
 
-// 2. Close the modal when the user clicks anywhere outside of the modal content
-window.onclick = function(event) {
-    if (event.target == modal) {
-        closeModal();
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
     }
 }
+
 // 1. Wait for the webpage to fully load
 document.addEventListener("DOMContentLoaded", function() {
     
-    // ... (Keep your existing star rating code here) ...
-
     // 2. Select all the quantity boxes on the page
     const qtyBoxes = document.querySelectorAll('.qty-box');
 
     // 3. Loop through each box to give its buttons instructions
-    qtyBoxes.forEach(box => {
-        const decreaseBtn = box.querySelector('.fa-trash-alt'); 
-        const increaseBtn = box.querySelector('.fa-plus');
-        const quantitySpan = box.querySelector('span');
+    if (qtyBoxes.length > 0) { // Added Null Check
+        qtyBoxes.forEach(box => {
+            const decreaseBtn = box.querySelector('.fa-trash-alt'); 
+            const increaseBtn = box.querySelector('.fa-plus');
+            const quantitySpan = box.querySelector('span');
 
-        // 4. Add a click event to the '+' button
-        increaseBtn.addEventListener('click', () => {
-            let currentQuantity = parseInt(quantitySpan.innerText);
-            quantitySpan.innerText = currentQuantity + 1;
-        });
+            // 4. Add a click event to the '+' button
+            if (increaseBtn && quantitySpan) {
+                increaseBtn.addEventListener('click', () => {
+                    let currentQuantity = parseInt(quantitySpan.innerText);
+                    quantitySpan.innerText = currentQuantity + 1;
+                });
+            }
 
-        // 5. Add a click event to the decrease/trash button
-        decreaseBtn.addEventListener('click', () => {
-            let currentQuantity = parseInt(quantitySpan.innerText);
-            // Only decrease if the number is greater than 1
-            if (currentQuantity > 1) {
-                quantitySpan.innerText = currentQuantity - 1;
+            // 5. Add a click event to the decrease/trash button
+            if (decreaseBtn && quantitySpan) {
+                decreaseBtn.addEventListener('click', () => {
+                    let currentQuantity = parseInt(quantitySpan.innerText);
+                    // Only decrease if the number is greater than 1
+                    if (currentQuantity > 1) {
+                        quantitySpan.innerText = currentQuantity - 1;
+                    }
+                });
             }
         });
-    });
+    }
 });
