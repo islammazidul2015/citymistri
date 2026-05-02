@@ -467,7 +467,7 @@
         </table>
 
         <h2 id="comparison">Thai Glass vs Normal Glass – Which One is Better?</h2>
-        <p>অনেকেই সাধারণ জানালার গ্লাস এবং থাই গ্লাসের মধ্যে পার্থক্য বুঝতে পারেন না। <strong>Thai Glass</strong> মূলত টেম্পার্ড এবং অ্যালুমিনিয়াম ফ্রেমিংয়ের কারণে সাধারণ গ্লাসের চেয়ে অনেক বেশি শক্তিশালী।</p>
+        <p>অনেকেই সাধারণ জানালার গ্লাস এবং থাই গ্লাসের মধ্যে পার্থক্য বুঝতে পারেন গঠন না। <strong>Thai Glass</strong> মূলত টেম্পার্ড এবং অ্যালুমিনিয়াম ফ্রেমিংয়ের কারণে সাধারণ গ্লাসের চেয়ে অনেক বেশি শক্তিশালী।</p>
         <ul>
             <li><strong>Soundproof:</strong> থাই গ্লাস বাইরের শব্দ কমিয়ে দেয়।</li>
             <li><strong>Durability:</strong> সাধারণ গ্লাস ঝড়ে ভেঙে যেতে পারে, কিন্তু ৫মিমি বা ৬মিমি থাই গ্লাস সহজে ভাঙ্গে ঘন না।</li>
@@ -618,18 +618,38 @@
     <script src="script.js"></script>
 
     <script>
-        document.querySelectorAll('.faq-question').forEach(q => {
-            q.addEventListener('click', () => {
-                q.parentElement.classList.toggle('active');
+        // FAQ Toggle Logic - Bulletproof
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(q => {
+                q.addEventListener('click', function() {
+                    this.parentElement.classList.toggle('active');
+                    const icon = this.querySelector('i');
+                    if(icon) {
+                        if(this.parentElement.classList.contains('active')) {
+                            icon.classList.remove('fa-chevron-down');
+                            icon.classList.add('fa-chevron-up');
+                        } else {
+                            icon.classList.remove('fa-chevron-up');
+                            icon.classList.add('fa-chevron-down');
+                        }
+                    }
+                });
             });
         });
 
-        // Conversion Boost: Updated Calculator Logic
+        // Conversion Boost: Calculator Logic
         function calculateCost() {
-          var h = parseFloat(document.getElementById('height').value);
-          var w = parseFloat(document.getElementById('width').value);
-          var rate = parseInt(document.getElementById('material').value);
-          var materialText = document.getElementById('material').options[document.getElementById('material').selectedIndex].text;
+          var heightInput = document.getElementById('height');
+          var widthInput = document.getElementById('width');
+          var materialSelect = document.getElementById('material');
+          
+          if (!heightInput || !widthInput || !materialSelect) return; // Null check
+
+          var h = parseFloat(heightInput.value);
+          var w = parseFloat(widthInput.value);
+          var rate = parseInt(materialSelect.value);
+          var materialText = materialSelect.options[materialSelect.selectedIndex].text;
 
           if (h > 0 && w > 0) {
             var area = h * w;
