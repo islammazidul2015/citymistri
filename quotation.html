@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Mistri - Official Quotation</title>
+    <style>
+        /* Pro Typography */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #e9ecef; 
+            margin: 0; 
+            padding: 40px 20px; 
+            color: #2d3436; 
+        }
+
+        .invoice-box { 
+            max-width: 850px; 
+            margin: auto; 
+            padding: 50px; 
+            background: #fff; 
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* Top Accent Bar (No HR lines used) */
+        .invoice-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #004d40, #00695c);
+            border-radius: 4px 4px 0 0;
+        }
+
+        .header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start;
+            margin-bottom: 50px; 
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .brand-details h1 { 
+            color: #004d40; 
+            margin: 0; 
+            font-size: 28px; 
+            font-weight: 800; 
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        .brand-details p { 
+            margin: 4px 0; 
+            font-size: 13px; 
+            color: #636e72; 
+            line-height: 1.4;
+        }
+
+        .header-right { text-align: right; }
+        .invoice-title { 
+            color: #2d3436; 
+            font-size: 32px; 
+            margin: 0 0 10px 0; 
+            font-weight: 800; 
+            text-transform: uppercase;
+        }
+
+        .quote-meta p { margin: 5px 0; font-size: 14px; font-weight: 600; color: #2d3436; }
+        .quote-meta span { font-weight: 400; color: #636e72; }
+
+        /* Solid Customer Info Area */
+        .customer-container { 
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: #f8f9fa; 
+            padding: 25px; 
+            margin-bottom: 40px; 
+            border-radius: 8px;
+        }
+
+        .info-block h3 { 
+            margin: 0 0 12px 0; 
+            color: #004d40; 
+            font-size: 14px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+        }
+
+        .info-block p { margin: 4px 0; font-size: 15px; line-height: 1.5; }
+
+        /* Solid Table Design */
+        table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
+        
+        table th { 
+            background-color: #004d40; 
+            color: white; 
+            padding: 16px 15px; 
+            text-align: left; 
+            font-size: 13px; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            border: none;
+        }
+
+        table td { 
+            padding: 18px 15px; 
+            font-size: 14px; 
+            border-bottom: 1px solid #f1f2f6;
+            vertical-align: top;
+        }
+
+        .item-desc strong { display: block; font-size: 15px; margin-bottom: 5px; color: #2d3436; }
+        .item-desc span { font-size: 13px; color: #636e72; line-height: 1.6; display: block; }
+
+        /* Totals Area */
+        .summary-wrapper {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .summary-box {
+            width: 300px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .summary-row.total {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px dashed #dfe6e9;
+            font-weight: 800;
+            font-size: 18px;
+            color: #004d40;
+        }
+
+        /* Footer & Terms */
+        .footer-section { margin-top: 60px; }
+        .terms h3 { font-size: 14px; color: #004d40; text-transform: uppercase; margin-bottom: 15px; }
+        .terms ul { padding-left: 20px; margin: 0; }
+        .terms li { font-size: 13px; color: #636e72; margin-bottom: 8px; line-height: 1.6; }
+
+        .signature-container { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-top: 80px; 
+        }
+
+        .sig-box { text-align: center; width: 220px; }
+        .sig-line { border-top: 2px solid #2d3436; margin-bottom: 8px; }
+        .sig-box p { margin: 0; font-size: 14px; font-weight: 700; color: #2d3436; }
+
+        /* ContentEditable Styling */
+        [contenteditable="true"]:hover { background: #fffde7; cursor: text; border-radius: 4px; }
+        [contenteditable="true"]:focus { background: #fffde7; outline: none; box-shadow: 0 0 0 2px #004d40; }
+
+        /* Buttons */
+        .controls { text-align: center; margin-bottom: 30px; }
+        .btn-print { 
+            background: #004d40; 
+            color: white; 
+            padding: 16px 40px; 
+            border: none; 
+            border-radius: 50px; 
+            font-weight: 700; 
+            font-size: 16px; 
+            cursor: pointer; 
+            box-shadow: 0 10px 20px rgba(0, 77, 64, 0.2);
+            transition: 0.3s;
+        }
+        .btn-print:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(0, 77, 64, 0.3); }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .invoice-box { box-shadow: none; border: none; padding: 0; max-width: 100%; }
+            .controls, .btn-print { display: none; }
+            .invoice-box::before { -webkit-print-color-adjust: exact; }
+            [contenteditable="true"] { background: transparent !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button class="btn-print" onclick="window.print()">Download Quotation (PDF)</button>
+        <p style="color: #636e72; font-size: 14px; margin-top: 15px;">💡 কোনো লেখার ওপর ক্লিক করে সরাসরি এডিট করুন</p>
+    </div>
+
+    <div class="invoice-box">
+        <div class="header">
+            <div class="logo-section">
+                <img src="images/favicon.png" alt="City Mistri Logo" class="logo-img">
+                <div class="brand-details">
+                    <h1>City Mistri</h1>
+                    <p>Al Helal Hospital, Kazipara, Mirpur, Dhaka-1216</p>
+                    <p>+8801997426656 | info@citymistri.xyz</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <h2 class="invoice-title">Quotation</h2>
+                <div class="quote-meta">
+                    <p>Quote #: <span contenteditable="true">CM-2026-104</span></p>
+                    <p>Date: <span contenteditable="true">May 04, 2026</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="customer-container">
+            <div class="info-block">
+                <h3>Bill To</h3>
+                <div contenteditable="true">
+                    <p><strong>Customer Name</strong></p>
+                    <p>Company Name (Optional)</p>
+                    <p>Area, Road Name, Dhaka</p>
+                    <p>Phone: 01XXXXXXXXX</p>
+                </div>
+            </div>
+            <div class="info-block">
+                <h3>Project Information</h3>
+                <div contenteditable="true">
+                    <p><strong>Work Type:</strong> Aluminum Folding Door</p>
+                    <p><strong>Material:</strong> EDF Profile (Luxury)</p>
+                    <p><strong>Glass:</strong> 10mm Tempered Glass</p>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 60%">Description & Specifications</th>
+                    <th style="width: 10%">Qty</th>
+                    <th style="width: 15%">Unit Price</th>
+                    <th style="width: 15%; text-align: right;">Amount</th>
+                </tr>
+            </thead>
+            <tbody contenteditable="true">
+                <tr>
+                    <td class="item-desc">
+                        <strong>EDF Premium Aluminum Folding Door</strong>
+                        <span>- Heavy Duty 10mm Clear Tempered Glass<br>- Original Kinglong High-Performance Fittings<br>- Full weather-seal gasket installation</span>
+                    </td>
+                    <td>48 Sft</td>
+                    <td>৳2,250</td>
+                    <td style="text-align: right;">৳108,000</td>
+                </tr>
+                <tr>
+                    <td class="item-desc">
+                        <strong>Transportation & Professional Installation</strong>
+                        <span>- Professional team delivery and onsite fitting in Dhaka</span>
+                    </td>
+                    <td>1 Job</td>
+                    <td>৳2,000</td>
+                    <td style="text-align: right;">৳2,000</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="summary-wrapper">
+            <div class="summary-box">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span contenteditable="true">৳110,000</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax/Vat (0%)</span>
+                    <span>৳0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total Payable</span>
+                    <span contenteditable="true">৳110,000</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <div class="terms">
+                <h3>Terms & Conditions</h3>
+                <ul contenteditable="true">
+                    <li>50% Advance payment required to initiate the work order.</li>
+                    <li>Delivery and installation within 5-7 working days.</li>
+                    <li>Warranty: 5 Years service warranty on Kinglong fittings.</li>
+                    <li>The price is valid for 15 days from the issued date.</li>
+                </ul>
+            </div>
+
+            <div class="signature-container">
+                <div class="sig-box">
+                    <div class="sig-line"></div>
+                    <p>Customer Acceptance</p>
+                </div>
+                <div class="sig-box">
+                    <div class="sig-line"></div>
+                    <p>Authorized Signature</p>
+                    <span style="font-size: 12px; color: #636e72;">City Mistri Technical Team</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p style="text-align: center; color: #b2bec3; font-size: 12px; margin-top: 40px;">Generated officially by City Mistri Business System</p>
+
+</body>
+</html>
