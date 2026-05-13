@@ -720,15 +720,16 @@
                 
                 <div class="s-card-img">
                     <div class="img-wrapper">
-                        <img src="images/repair-1.png" alt="Lock Installation" onerror="this.src='https://via.placeholder.com/150/ffffff/999999?text=Lock'">
+                        <img src="images/repair-1.png" alt="Lock Installation and Repair" onerror="this.src='https://via.placeholder.com/150/ffffff/999999?text=Lock'">
                     </div>
                     <div class="s-card-details">
-                        <h4>Lock Installation</h4>
+                        <h4 style="font-size: 0.85rem;">Lock Install & Repair</h4>
                         <div class="s-price">৳ 320</div>
                         <div class="control-row">
                             <div class="qty-box">
-                                <i class="fas fa-trash-alt"></i>
-                                <span>1 +</span>
+                                <i class="fas fa-minus" onclick="changeQty(this, -1)"></i>
+                                <span class="qty-val">1</span>
+                                <i class="fas fa-plus" onclick="changeQty(this, 1)"></i>
                             </div>
                             <button class="btn-add-cart" onclick="toggleCartBtn(this)">Select</button>
                         </div>
@@ -737,15 +738,16 @@
 
                 <div class="s-card-img">
                     <div class="img-wrapper">
-                        <img src="images/repair-1.png" alt="Lock Repair" onerror="this.src='https://via.placeholder.com/150/ffffff/999999?text=Lock'">
+                        <img src="images/repair-2.png" alt="Wheel Installation and Repair" onerror="this.src='https://via.placeholder.com/150/ffffff/999999?text=Wheel'">
                     </div>
                     <div class="s-card-details">
-                        <h4>Lock Repair</h4>
+                        <h4 style="font-size: 0.85rem;">Wheel Install & Repair</h4>
                         <div class="s-price">৳ 320</div>
                         <div class="control-row">
                             <div class="qty-box">
-                                <i class="fas fa-trash-alt"></i>
-                                <span>1 +</span>
+                                <i class="fas fa-minus" onclick="changeQty(this, -1)"></i>
+                                <span class="qty-val">1</span>
+                                <i class="fas fa-plus" onclick="changeQty(this, 1)"></i>
                             </div>
                             <button class="btn-add-cart" onclick="toggleCartBtn(this)">Select</button>
                         </div>
@@ -754,32 +756,34 @@
 
                 <div class="s-card-img">
                     <div class="img-wrapper">
-                        <img src="images/repair-2.png" alt="Wheel Installation & Repair" onerror="this.src='https://via.placeholder.com/150/ffffff/999999?text=Wheel'">
+                        <img src="images/Floor-Spring-Door-Closers.jpg" alt="Door Closer Install and Repair" onerror="this.src='https://via.placeholder.com/150/ffffff/999999?text=Closer'">
                     </div>
                     <div class="s-card-details">
-                        <h4>Wheel Install & Repair</h4>
-                        <div class="s-price">৳ 320</div>
-                        <div class="control-row">
-                            <div class="qty-box">
-                                <i class="fas fa-trash-alt"></i>
-                                <span>1 +</span>
-                            </div>
-                            <button class="btn-add-cart" onclick="toggleCartBtn(this)">Select</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="s-card-img">
-                    <div class="img-wrapper">
-                        <img src="images/Floor-Spring-Door-Closers.jpg" alt="Door Closer Re-Fitting" onerror="this.src='https://via.placeholder.com/150/ffffff/999999?text=Closer'">
-                    </div>
-                    <div class="s-card-details">
-                        <h4>Door Closer Re-Fitting</h4>
+                        <h4 style="font-size: 0.82rem;">Door Closer Install/Repair</h4>
                         <div class="s-price">৳ 1620</div>
                         <div class="control-row">
                             <div class="qty-box">
-                                <i class="fas fa-trash-alt"></i>
-                                <span>1 +</span>
+                                <i class="fas fa-minus" onclick="changeQty(this, -1)"></i>
+                                <span class="qty-val">1</span>
+                                <i class="fas fa-plus" onclick="changeQty(this, 1)"></i>
+                            </div>
+                            <button class="btn-add-cart" onclick="toggleCartBtn(this)">Select</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="s-card-img">
+                    <div class="img-wrapper">
+                        <img src="images/ss-grill-work-dhaka.webp" alt="SS Grill Work" onerror="this.src='https://via.placeholder.com/150/ffffff/999999?text=Grill'">
+                    </div>
+                    <div class="s-card-details">
+                        <h4 style="font-size: 0.85rem;">SS Grill Work</h4>
+                        <div class="s-price" style="font-size: 0.95rem;">Ask Price</div>
+                        <div class="control-row">
+                            <div class="qty-box">
+                                <i class="fas fa-minus" onclick="changeQty(this, -1)"></i>
+                                <span class="qty-val">1</span>
+                                <i class="fas fa-plus" onclick="changeQty(this, 1)"></i>
                             </div>
                             <button class="btn-add-cart" onclick="toggleCartBtn(this)">Select</button>
                         </div>
@@ -847,14 +851,26 @@
     </div>
 
     <script>
-        // Updated Selection Animation
+        // Select Button Animation
         function toggleCartBtn(btn) {
             if(btn.innerText === "Select") {
                 btn.innerText = "Selected ✓";
                 btn.style.background = "#10b981"; // Green color
             } else {
                 btn.innerText = "Select";
-                btn.style.background = "#c2185b"; // Original Pink/Red
+                btn.style.background = "#c2185b"; // Original Pink/Red color
+            }
+        }
+
+        // Plus/Minus Number Change Function
+        function changeQty(btn, change) {
+            let span = btn.parentElement.querySelector('.qty-val');
+            let currentVal = parseInt(span.innerText);
+            let newVal = currentVal + change;
+            
+            // Number jeno 1 er niche na neme jay
+            if(newVal >= 1) { 
+                span.innerText = newVal;
             }
         }
     </script>
