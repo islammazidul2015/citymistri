@@ -113,7 +113,7 @@
           "name": "৪. KAI Aluminum ভালো নাকি Chung Hua?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Budget ও standard home project-এর জন্য KAI ভালো। Premium finishing ও heavy-duty work-এর জন্য Chung Hua/Altec ব্যবহার করা যায়।"
+            "text": "Standard home project-এর জন্য KAI ভালো। Premium finishing ও heavy-duty work-এর জন্য Chung Hua/Altec ব্যবহার করা যায়।"
           }
         },
         {
@@ -491,6 +491,357 @@
             margin: 32px 0 20px;
           }
         }
+    
+/* Expert Mobile UI Polish v1 - City Mistri */
+@media (max-width: 768px) {
+  body {
+    background: #f5f7fb;
+    padding-bottom: 92px;
+    overflow-x: hidden;
+  }
+
+  .main-header {
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 8px 24px rgba(15,23,42,0.08);
+  }
+
+  .nav-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .logo-area {
+    justify-content: center;
+    font-size: 1.08rem;
+    font-weight: 800;
+  }
+
+  .logo-area img {
+    height: 34px;
+    border-radius: 8px;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 4px 2px 6px;
+    margin: 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .nav-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-menu li {
+    flex: 0 0 auto;
+  }
+
+  .nav-menu li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 8px 13px;
+    border-radius: 999px;
+    background: #eef4ff;
+    color: #0f172a;
+    font-size: 0.86rem;
+    font-weight: 800;
+    box-shadow: inset 0 0 0 1px #dbeafe;
+  }
+
+  .nav-menu li a.active {
+    background: #0f172a;
+    color: #ffffff;
+    box-shadow: 0 8px 18px rgba(15,23,42,0.20);
+  }
+
+  .hero-banner {
+    position: relative;
+    overflow: hidden;
+    margin: 0 10px 14px;
+    padding: 30px 16px 34px;
+    border-radius: 0 0 28px 28px;
+    background: radial-gradient(circle at top left, #38bdf8 0, transparent 34%),
+                linear-gradient(135deg, #002b5c 0%, #0058b8 55%, #001f3f 100%);
+    box-shadow: 0 18px 35px rgba(0,78,146,0.25);
+  }
+
+  .update-badge {
+    background: rgba(255,255,255,0.16);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.28);
+    backdrop-filter: blur(10px);
+    padding: 7px 14px;
+    margin-bottom: 12px;
+  }
+
+  .hero-banner h1 {
+    font-size: clamp(1.35rem, 6vw, 1.9rem);
+    line-height: 1.28;
+    letter-spacing: -0.3px;
+    margin-bottom: 10px;
+  }
+
+  .hero-banner p {
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: #eaf4ff;
+    margin-bottom: 0;
+  }
+
+  .blog-container {
+    width: calc(100% - 20px);
+    margin: 0 auto;
+    padding: 15px;
+    border-radius: 22px;
+    box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+  }
+
+  .blog-container > p:first-child {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 14px;
+    margin-top: 0;
+  }
+
+  h2 {
+    border-left: 0 !important;
+    padding-left: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 1.24rem;
+    line-height: 1.35;
+    margin-top: 34px;
+    margin-bottom: 16px;
+  }
+
+  h2::before {
+    content: "";
+    width: 5px;
+    height: 25px;
+    flex: 0 0 5px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #00c6ff, #0072ff);
+  }
+
+  .calculator-wrapper {
+    border-radius: 24px;
+    border: 1px solid #dbeafe;
+    box-shadow: 0 18px 42px rgba(0,78,146,0.14);
+    margin: 18px 0 24px;
+  }
+
+  .calc-top-bar {
+    padding: 18px 14px;
+    background: linear-gradient(135deg, #0058b8, #00a6ff);
+  }
+
+  .calc-body {
+    padding: 16px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 13px;
+  }
+
+  .form-grid > div {
+    grid-column: auto !important;
+  }
+
+  .calc-input,
+  .calc-select {
+    height: 52px;
+    padding: 13px 14px;
+    border-radius: 15px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(15,23,42,0.04);
+  }
+
+  .calc-input:focus,
+  .calc-select:focus {
+    border-color: #0072ff;
+    box-shadow: 0 0 0 4px rgba(0,114,255,0.12);
+  }
+
+  .calc-btn {
+    grid-column: auto !important;
+    height: 54px;
+    border-radius: 16px;
+    font-size: 1.02rem;
+    background: linear-gradient(135deg, #00b894, #059669);
+    box-shadow: 0 12px 24px rgba(5,150,105,0.25);
+  }
+
+  .result-display {
+    border-radius: 18px;
+    padding: 16px;
+    background: #ecfdf5;
+    border: 1px solid #bbf7d0;
+  }
+
+  .thai-gallery {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .thai-gallery figure {
+    border-radius: 18px;
+    box-shadow: 0 10px 22px rgba(15,23,42,0.10);
+  }
+
+  .thai-gallery img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .thai-gallery figcaption {
+    font-size: 0.78rem;
+    padding: 8px 6px;
+  }
+
+  .styled-table {
+    display: block;
+    overflow: visible;
+    white-space: normal;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 16px 0;
+  }
+
+  .styled-table thead {
+    display: none;
+  }
+
+  .styled-table tbody {
+    display: grid;
+    gap: 12px;
+  }
+
+  .styled-table tr {
+    display: block;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 12px;
+    box-shadow: 0 10px 24px rgba(15,23,42,0.07);
+  }
+
+  .styled-table td {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    border: 0 !important;
+    padding: 8px 4px;
+    background: transparent !important;
+    white-space: normal;
+    font-size: 0.95rem;
+  }
+
+  .styled-table td::before {
+    min-width: 82px;
+    color: #64748b;
+    font-weight: 800;
+  }
+
+  .styled-table td:nth-child(1)::before {
+    content: "বিষয়";
+  }
+
+  .styled-table td:nth-child(2)::before {
+    content: "বিস্তারিত";
+  }
+
+  .styled-table td:nth-child(3)::before {
+    content: "রেট";
+  }
+
+  .styled-table td:last-child {
+    font-weight: 900;
+    color: #047857;
+    font-size: 1rem;
+  }
+
+  .faq-card {
+    border-radius: 17px;
+    box-shadow: 0 8px 22px rgba(15,23,42,0.06);
+  }
+
+  .faq-card summary {
+    padding: 16px 44px 16px 16px;
+  }
+
+  .keyword-chips {
+    gap: 8px;
+  }
+
+  .keyword-chips span {
+    font-size: 0.84rem;
+    padding: 7px 10px;
+  }
+
+  .sticky-cta {
+    display: flex !important;
+    gap: 10px;
+    padding: 10px 12px calc(12px + env(safe-area-inset-bottom));
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid #e2e8f0;
+    box-shadow: 0 -12px 30px rgba(15,23,42,0.14);
+  }
+
+  .btn-call,
+  .btn-wa {
+    height: 49px;
+    border-radius: 16px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    box-shadow: 0 10px 22px rgba(15,23,42,0.18);
+  }
+
+  .btn-call {
+    background: #0f172a;
+  }
+
+  .btn-wa {
+    background: #16a34a;
+  }
+
+  footer {
+    padding-bottom: 112px;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-banner h1 {
+    font-size: 1.28rem;
+  }
+
+  .styled-table td {
+    font-size: 0.9rem;
+  }
+
+  .thai-gallery figcaption {
+    font-size: 0.74rem;
+  }
+}
+
     </style>
 </head>
 <body>
@@ -627,7 +978,7 @@
                 <tr>
                     <th>ব্র্যান্ড</th>
                     <th>কালার</th>
-                    <th>দাম (Square Feet)</th>
+                    <th>আনুমানিক রেট (প্রতি sqft)</th>
                 </tr>
             </thead>
             <tbody>
@@ -772,7 +1123,7 @@
 
           <details class="faq-card">
             <summary>৪. KAI Aluminum ভালো নাকি Chung Hua?</summary>
-            <p>Budget ও standard home project-এর জন্য KAI ভালো। Premium finishing ও heavy-duty work-এর জন্য Chung Hua/Altec ব্যবহার করা যায়।</p>
+            <p>Standard home project-এর জন্য KAI ভালো। Premium finishing ও heavy-duty work-এর জন্য Chung Hua/Altec ব্যবহার করা যায়।</p>
           </details>
 
           <details class="faq-card">
