@@ -251,6 +251,137 @@
           line-height: 1.7;
         }
 
+/* Premium 3 Image Project Gallery */
+.premium-project-gallery {
+  margin: 30px 0 38px;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.07);
+}
+
+.premium-project-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.premium-project-head h2 {
+  margin: 0;
+  border-left: 5px solid #007bff;
+}
+
+.premium-project-head p {
+  margin: 6px 0 0;
+  color: #556;
+  font-size: 0.98rem;
+}
+
+.premium-works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.premium-work-card {
+  position: relative;
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0f172a;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.16);
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+.premium-work-card img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.premium-work-card:hover img {
+  transform: scale(1.04);
+}
+
+.premium-work-card figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 34px 12px 12px;
+  background: linear-gradient(180deg, rgba(15,23,42,0), rgba(15,23,42,0.9));
+  color: #fff;
+  font-weight: 800;
+  text-align: center;
+  font-size: 0.96rem;
+  line-height: 1.25;
+}
+
+.premium-tag {
+  display: inline-block;
+  background: #eaf4ff;
+  color: #004e92;
+  border: 1px solid #cfe6ff;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.86rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .premium-project-gallery {
+    padding: 14px;
+    border-radius: 16px;
+    margin: 22px 0 30px;
+  }
+
+  .premium-project-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .premium-project-head h2 {
+    font-size: 1.18rem;
+    margin: 0;
+  }
+
+  .premium-project-head p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .premium-works-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+  }
+
+  .premium-work-card {
+    border-radius: 12px;
+  }
+
+  .premium-work-card img {
+    aspect-ratio: 3 / 4;
+  }
+
+  .premium-work-card figcaption {
+    padding: 24px 4px 7px;
+    font-size: 0.63rem;
+    line-height: 1.12;
+  }
+
+  .premium-tag {
+    font-size: 0.72rem;
+    padding: 6px 9px;
+  }
+}
+
         /* Gallery CSS */
         .thai-gallery {
           display: grid;
@@ -568,33 +699,35 @@
           <div style="background:#fff;padding:18px;border-radius:12px;text-align:center;border:1px solid #eee;">💬 WhatsApp Support</div>
         </div>
 
-        <!-- Gallery Section -->
-        <h2 id="thai-glass-projects">Thai Glass & Aluminum Work Gallery</h2>
-        <p>
-          নিচের ছবিগুলোতে City Mistri-এর Thai Glass, Aluminum Window, Office Partition এবং Building Glass Work-এর কিছু example দেখানো হলো।
-        </p>
+        <!-- Premium 3 Image Gallery Section -->
+<section class="premium-project-gallery" id="premium-thai-glass-work">
+  <div class="premium-project-head">
+    <div>
+      <h2>Premium Thai Glass & Aluminum Projects</h2>
+      <p>
+        Sliding door, office partition এবং sliding window-এর real project look—premium finishing বুঝতে নিচের ছবিগুলো দেখুন।
+      </p>
+    </div>
+    <span class="premium-tag">Real Work Preview</span>
+  </div>
 
-        <div class="thai-gallery">
-          <figure>
-            <img src="images/thai-glass-window-price-bd.png" alt="Thai glass aluminum window price in Bangladesh 2026" loading="lazy">
-            <figcaption>Thai Glass Window</figcaption>
-          </figure>
+  <div class="premium-works-grid">
+    <figure class="premium-work-card">
+      <img src="images/aluminium-sliding-door-city-mistri.webp" alt="Aluminium sliding door installation by City Mistri in Bangladesh" loading="lazy">
+      <figcaption>Aluminium Sliding Door</figcaption>
+    </figure>
 
-          <figure>
-            <img src="images/thai-glass-partition-installation-dhaka.png" alt="Thai glass partition installation service in Dhaka by City Mistri" loading="lazy">
-            <figcaption>Office Glass Partition</figcaption>
-          </figure>
+    <figure class="premium-work-card">
+      <img src="images/aluminium-partition-city-mistri.webp" alt="Aluminium glass office partition work by City Mistri" loading="lazy">
+      <figcaption>Office Glass Partition</figcaption>
+    </figure>
 
-          <figure>
-            <img src="images/thai-glass-building-project-bangladesh.png" alt="Building Thai glass and aluminum project in Bangladesh" loading="lazy">
-            <figcaption>Building Glass Work</figcaption>
-          </figure>
-
-          <figure>
-            <img src="images/thai-glass-aluminum-partition-dhaka.png" alt="Aluminum glass partition work in Dhaka Bangladesh" loading="lazy">
-            <figcaption>Aluminum Partition</figcaption>
-          </figure>
-        </div>
+    <figure class="premium-work-card">
+      <img src="images/aluminium-sliding-window-city-mistri.webp" alt="Aluminium sliding window and mosquito net work by City Mistri" loading="lazy">
+      <figcaption>Aluminium Sliding Window</figcaption>
+    </figure>
+  </div>
+</section>
 
         <h2 id="complete-price">Thai Glass Price in Bangladesh 2026 (Updated Rate Chart)</h2>
         <p>নিচে প্রতি স্কয়ার ফিটের (sqft) কমপ্লিট খরচ দেওয়া হলো। এই রেট <strong>Thai Glass Mistri in Dhaka</strong> এবং সারা বাংলাদেশের জন্য প্রযোজ্য। (গ্লাস, অ্যালুমিনিয়াম, ফিটিং ও মজুরি সহ):</p>
